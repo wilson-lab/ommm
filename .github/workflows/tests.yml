@@ -1,0 +1,41 @@
+name: tests
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    # the Python suite on the fake: no Commander, so no header tests (they need Commander's install folder)
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        python: ["3.12", "3.14"]
+    runs-on: ${{ matrix.os }}
+    env:
+      UV_PYTHON: ${{ matrix.python }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+      - run: uv sync --locked
+      - run: uv run --locked pytest
+
+  as-a-dependency:
+    # ommm installed from git into another environment: it imports, and its provenance names this commit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+      - run: |
+          commit=$(git rev-parse HEAD)
+          cd "$RUNNER_TEMP"
+          uv run --no-project --with "ommm @ git+file://$GITHUB_WORKSPACE@$commit" python -c "
+          import ommm
+          found = ommm.provenance()
+          assert (found['commit'], found['dirty'], found['git_error']) == ('$commit', False, None), found
+          print(found)"

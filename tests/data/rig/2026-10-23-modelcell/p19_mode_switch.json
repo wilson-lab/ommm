@@ -1,0 +1,1829 @@
+{
+ "header": {
+  "probe": "Q24",
+  "question": "Q24: how long does a mode change take to show? V-Clamp -> I = 0 -> I-Clamp and back through the API, with GetMode, the telegraph's mode and the tab shown read every 20 ms for 1 s after each SetMode returned (prior art: 100-500 ms; the manual: about 22 ms into I-Clamp, under 0.5 ms into V-Clamp).",
+  "time": "2026-10-23T13:44:38.253473-04:00",
+  "setup": "amplifier on, a model cell on the headstage, its switch at CELL (--model-cell CELL)",
+  "commander": "2.2.2.2",
+  "firmware": "2.0.00.25",
+  "dsp": "2.0.0.16",
+  "api_version": "1.0.0.9",
+  "ommm": {
+   "version": "0.1.0",
+   "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+   "dirty": false,
+   "git_error": null
+  }
+ },
+ "steps": [
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:42.880577-04:00",
+    "probe": "Q24",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 131.4,
+   "looks": [
+    {
+     "ms": 0.0,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 25.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 52.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 92.9,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 115.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 130.8,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 146.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 161.8,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 177.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 191.9,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 207.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 222.8,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 240.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 260.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 280.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 300.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 320.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 340.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 360.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 380.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 400.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 420.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 440.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 460.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 480.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 500.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 524.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 544.9,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 560.4,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 580.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 600.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 620.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 640.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 660.4,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 680.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 700.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 720.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 740.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 760.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 780.4,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 800.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 820.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 840.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 860.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 880.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 900.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 920.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 940.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 960.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 980.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:42.881774-04:00",
+   "note": "to I = 0: settled at (ms after SetMode returned)",
+   "mode": 2,
+   "tab": 1,
+   "set_ms": 131.4,
+   "api_ms": 0.0,
+   "telegraph_ms": 0.0,
+   "tab_ms": 0.0,
+   "samples": 50,
+   "last_ms": 980.2
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:43.921887-04:00",
+    "probe": "Q24",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 42.5,
+   "looks": [
+    {
+     "ms": 0.0,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 20.8,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 40.2,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 60.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 80.0,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 100.5,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 120.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 140.4,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 160.4,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 180.2,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 200.4,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 220.1,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 240.5,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 260.4,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 280.6,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 300.5,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 320.4,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 340.6,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 360.7,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 380.6,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 400.2,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 420.2,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 440.4,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 460.4,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 480.2,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 500.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 520.5,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 540.5,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 560.2,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 580.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 600.1,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 620.2,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 640.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 660.5,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 680.6,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 707.4,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 728.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 743.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 760.2,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 780.2,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 800.5,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 820.5,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 840.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 860.4,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 880.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 900.6,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 920.4,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 940.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 960.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    },
+    {
+     "ms": 980.3,
+     "mode": 1,
+     "telegraph": 1,
+     "tab": 1
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:43.923083-04:00",
+   "note": "to I-Clamp: settled at (ms after SetMode returned)",
+   "mode": 1,
+   "tab": 1,
+   "set_ms": 42.5,
+   "api_ms": 0.0,
+   "telegraph_ms": 0.0,
+   "tab_ms": 0.0,
+   "samples": 50,
+   "last_ms": 980.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:45.012205-04:00",
+    "probe": "Q24",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 92.4,
+   "looks": [
+    {
+     "ms": 0.0,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 21.4,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 40.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 60.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 80.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 100.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 120.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 140.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 160.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 180.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 200.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 243.7,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 264.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 280.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 295.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 311.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 326.4,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 342.0,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 360.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 380.4,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 400.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 420.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 440.1,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 460.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 480.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 500.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 520.4,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 540.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 560.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 580.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 600.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 620.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 640.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 660.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 680.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 700.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 720.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 740.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 760.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 780.6,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 800.4,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 820.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 852.4,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 867.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 882.3,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 900.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 920.2,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 940.5,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 960.4,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    },
+    {
+     "ms": 980.0,
+     "mode": 2,
+     "telegraph": 2,
+     "tab": 1
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:45.013359-04:00",
+   "note": "to I = 0: settled at (ms after SetMode returned)",
+   "mode": 2,
+   "tab": 1,
+   "set_ms": 92.4,
+   "api_ms": 0.0,
+   "telegraph_ms": 0.0,
+   "tab_ms": 0.0,
+   "samples": 50,
+   "last_ms": 980.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:46.150248-04:00",
+    "probe": "Q24",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 85.8,
+   "looks": [
+    {
+     "ms": 0.0,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 23.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 48.0,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 71.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 91.9,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 107.0,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 122.1,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 140.1,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 160.3,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 180.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 200.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 220.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 240.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 260.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 280.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 300.5,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 320.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 340.6,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 371.0,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 386.1,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 401.0,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 420.1,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 440.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 460.1,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 480.1,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 500.3,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 520.5,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 540.5,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 560.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 580.3,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 600.5,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 620.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 640.3,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 660.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 680.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 700.3,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 720.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 740.5,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 760.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 780.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 800.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 820.1,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 840.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 860.5,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 880.5,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 900.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 920.1,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 940.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 1013.4,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    },
+    {
+     "ms": 1034.2,
+     "mode": 0,
+     "telegraph": 0,
+     "tab": 0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:46.151363-04:00",
+   "note": "to V-Clamp: settled at (ms after SetMode returned)",
+   "mode": 0,
+   "tab": 0,
+   "set_ms": 85.8,
+   "api_ms": 0.0,
+   "telegraph_ms": 0.0,
+   "tab_ms": 0.0,
+   "samples": 50,
+   "last_ms": 1034.2
+  },
+  {
+   "t": "2026-10-23T13:44:49.536824-04:00",
+   "note": "end",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q24_134449_end.png"
+  }
+ ],
+ "left_changed": {},
+ "error": null,
+ "start": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:44:38.253473-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -8.544922e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:44:40.941801-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -1.1901855e-12,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ },
+ "end": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:44:47.847072-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -5.9509277e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:44:48.690353-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -8.0871583e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ }
+}

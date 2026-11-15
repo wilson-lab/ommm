@@ -1,0 +1,1715 @@
+{
+ "header": {
+  "probe": "Q27",
+  "question": "Q27: what does SetTestSignalFrequency take? The vendor says Hertz [vendor: PDF p.28], and Get reads the Hz Commander shows, but on 2026-10-23 Commander kept 2 Hz for every value ommm sent (50, 100, 200 Hz; check_amplifier). Seal Test Frequency (V-Clamp) and then Tuning Frequency (I-Clamp) are set through the raw API to values that tell Hertz from a period in seconds, millihertz or a list position apart, each read back, with a screenshot of the V-Clamp tab after each; then put back.",
+  "time": "2026-10-23T13:28:07.010879-04:00",
+  "setup": "amplifier on, a model cell on the headstage, its switch at CELL (--model-cell CELL)",
+  "commander": "2.2.2.2",
+  "firmware": "2.0.00.25",
+  "dsp": "2.0.0.16",
+  "api_version": "1.0.0.9",
+  "ommm": {
+   "version": "0.1.0",
+   "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+   "dirty": false,
+   "git_error": null
+  }
+ },
+ "steps": [
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:10.839427-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 0.001,
+    "after": 1000.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 13.7
+  },
+  {
+   "t": "2026-10-23T13:28:10.872258-04:00",
+   "note": "TestSignalFrequency 0.001",
+   "mode": 0,
+   "tab": 0,
+   "read": 1000.0,
+   "screenshot": "q27_132810_0_0.001.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:11.209433-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 1000.0,
+    "target": 0.002,
+    "after": 500.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 24.8
+  },
+  {
+   "t": "2026-10-23T13:28:11.241349-04:00",
+   "note": "TestSignalFrequency 0.002",
+   "mode": 0,
+   "tab": 0,
+   "read": 500.0,
+   "screenshot": "q27_132811_0_0.002.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:11.589888-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 500.0,
+    "target": 0.005,
+    "after": 200.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 35.8
+  },
+  {
+   "t": "2026-10-23T13:28:11.623648-04:00",
+   "note": "TestSignalFrequency 0.005",
+   "mode": 0,
+   "tab": 0,
+   "read": 200.0,
+   "screenshot": "q27_132811_0_0.005.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:11.960997-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 200.0,
+    "target": 0.01,
+    "after": 100.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 28.3
+  },
+  {
+   "t": "2026-10-23T13:28:11.983658-04:00",
+   "note": "TestSignalFrequency 0.01",
+   "mode": 0,
+   "tab": 0,
+   "read": 100.0,
+   "screenshot": "q27_132811_0_0.01.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:12.311172-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 100.0,
+    "target": 0.02,
+    "after": 50.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 14.7
+  },
+  {
+   "t": "2026-10-23T13:28:12.335793-04:00",
+   "note": "TestSignalFrequency 0.02",
+   "mode": 0,
+   "tab": 0,
+   "read": 50.0,
+   "screenshot": "q27_132812_0_0.02.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:12.657977-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 50.0,
+    "target": 0.1,
+    "after": 10.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 18.9
+  },
+  {
+   "t": "2026-10-23T13:28:12.682141-04:00",
+   "note": "TestSignalFrequency 0.1",
+   "mode": 0,
+   "tab": 0,
+   "read": 10.0,
+   "screenshot": "q27_132812_0_0.1.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:13.012939-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 10.0,
+    "target": 0.5,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 23.3
+  },
+  {
+   "t": "2026-10-23T13:28:13.057159-04:00",
+   "note": "TestSignalFrequency 0.5",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132813_0_0.5.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:13.361104-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 1,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.7
+  },
+  {
+   "t": "2026-10-23T13:28:13.385861-04:00",
+   "note": "TestSignalFrequency 1",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132813_0_1.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:13.689268-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 2,
+    "after": 2.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.6
+  },
+  {
+   "t": "2026-10-23T13:28:13.721415-04:00",
+   "note": "TestSignalFrequency 2",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132813_0_2.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:14.024963-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 3,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:14.046581-04:00",
+   "note": "TestSignalFrequency 3",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132814_0_3.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:14.354984-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 5,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:14.386544-04:00",
+   "note": "TestSignalFrequency 5",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132814_0_5.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:14.694998-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 10,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:14.718217-04:00",
+   "note": "TestSignalFrequency 10",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132814_0_10.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:15.035572-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 100,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.4
+  },
+  {
+   "t": "2026-10-23T13:28:15.068434-04:00",
+   "note": "TestSignalFrequency 100",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132815_0_100.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:15.372080-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 1000,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:15.406389-04:00",
+   "note": "TestSignalFrequency 1000",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132815_0_1000.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:15.715884-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 2000,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.7
+  },
+  {
+   "t": "2026-10-23T13:28:15.759470-04:00",
+   "note": "TestSignalFrequency 2000",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132815_0_2000.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:16.062997-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 10000,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:16.107114-04:00",
+   "note": "TestSignalFrequency 10000",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132816_0_10000.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:16.410885-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 100000,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.6
+  },
+  {
+   "t": "2026-10-23T13:28:16.435281-04:00",
+   "note": "TestSignalFrequency 100000",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132816_0_100000.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:16.739028-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 0,
+    "before": 2.0,
+    "target": 1000000,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.6
+  },
+  {
+   "t": "2026-10-23T13:28:16.771378-04:00",
+   "note": "TestSignalFrequency 1000000",
+   "mode": 0,
+   "tab": 0,
+   "read": 2.0,
+   "screenshot": "q27_132816_0_1e+06.png"
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:17.937922-04:00",
+    "probe": "Q27",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 157.6
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:18.987338-04:00",
+    "probe": "Q27",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 46.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:19.357481-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 0.001,
+    "after": 1000.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 58.2
+  },
+  {
+   "t": "2026-10-23T13:28:19.359672-04:00",
+   "note": "TestSignalFrequency 0.001",
+   "mode": 1,
+   "tab": 1,
+   "read": 1000.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:19.687737-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 1000.0,
+    "target": 0.002,
+    "after": 500.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 25.4
+  },
+  {
+   "t": "2026-10-23T13:28:19.689595-04:00",
+   "note": "TestSignalFrequency 0.002",
+   "mode": 1,
+   "tab": 1,
+   "read": 500.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:20.027812-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 500.0,
+    "target": 0.005,
+    "after": 200.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 25.9
+  },
+  {
+   "t": "2026-10-23T13:28:20.029836-04:00",
+   "note": "TestSignalFrequency 0.005",
+   "mode": 1,
+   "tab": 1,
+   "read": 200.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:20.348374-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 200.0,
+    "target": 0.01,
+    "after": 100.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 15.8
+  },
+  {
+   "t": "2026-10-23T13:28:20.350238-04:00",
+   "note": "TestSignalFrequency 0.01",
+   "mode": 1,
+   "tab": 1,
+   "read": 100.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:20.676471-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 100.0,
+    "target": 0.02,
+    "after": 50.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 15.9
+  },
+  {
+   "t": "2026-10-23T13:28:20.678481-04:00",
+   "note": "TestSignalFrequency 0.02",
+   "mode": 1,
+   "tab": 1,
+   "read": 50.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:21.006747-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 50.0,
+    "target": 0.1,
+    "after": 10.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 15.7
+  },
+  {
+   "t": "2026-10-23T13:28:21.008975-04:00",
+   "note": "TestSignalFrequency 0.1",
+   "mode": 1,
+   "tab": 1,
+   "read": 10.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:21.337113-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 10.0,
+    "target": 0.5,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 25.2
+  },
+  {
+   "t": "2026-10-23T13:28:21.339322-04:00",
+   "note": "TestSignalFrequency 0.5",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:21.648401-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 1,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:21.650575-04:00",
+   "note": "TestSignalFrequency 1",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:21.959394-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 2,
+    "after": 2.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.7
+  },
+  {
+   "t": "2026-10-23T13:28:21.961780-04:00",
+   "note": "TestSignalFrequency 2",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:22.273508-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 3,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:22.275731-04:00",
+   "note": "TestSignalFrequency 3",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:22.583991-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 5,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:22.586275-04:00",
+   "note": "TestSignalFrequency 5",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:22.889723-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 10,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:22.891671-04:00",
+   "note": "TestSignalFrequency 10",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:23.199783-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 100,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.4
+  },
+  {
+   "t": "2026-10-23T13:28:23.201851-04:00",
+   "note": "TestSignalFrequency 100",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:23.510562-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 1000,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.4
+  },
+  {
+   "t": "2026-10-23T13:28:23.512929-04:00",
+   "note": "TestSignalFrequency 1000",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:23.823347-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 2000,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:23.825500-04:00",
+   "note": "TestSignalFrequency 2000",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:24.133552-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 10000,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5
+  },
+  {
+   "t": "2026-10-23T13:28:24.135929-04:00",
+   "note": "TestSignalFrequency 10000",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:24.439654-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 100000,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.7
+  },
+  {
+   "t": "2026-10-23T13:28:24.441960-04:00",
+   "note": "TestSignalFrequency 100000",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:24.745486-04:00",
+    "probe": "Q27",
+    "stem": "TestSignalFrequency",
+    "mode": 1,
+    "before": 2.0,
+    "target": 1000000,
+    "after": 2.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.6
+  },
+  {
+   "t": "2026-10-23T13:28:24.747893-04:00",
+   "note": "TestSignalFrequency 1000000",
+   "mode": 1,
+   "tab": 1,
+   "read": 2.0,
+   "screenshot": null
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:26.780382-04:00",
+    "probe": "Q27",
+    "stem": "PrimarySignal",
+    "mode": 1,
+    "before": 7,
+    "target": 7,
+    "after": 7,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 39.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:27.090562-04:00",
+    "probe": "Q27",
+    "stem": "SecondarySignal",
+    "mode": 1,
+    "before": 8,
+    "target": 8,
+    "after": 8,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 2.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:28.174005-04:00",
+    "probe": "Q27",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 58.9
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:29.300426-04:00",
+    "probe": "Q27",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 118.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:29.650451-04:00",
+    "probe": "Q27",
+    "stem": "PrimarySignal",
+    "mode": 0,
+    "before": 0,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 37.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:28:29.958469-04:00",
+    "probe": "Q27",
+    "stem": "SecondarySignal",
+    "mode": 0,
+    "before": 1,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+     "dirty": false
+    }
+   },
+   "set_ms": 5.4
+  },
+  {
+   "t": "2026-10-23T13:28:31.653667-04:00",
+   "note": "Pipette Offset padlock, V-Clamp tab: open",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q27_132831_padlock_0.png"
+  },
+  {
+   "t": "2026-10-23T13:28:32.502917-04:00",
+   "note": "Pipette Offset padlock, I-Clamp tab: open",
+   "mode": 0,
+   "tab": 1,
+   "screenshot": "q27_132832_padlock_1.png"
+  },
+  {
+   "t": "2026-10-23T13:28:35.048047-04:00",
+   "note": "end",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q27_132835_end.png"
+  }
+ ],
+ "left_changed": {},
+ "error": null,
+ "start": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:28:07.010879-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 2.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.000116881834,
+    "MeterValue2": -2.89917e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:28:09.695783-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 2.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.000116881834,
+    "MeterValue2": -5.0354e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ },
+ "end": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:28:33.343787-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 2.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.000116881834,
+    "MeterValue2": -9.460449e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:28:34.206862-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 2.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.000116881834,
+    "MeterValue2": -8.69751e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "40ed18ae1d3a5bca3c0d47a9cb3ec85d69605e33",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ }
+}

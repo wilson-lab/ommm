@@ -1,0 +1,1675 @@
+{
+ "header": {
+  "probe": "check_amp",
+  "question": "MATLAB through the ommm.Amplifier class, on the model cell: reads, writes, refusals, mode changes, Auto Cp Fast, Zap, make_safe, load_config twice (V-Clamp 500 MΩ, then the file as saved with Holding on), terminate(pyenv) and two trials, each a snapshot before and after, with writes during and between them",
+  "time": "2026-10-23T21:54:46.218250-04:00",
+  "setup": "amplifier on, a model cell on the headstage, its switch at CELL (--model-cell CELL)",
+  "commander": "2.2.2.2",
+  "firmware": "2.0.00.25",
+  "dsp": "2.0.0.16",
+  "api_version": "1.0.0.9",
+  "ommm": {
+   "version": "0.3.1",
+   "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+   "dirty": false,
+   "git_error": null
+  }
+ },
+ "start": null,
+ "end": null,
+ "trials": [
+  {
+   "before": {
+    "schema": 1,
+    "time": "2026-10-23T21:54:46.218250-04:00",
+    "api_version": "1.0.0.9",
+    "headstage": {
+     "model": 1,
+     "serial": "00123456",
+     "com_port": 4294967295,
+     "device": 4294967295,
+     "channel": 1
+    },
+    "demo": false,
+    "readings": {
+     "Mode": 0,
+     "ModeSwitchEnable": false,
+     "FeedbackResistorVC1": 2,
+     "FeedbackResistorIC1": 2,
+     "HoldingEnable": true,
+     "Holding": 0.0,
+     "TestSignalEnable": false,
+     "TestSignalAmplitude": 0.005014102,
+     "TestSignalFrequency": 100.0,
+     "PipetteOffset": 0.0,
+     "FastCompCap": 0.0,
+     "SlowCompCap": 0.0,
+     "FastCompTau": 1.0008756e-06,
+     "SlowCompTau": 1e-05,
+     "SlowCompTauX20Enable": false,
+     "WholeCellCompEnable": false,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 399946.8,
+     "RsCompEnable": false,
+     "RsCompBandwidth": 9999.36,
+     "RsCompCorrection": 0.0,
+     "RsCompPrediction": 0.0,
+     "OscKillerEnable": false,
+     "PrimarySignal": 0,
+     "PrimarySignalGain": 2.0,
+     "PrimarySignalLPF": 8000.0,
+     "PrimarySignalHPF": 0.0,
+     "ScopeSignalLPF": 1000.0,
+     "SecondarySignal": 1,
+     "SecondarySignalGain": 5.0,
+     "SecondarySignalLPF": 10000.0,
+     "OutputZeroEnable": false,
+     "OutputZeroAmplitude": 0.0,
+     "LeakSubEnable": false,
+     "LeakSubResist": 1023750000.0,
+     "PulseAmplitude": 0.0,
+     "PulseDuration": 0.0001,
+     "ZapDuration": 2.5e-05,
+     "MeterResistEnable": false,
+     "MeterIrmsEnable": false,
+     "MeterValue1": -0.00030517578,
+     "MeterValue2": 2.746582e-13,
+     "MeterValue3": 0.0,
+     "MeterValue4": 0.0,
+     "ModeName": "VCLAMP",
+     "PrimarySignalName": "VC_MEMBCURRENT",
+     "SecondarySignalName": "VC_MEMBPOTENTIAL"
+    },
+    "telegraph": {
+     "uVersion": 14,
+     "uStructSize": 256,
+     "uComPortID": 4294967295,
+     "uAxoBusID": 4294967295,
+     "uChannelID": 1,
+     "uOperatingMode": 0,
+     "uScaledOutSignal": 0,
+     "dAlpha": 2.0,
+     "dScaleFactor": 5.0,
+     "uScaleFactorUnits": 6,
+     "dLPFCutoff": 8000.0,
+     "dMembraneCap": 0.0,
+     "dExtCmdSens": 0.02,
+     "uRawOutSignal": 11,
+     "dRawScaleFactor": 10.0,
+     "uRawScaleFactorUnits": 0,
+     "uHardwareType": 1,
+     "dSecondaryAlpha": 5.0,
+     "dSecondaryLPFCutoff": 10000.0,
+     "szAppVersion": "2.2.2.2",
+     "szFirmwareVersion": "2.0.00.25",
+     "szDSPVersion": "2.0.0.16",
+     "szSerialNumber": "00123456",
+     "dSeriesResistance": 0.0,
+     "OperatingModeName": "VCLAMP",
+     "ScaledOutSignalName": "Membrane Current",
+     "RawOutSignalName": "Membrane Potential",
+     "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+     "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+    },
+    "disagreements": [],
+    "not_applicable": {
+     "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+     "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+     "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+     "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+     "NeutralizationCap": "INVALIDPARAMETER (6004)",
+     "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+     "BridgeBalResist": "INVALIDPARAMETER (6004)",
+     "BuzzDuration": "INVALIDPARAMETER (6004)"
+    },
+    "errors": {},
+    "ommm": {
+     "version": "0.3.1",
+     "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+     "dirty": false,
+     "git_error": null
+    }
+   },
+   "after": {
+    "schema": 1,
+    "time": "2026-10-23T21:54:46.759838-04:00",
+    "api_version": "1.0.0.9",
+    "headstage": {
+     "model": 1,
+     "serial": "00123456",
+     "com_port": 4294967295,
+     "device": 4294967295,
+     "channel": 1
+    },
+    "demo": false,
+    "readings": {
+     "Mode": 0,
+     "ModeSwitchEnable": false,
+     "FeedbackResistorVC1": 2,
+     "FeedbackResistorIC1": 2,
+     "HoldingEnable": true,
+     "Holding": -0.029986747,
+     "TestSignalEnable": false,
+     "TestSignalAmplitude": 0.005014102,
+     "TestSignalFrequency": 100.0,
+     "PipetteOffset": 0.0,
+     "FastCompCap": 0.0,
+     "SlowCompCap": 0.0,
+     "FastCompTau": 1.0008756e-06,
+     "SlowCompTau": 1e-05,
+     "SlowCompTauX20Enable": false,
+     "WholeCellCompEnable": false,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 399946.8,
+     "RsCompEnable": false,
+     "RsCompBandwidth": 9999.36,
+     "RsCompCorrection": 0.0,
+     "RsCompPrediction": 0.0,
+     "OscKillerEnable": false,
+     "PrimarySignal": 0,
+     "PrimarySignalGain": 2.0,
+     "PrimarySignalLPF": 8000.0,
+     "PrimarySignalHPF": 0.0,
+     "ScopeSignalLPF": 1000.0,
+     "SecondarySignal": 1,
+     "SecondarySignalGain": 5.0,
+     "SecondarySignalLPF": 10000.0,
+     "OutputZeroEnable": false,
+     "OutputZeroAmplitude": 0.0,
+     "LeakSubEnable": false,
+     "LeakSubResist": 1023750000.0,
+     "PulseAmplitude": 0.0,
+     "PulseDuration": 0.0001,
+     "ZapDuration": 2.5e-05,
+     "MeterResistEnable": false,
+     "MeterIrmsEnable": false,
+     "MeterValue1": -0.00030517578,
+     "MeterValue2": 2.4414062e-13,
+     "MeterValue3": 0.0,
+     "MeterValue4": 0.0,
+     "ModeName": "VCLAMP",
+     "PrimarySignalName": "VC_MEMBCURRENT",
+     "SecondarySignalName": "VC_MEMBPOTENTIAL"
+    },
+    "telegraph": {
+     "uVersion": 14,
+     "uStructSize": 256,
+     "uComPortID": 4294967295,
+     "uAxoBusID": 4294967295,
+     "uChannelID": 1,
+     "uOperatingMode": 0,
+     "uScaledOutSignal": 0,
+     "dAlpha": 2.0,
+     "dScaleFactor": 5.0,
+     "uScaleFactorUnits": 6,
+     "dLPFCutoff": 8000.0,
+     "dMembraneCap": 0.0,
+     "dExtCmdSens": 0.02,
+     "uRawOutSignal": 11,
+     "dRawScaleFactor": 10.0,
+     "uRawScaleFactorUnits": 0,
+     "uHardwareType": 1,
+     "dSecondaryAlpha": 5.0,
+     "dSecondaryLPFCutoff": 10000.0,
+     "szAppVersion": "2.2.2.2",
+     "szFirmwareVersion": "2.0.00.25",
+     "szDSPVersion": "2.0.0.16",
+     "szSerialNumber": "00123456",
+     "dSeriesResistance": 0.0,
+     "OperatingModeName": "VCLAMP",
+     "ScaledOutSignalName": "Membrane Current",
+     "RawOutSignalName": "Membrane Potential",
+     "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+     "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+    },
+    "disagreements": [],
+    "not_applicable": {
+     "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+     "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+     "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+     "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+     "NeutralizationCap": "INVALIDPARAMETER (6004)",
+     "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+     "BridgeBalResist": "INVALIDPARAMETER (6004)",
+     "BuzzDuration": "INVALIDPARAMETER (6004)"
+    },
+    "errors": {},
+    "ommm": {
+     "version": "0.3.1",
+     "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+     "dirty": false,
+     "git_error": null
+    }
+   }
+  },
+  {
+   "before": {
+    "schema": 1,
+    "time": "2026-10-23T21:54:47.746449-04:00",
+    "api_version": "1.0.0.9",
+    "headstage": {
+     "model": 1,
+     "serial": "00123456",
+     "com_port": 4294967295,
+     "device": 4294967295,
+     "channel": 1
+    },
+    "demo": false,
+    "readings": {
+     "Mode": 0,
+     "ModeSwitchEnable": false,
+     "FeedbackResistorVC1": 2,
+     "FeedbackResistorIC1": 2,
+     "HoldingEnable": true,
+     "Holding": -0.010006627,
+     "TestSignalEnable": true,
+     "TestSignalAmplitude": 0.005014102,
+     "TestSignalFrequency": 100.0,
+     "PipetteOffset": 0.0,
+     "FastCompCap": 0.0,
+     "SlowCompCap": 0.0,
+     "FastCompTau": 1.0008756e-06,
+     "SlowCompTau": 1e-05,
+     "SlowCompTauX20Enable": false,
+     "WholeCellCompEnable": false,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 399946.8,
+     "RsCompEnable": false,
+     "RsCompBandwidth": 9999.36,
+     "RsCompCorrection": 0.0,
+     "RsCompPrediction": 0.0,
+     "OscKillerEnable": false,
+     "PrimarySignal": 0,
+     "PrimarySignalGain": 2.0,
+     "PrimarySignalLPF": 8000.0,
+     "PrimarySignalHPF": 0.0,
+     "ScopeSignalLPF": 1000.0,
+     "SecondarySignal": 1,
+     "SecondarySignalGain": 5.0,
+     "SecondarySignalLPF": 10000.0,
+     "OutputZeroEnable": false,
+     "OutputZeroAmplitude": 0.0,
+     "LeakSubEnable": false,
+     "LeakSubResist": 1023750000.0,
+     "PulseAmplitude": 0.0,
+     "PulseDuration": 0.0001,
+     "ZapDuration": 2.5e-05,
+     "MeterResistEnable": false,
+     "MeterIrmsEnable": false,
+     "MeterValue1": -0.030136108,
+     "MeterValue2": -5.879212e-11,
+     "MeterValue3": 0.0,
+     "MeterValue4": 0.0,
+     "ModeName": "VCLAMP",
+     "PrimarySignalName": "VC_MEMBCURRENT",
+     "SecondarySignalName": "VC_MEMBPOTENTIAL"
+    },
+    "telegraph": {
+     "uVersion": 14,
+     "uStructSize": 256,
+     "uComPortID": 4294967295,
+     "uAxoBusID": 4294967295,
+     "uChannelID": 1,
+     "uOperatingMode": 0,
+     "uScaledOutSignal": 0,
+     "dAlpha": 2.0,
+     "dScaleFactor": 5.0,
+     "uScaleFactorUnits": 6,
+     "dLPFCutoff": 8000.0,
+     "dMembraneCap": 0.0,
+     "dExtCmdSens": 0.02,
+     "uRawOutSignal": 11,
+     "dRawScaleFactor": 10.0,
+     "uRawScaleFactorUnits": 0,
+     "uHardwareType": 1,
+     "dSecondaryAlpha": 5.0,
+     "dSecondaryLPFCutoff": 10000.0,
+     "szAppVersion": "2.2.2.2",
+     "szFirmwareVersion": "2.0.00.25",
+     "szDSPVersion": "2.0.0.16",
+     "szSerialNumber": "00123456",
+     "dSeriesResistance": 0.0,
+     "OperatingModeName": "VCLAMP",
+     "ScaledOutSignalName": "Membrane Current",
+     "RawOutSignalName": "Membrane Potential",
+     "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+     "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+    },
+    "disagreements": [],
+    "not_applicable": {
+     "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+     "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+     "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+     "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+     "NeutralizationCap": "INVALIDPARAMETER (6004)",
+     "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+     "BridgeBalResist": "INVALIDPARAMETER (6004)",
+     "BuzzDuration": "INVALIDPARAMETER (6004)"
+    },
+    "errors": {},
+    "ommm": {
+     "version": "0.3.1",
+     "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+     "dirty": false,
+     "git_error": null
+    }
+   },
+   "after": {
+    "schema": 1,
+    "time": "2026-10-23T21:54:47.955340-04:00",
+    "api_version": "1.0.0.9",
+    "headstage": {
+     "model": 1,
+     "serial": "00123456",
+     "com_port": 4294967295,
+     "device": 4294967295,
+     "channel": 1
+    },
+    "demo": false,
+    "readings": {
+     "Mode": 0,
+     "ModeSwitchEnable": false,
+     "FeedbackResistorVC1": 2,
+     "FeedbackResistorIC1": 2,
+     "HoldingEnable": true,
+     "Holding": -0.010006627,
+     "TestSignalEnable": false,
+     "TestSignalAmplitude": 0.005014102,
+     "TestSignalFrequency": 100.0,
+     "PipetteOffset": 0.0,
+     "FastCompCap": 0.0,
+     "SlowCompCap": 0.0,
+     "FastCompTau": 1.0008756e-06,
+     "SlowCompTau": 1e-05,
+     "SlowCompTauX20Enable": false,
+     "WholeCellCompEnable": false,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 399946.8,
+     "RsCompEnable": false,
+     "RsCompBandwidth": 9999.36,
+     "RsCompCorrection": 0.0,
+     "RsCompPrediction": 0.0,
+     "OscKillerEnable": false,
+     "PrimarySignal": 0,
+     "PrimarySignalGain": 2.0,
+     "PrimarySignalLPF": 8000.0,
+     "PrimarySignalHPF": 0.0,
+     "ScopeSignalLPF": 1000.0,
+     "SecondarySignal": 1,
+     "SecondarySignalGain": 5.0,
+     "SecondarySignalLPF": 10000.0,
+     "OutputZeroEnable": false,
+     "OutputZeroAmplitude": 0.0,
+     "LeakSubEnable": false,
+     "LeakSubResist": 1023750000.0,
+     "PulseAmplitude": 0.0,
+     "PulseDuration": 0.0001,
+     "ZapDuration": 2.5e-05,
+     "MeterResistEnable": false,
+     "MeterIrmsEnable": false,
+     "MeterValue1": -0.030136108,
+     "MeterValue2": -5.879212e-11,
+     "MeterValue3": 0.0,
+     "MeterValue4": 0.0,
+     "ModeName": "VCLAMP",
+     "PrimarySignalName": "VC_MEMBCURRENT",
+     "SecondarySignalName": "VC_MEMBPOTENTIAL"
+    },
+    "telegraph": {
+     "uVersion": 14,
+     "uStructSize": 256,
+     "uComPortID": 4294967295,
+     "uAxoBusID": 4294967295,
+     "uChannelID": 1,
+     "uOperatingMode": 0,
+     "uScaledOutSignal": 0,
+     "dAlpha": 2.0,
+     "dScaleFactor": 5.0,
+     "uScaleFactorUnits": 6,
+     "dLPFCutoff": 8000.0,
+     "dMembraneCap": 0.0,
+     "dExtCmdSens": 0.02,
+     "uRawOutSignal": 11,
+     "dRawScaleFactor": 10.0,
+     "uRawScaleFactorUnits": 0,
+     "uHardwareType": 1,
+     "dSecondaryAlpha": 5.0,
+     "dSecondaryLPFCutoff": 10000.0,
+     "szAppVersion": "2.2.2.2",
+     "szFirmwareVersion": "2.0.00.25",
+     "szDSPVersion": "2.0.0.16",
+     "szSerialNumber": "00123456",
+     "dSeriesResistance": 0.0,
+     "OperatingModeName": "VCLAMP",
+     "ScaledOutSignalName": "Membrane Current",
+     "RawOutSignalName": "Membrane Potential",
+     "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+     "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+    },
+    "disagreements": [],
+    "not_applicable": {
+     "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+     "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+     "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+     "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+     "NeutralizationCap": "INVALIDPARAMETER (6004)",
+     "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+     "BridgeBalResist": "INVALIDPARAMETER (6004)",
+     "BuzzDuration": "INVALIDPARAMETER (6004)"
+    },
+    "errors": {},
+    "ommm": {
+     "version": "0.3.1",
+     "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+     "dirty": false,
+     "git_error": null
+    }
+   }
+  }
+ ],
+ "writes": [
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:55.192795-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "Holding",
+   "mode": "V-Clamp",
+   "before": 0.0,
+   "target": -0.04,
+   "unit": "mV",
+   "user_value": -40.0,
+   "after": -0.03999337,
+   "also": {},
+   "outcome": "adjusted",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:55.498049-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "Holding",
+   "mode": "V-Clamp",
+   "before": -0.03999337,
+   "target": -0.01999337,
+   "unit": "mV",
+   "user_value": 0.0,
+   "after": -0.020013254,
+   "also": {},
+   "outcome": "adjusted",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:55.501859-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "Holding",
+   "mode": "V-Clamp",
+   "before": -0.020013254,
+   "target": 0.0,
+   "unit": "mV",
+   "user_value": 0.0,
+   "after": 0.0,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:55.592212-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Seal Test",
+   "stem": "TestSignalEnable",
+   "mode": "V-Clamp",
+   "before": false,
+   "target": true,
+   "unit": null,
+   "user_value": true,
+   "after": true,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:55.680332-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Seal Test",
+   "stem": "TestSignalEnable",
+   "mode": "V-Clamp",
+   "before": true,
+   "target": false,
+   "unit": null,
+   "user_value": false,
+   "after": false,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:55.848551-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "Holding",
+   "mode": "V-Clamp",
+   "before": 0.0,
+   "target": null,
+   "unit": "mV",
+   "user_value": -1500.0,
+   "after": null,
+   "also": {},
+   "outcome": "refused",
+   "reason": "Holding in V-Clamp is -1000 mV to 1000 mV, so not -1500 mV",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:56.279798-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Mode",
+   "stem": "Mode",
+   "mode": "V-Clamp",
+   "before": 0,
+   "target": 2,
+   "unit": null,
+   "user_value": "I-Clamp",
+   "after": 2,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": [],
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:56.403921-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Mode",
+   "stem": "Mode",
+   "mode": "I = 0",
+   "before": 2,
+   "target": 1,
+   "unit": null,
+   "user_value": "I-Clamp",
+   "after": 1,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": [],
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:56.624182-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Mode",
+   "stem": "Mode",
+   "mode": "I-Clamp",
+   "before": 1,
+   "target": 2,
+   "unit": null,
+   "user_value": "V-Clamp",
+   "after": 2,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": [],
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:56.704350-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Mode",
+   "stem": "Mode",
+   "mode": "I = 0",
+   "before": 2,
+   "target": 0,
+   "unit": null,
+   "user_value": "V-Clamp",
+   "after": 0,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": [],
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:56.992929-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Auto Cp Fast",
+   "stem": "AutoFastComp",
+   "mode": "V-Clamp",
+   "before": null,
+   "target": null,
+   "unit": null,
+   "user_value": null,
+   "after": {
+    "readings": {
+     "FastCompCap": [
+      0.0,
+      3.1078432e-12
+     ],
+     "FastCompTau": [
+      1.0008756e-06,
+      1.8e-06
+     ]
+    }
+   },
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:58.863265-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Zap Duration",
+   "stem": "ZapDuration",
+   "mode": "V-Clamp",
+   "before": 2.5e-05,
+   "target": 5e-05,
+   "unit": "ms",
+   "user_value": 0.05,
+   "after": 5e-05,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:58.943540-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Zap",
+   "stem": "Zap",
+   "mode": "V-Clamp",
+   "before": null,
+   "target": null,
+   "unit": null,
+   "user_value": null,
+   "after": {},
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:59.212811-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Seal Test",
+   "stem": "TestSignalEnable",
+   "mode": "V-Clamp",
+   "before": false,
+   "target": true,
+   "unit": null,
+   "user_value": true,
+   "after": true,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:53:59.289655-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 18540
+   },
+   "serial": "00123456",
+   "label": "Seal Test",
+   "stem": "TestSignalEnable",
+   "mode": "V-Clamp",
+   "before": true,
+   "target": false,
+   "unit": null,
+   "user_value": false,
+   "after": false,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:01.900949-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": null
+   },
+   "serial": "00123456",
+   "label": "Load Configuration",
+   "stem": null,
+   "mode": "V-Clamp",
+   "before": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2
+   },
+   "target": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 1,
+    "FeedbackResistorIC1": 2
+   },
+   "unit": null,
+   "user_value": "vclamp_5gohm.mcc",
+   "after": null,
+   "also": {},
+   "outcome": "ok",
+   "reason": "closed Commander (process 18540) to load 20261023T215400_vclamp_5gohm.mcc",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:02.204031-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": null
+   },
+   "serial": "00123456",
+   "label": "Load Configuration",
+   "stem": null,
+   "mode": "V-Clamp",
+   "before": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2
+   },
+   "target": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 1,
+    "FeedbackResistorIC1": 2
+   },
+   "unit": null,
+   "user_value": "vclamp_5gohm.mcc",
+   "after": null,
+   "also": {},
+   "outcome": "ok",
+   "reason": "started Commander (process 17272) with 20261023T215400_vclamp_5gohm.mcc",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:10.795637-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 17272
+   },
+   "serial": "00123456",
+   "label": "Load Configuration",
+   "stem": null,
+   "mode": "V-Clamp",
+   "before": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2
+   },
+   "target": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 1,
+    "FeedbackResistorIC1": 2
+   },
+   "unit": null,
+   "user_value": "vclamp_5gohm.mcc",
+   "after": null,
+   "also": {},
+   "outcome": "ok",
+   "reason": "Commander (process 17272) answered 8.6 s after it started",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:15.804732-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 17272
+   },
+   "serial": "00123456",
+   "label": "Primary Output",
+   "stem": "PrimarySignal",
+   "mode": "V-Clamp",
+   "before": 0,
+   "target": 0,
+   "unit": null,
+   "user_value": "Membrane Current",
+   "after": 0,
+   "also": {},
+   "outcome": "ok",
+   "reason": "refresh_signals: Commander started with 20261023T215400_vclamp_5gohm.mcc",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:15.830804-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 17272
+   },
+   "serial": "00123456",
+   "label": "Secondary Output",
+   "stem": "SecondarySignal",
+   "mode": "V-Clamp",
+   "before": 1,
+   "target": 1,
+   "unit": null,
+   "user_value": "Membrane Potential",
+   "after": 1,
+   "also": {},
+   "outcome": "ok",
+   "reason": "refresh_signals: Commander started with 20261023T215400_vclamp_5gohm.mcc",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:00.119730-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 17272
+   },
+   "serial": "00123456",
+   "label": "Load Configuration",
+   "stem": null,
+   "mode": "V-Clamp",
+   "before": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2
+   },
+   "target": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 1,
+    "FeedbackResistorIC1": 2
+   },
+   "unit": null,
+   "user_value": "vclamp_5gohm.mcc",
+   "after": {
+    "readings": {
+     "FastCompCap": [
+      3.1078432e-12,
+      0.0
+     ],
+     "FastCompTau": [
+      1.8e-06,
+      1.0008756e-06
+     ],
+     "FeedbackResistorVC1": [
+      2,
+      1
+     ],
+     "ZapDuration": [
+      5e-05,
+      2.5e-05
+     ]
+    },
+    "telegraph": {
+     "dScaleFactor": [
+      5.0,
+      0.5
+     ]
+    }
+   },
+   "also": {},
+   "outcome": "ok",
+   "reason": "Commander restarted with 20261023T215400_vclamp_5gohm.mcc (process 18540 → 17272): every handle on it from before died, and this Amplifier took a new one; other programs, MATLAB included, reconnect()",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:16.817271-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 17272
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "Holding",
+   "mode": "V-Clamp",
+   "before": 0.0,
+   "target": -0.02,
+   "unit": "mV",
+   "user_value": -20.0,
+   "after": -0.020013254,
+   "also": {},
+   "outcome": "adjusted",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:16.889355-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 17272
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "HoldingEnable",
+   "mode": "V-Clamp",
+   "before": false,
+   "target": true,
+   "unit": null,
+   "user_value": true,
+   "after": true,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:19.168005-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": null
+   },
+   "serial": "00123456",
+   "label": "Load Configuration",
+   "stem": null,
+   "mode": "V-Clamp",
+   "before": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 1,
+    "FeedbackResistorIC1": 2
+   },
+   "target": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2
+   },
+   "unit": null,
+   "user_value": "vclamp_5gohm.mcc",
+   "after": null,
+   "also": {},
+   "outcome": "ok",
+   "reason": "closed Commander (process 17272) to load 20261023T215417_vclamp_5gohm.mcc",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:19.494000-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": null
+   },
+   "serial": "00123456",
+   "label": "Load Configuration",
+   "stem": null,
+   "mode": "V-Clamp",
+   "before": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 1,
+    "FeedbackResistorIC1": 2
+   },
+   "target": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2
+   },
+   "unit": null,
+   "user_value": "vclamp_5gohm.mcc",
+   "after": null,
+   "also": {},
+   "outcome": "ok",
+   "reason": "started Commander (process 19504) with 20261023T215417_vclamp_5gohm.mcc",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:28.047680-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Load Configuration",
+   "stem": null,
+   "mode": "V-Clamp",
+   "before": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 1,
+    "FeedbackResistorIC1": 2
+   },
+   "target": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2
+   },
+   "unit": null,
+   "user_value": "vclamp_5gohm.mcc",
+   "after": null,
+   "also": {},
+   "outcome": "ok",
+   "reason": "Commander (process 19504) answered 8.6 s after it started",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:33.051197-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Primary Output",
+   "stem": "PrimarySignal",
+   "mode": "V-Clamp",
+   "before": 0,
+   "target": 0,
+   "unit": null,
+   "user_value": "Membrane Current",
+   "after": 0,
+   "also": {},
+   "outcome": "ok",
+   "reason": "refresh_signals: Commander started with 20261023T215417_vclamp_5gohm.mcc",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:33.093678-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Secondary Output",
+   "stem": "SecondarySignal",
+   "mode": "V-Clamp",
+   "before": 1,
+   "target": 1,
+   "unit": null,
+   "user_value": "Membrane Potential",
+   "after": 1,
+   "also": {},
+   "outcome": "ok",
+   "reason": "refresh_signals: Commander started with 20261023T215417_vclamp_5gohm.mcc",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:17.620232-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Load Configuration",
+   "stem": null,
+   "mode": "V-Clamp",
+   "before": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 1,
+    "FeedbackResistorIC1": 2
+   },
+   "target": {
+    "Mode": 0,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2
+   },
+   "unit": null,
+   "user_value": "vclamp_5gohm.mcc",
+   "after": {
+    "readings": {
+     "FeedbackResistorVC1": [
+      1,
+      2
+     ],
+     "Holding": [
+      -0.020013254,
+      0.0
+     ],
+     "HoldingEnable": [
+      true,
+      false
+     ]
+    },
+    "telegraph": {
+     "dScaleFactor": [
+      0.5,
+      5.0
+     ]
+    }
+   },
+   "also": {},
+   "outcome": "ok",
+   "reason": "Commander restarted with 20261023T215417_vclamp_5gohm.mcc (process 17272 → 19504): every handle on it from before died, and this Amplifier took a new one; other programs, MATLAB included, reconnect(); Holding was on at -20.0133 mV before the restart and Commander now shows it off, but the amplifier may still hold -20.0133 mV: enable(\"Holding\", True) or set(\"Holding\", ...) brings the two back in line",
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:34.078542-04:00",
+   "process": {
+    "pid": 11252,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "HoldingEnable",
+   "mode": "V-Clamp",
+   "before": false,
+   "target": true,
+   "unit": null,
+   "user_value": true,
+   "after": true,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:46.411133-04:00",
+   "process": {
+    "pid": 7996,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "Holding",
+   "mode": "V-Clamp",
+   "before": 0.0,
+   "target": -0.03,
+   "unit": "mV",
+   "user_value": -30.0,
+   "after": -0.029986747,
+   "also": {},
+   "outcome": "adjusted",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:47.583029-04:00",
+   "process": {
+    "pid": 7996,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "Holding",
+   "mode": "V-Clamp",
+   "before": -0.029986747,
+   "target": -0.01,
+   "unit": "mV",
+   "user_value": -10.0,
+   "after": -0.010006627,
+   "also": {},
+   "outcome": "adjusted",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:47.672957-04:00",
+   "process": {
+    "pid": 7996,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Seal Test",
+   "stem": "TestSignalEnable",
+   "mode": "V-Clamp",
+   "before": false,
+   "target": true,
+   "unit": null,
+   "user_value": true,
+   "after": true,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:47.870186-04:00",
+   "process": {
+    "pid": 7996,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Seal Test",
+   "stem": "TestSignalEnable",
+   "mode": "V-Clamp",
+   "before": true,
+   "target": false,
+   "unit": null,
+   "user_value": false,
+   "after": false,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:48.324684-04:00",
+   "process": {
+    "pid": 7996,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "HoldingEnable",
+   "mode": "V-Clamp",
+   "before": true,
+   "target": false,
+   "unit": null,
+   "user_value": false,
+   "after": false,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  },
+  {
+   "schema": 1,
+   "t": "2026-10-23T21:54:48.424245-04:00",
+   "process": {
+    "pid": 7996,
+    "program": null
+   },
+   "commander": {
+    "pid": 19504
+   },
+   "serial": "00123456",
+   "label": "Holding",
+   "stem": "Holding",
+   "mode": "V-Clamp",
+   "before": -0.010006627,
+   "target": 0.0,
+   "unit": "mV",
+   "user_value": 0.0,
+   "after": 0.0,
+   "also": {},
+   "outcome": "ok",
+   "reason": null,
+   "error_code": null,
+   "telegraph_checks": null,
+   "ommm": {
+    "version": "0.3.1",
+    "commit": "6a4572c15c16c32b580d25f6c244470eabb54c75",
+    "dirty": false
+   }
+  }
+ ],
+ "error": null,
+ "left_changed": {}
+}

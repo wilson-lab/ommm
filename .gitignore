@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+# Commander's SDK files and ommm's logs never go in the repository
+*.dll
+*.lib
+*.h
+*.pdf
+*.chm
+ommm-logs/

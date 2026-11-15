@@ -1,0 +1,3500 @@
+{
+ "header": {
+  "probe": "Q6",
+  "question": "Q6: do the Autos block until done, how long do they take, and what does one that cannot run return? Auto Output Zero, Auto Pipette Offset and Auto Fast Capacitance in V-Clamp, with the DLL's timeout at 3000 ms (its default) and then 10000 ms; then two that should not run: Auto Bridge Balance (I-Clamp only) in V-Clamp, and Auto Whole Cell at Rf 5 GOhm, where Whole Cell is off. Each call is timed and the readings it changes are read before it and 0-5 s after it returned, with a snapshot before and after; whatever it changed is put back before the next, and the Pipette Offset padlock is clicked open.",
+  "time": "2026-10-23T09:52:17.309969-04:00",
+  "setup": "amplifier on, nothing attached to the headstage (--no-cell-attached)",
+  "commander": "2.2.2.2",
+  "firmware": "2.0.00.25",
+  "dsp": "2.0.0.16",
+  "api_version": "1.0.0.9",
+  "ommm": {
+   "version": "0.1.0",
+   "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+   "dirty": false,
+   "git_error": null
+  }
+ },
+ "steps": [
+  {
+   "t": "2026-10-23T09:52:20.830534-04:00",
+   "note": "the DLL's timeout set to 3000 ms",
+   "mode": 0,
+   "tab": 0
+  },
+  {
+   "press": "AutoOutputZero",
+   "call_ms": 240.8,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.7,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.001970166
+    },
+    {
+     "ms": 109.4,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.001970166
+    },
+    {
+     "ms": 500.3,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.001970166
+    },
+    {
+     "ms": 1010.0,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.001970166
+    },
+    {
+     "ms": 2000.2,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.001970166
+    },
+    {
+     "ms": 5009.5,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.001970166
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "OutputZeroAmplitude": [
+       0.0,
+       0.001970166
+      ],
+      "OutputZeroEnable": [
+       false,
+       true
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:29.439220-04:00",
+    "probe": "Q6",
+    "stem": "AutoOutputZero",
+    "mode": 0,
+    "before": {
+     "OutputZeroEnable": false,
+     "OutputZeroAmplitude": 0.0
+    },
+    "target": null,
+    "after": {
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.001970166
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:29.770335-04:00",
+    "probe": "Q6",
+    "stem": "OutputZeroEnable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 28.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:30.079652-04:00",
+    "probe": "Q6",
+    "stem": "OutputZeroAmplitude",
+    "mode": 0,
+    "before": 0.001970166,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.9
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1633.7,
+   "error": null,
+   "looks": [
+    {
+     "ms": 1.7,
+     "PipetteOffset": 0.05666
+    },
+    {
+     "ms": 106.9,
+     "PipetteOffset": 0.05666
+    },
+    {
+     "ms": 500.3,
+     "PipetteOffset": 0.05666
+    },
+    {
+     "ms": 1009.4,
+     "PipetteOffset": 0.05666
+    },
+    {
+     "ms": 2009.8,
+     "PipetteOffset": 0.05666
+    },
+    {
+     "ms": 5008.1,
+     "PipetteOffset": 0.05666
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       0.0,
+       3.976143e-08
+      ],
+      "PipetteOffset": [
+       0.0,
+       0.05666
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       0.0,
+       -0.10044262
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051,
+       -0.051005118
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:40.076949-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": 0.0
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": 0.05666
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:40.384233-04:00",
+    "probe": "Q6",
+    "stem": "Holding",
+    "mode": 0,
+    "before": 3.976143e-08,
+    "target": 0.0,
+    "after": 3.976143e-08,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.9
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:42.414991-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": 0.05666,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 78.2
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:43.547117-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 130.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:44.600544-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 46.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:44.940768-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.10044262,
+    "target": 0.0,
+    "after": -0.0004426158,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 30.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:46.012890-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 60.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:47.155361-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 140.3
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1750.3,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.6,
+     "PipetteOffset": -0.19334
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       0.0,
+       3.976143e-08
+      ],
+      "PipetteOffset": [
+       0.0,
+       -0.19334
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       -0.0004426158,
+       -0.1132099
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051005118,
+       -0.05099115
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:52.286985-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": 0.0
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": -0.19334
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:52.647158-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": -0.19334,
+    "target": 0.0,
+    "after": -0.09334,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 48.5
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:53.799539-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 150.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:54.899760-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 48.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:55.240076-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.1132099,
+    "target": 0.0,
+    "after": -0.0132099,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 27.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:56.315096-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 67.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:52:57.405752-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 80.1
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1609.8,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.6,
+     "PipetteOffset": -0.269748
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       3.976143e-08,
+       -1.7760107e-07
+      ],
+      "PipetteOffset": [
+       -0.09334,
+       -0.269748
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       -0.0132099,
+       -0.004687987
+      ],
+      "SlowCurrentInjLevel": [
+       -0.05099115,
+       -0.051000487
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:02.367177-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": -0.09334
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": -0.269748
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:02.733406-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": -0.269748,
+    "target": 0.0,
+    "after": -0.169748,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 52.5
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:03.882138-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 139.8
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:04.945709-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 55.9
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:05.305771-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.004687987,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 47.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:06.378131-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 69.6
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:07.497665-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 110.5
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1709.0,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.6,
+     "PipetteOffset": -0.175215
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       -1.7760107e-07,
+       -3.7442015e-07
+      ],
+      "PipetteOffset": [
+       -0.169748,
+       -0.175215
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       0.0,
+       0.052764792
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051,
+       -0.05098521
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:12.616507-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": -0.169748
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": -0.175215
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:13.016419-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": -0.175215,
+    "target": 0.0,
+    "after": -0.075215,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 87.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:14.140446-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 122.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:15.189194-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 46.4
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:15.539286-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": 0.052764792,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 37.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:16.600256-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 58.8
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:17.742648-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 140.1
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1632.8,
+   "error": null,
+   "looks": [
+    {
+     "ms": 3.1,
+     "PipetteOffset": -0.138602
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       -3.7442015e-07,
+       2.7700463e-07
+      ],
+      "PipetteOffset": [
+       -0.075215,
+       -0.138602
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       0.0,
+       -0.023838913
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051,
+       -0.050995164
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:22.757739-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": -0.075215
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": -0.138602
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:23.112476-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": -0.138602,
+    "target": 0.0,
+    "after": -0.038602,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 41.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:24.261829-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 146.8
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:25.310404-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 46.4
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:25.661525-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.023838913,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 47.4
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:26.720441-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 56.8
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:27.822320-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 99.8
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1635.3,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.5,
+     "PipetteOffset": -0.039496
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       2.7700463e-07,
+       -3.5520213e-07
+      ],
+      "PipetteOffset": [
+       -0.038602,
+       -0.039496
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       0.0,
+       -0.062140763
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051,
+       -0.050984513
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:32.827726-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": -0.038602
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": -0.039496
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:33.207835-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": -0.039496,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 66.6
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:34.332878-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 122.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:35.388965-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 45.6
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:35.735118-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.062140763,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 36.9
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:36.794001-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 56.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:37.902826-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 100.0
+  },
+  {
+   "t": "2026-10-23T09:53:38.956556-04:00",
+   "note": "Pipette Offset padlock, V-Clamp tab: clicked open",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q6_095338_padlock_0.png"
+  },
+  {
+   "t": "2026-10-23T09:53:39.809097-04:00",
+   "note": "Pipette Offset padlock, I-Clamp tab: open",
+   "mode": 0,
+   "tab": 1,
+   "screenshot": "q6_095339_padlock_1.png"
+  },
+  {
+   "press": "AutoFastComp",
+   "call_ms": 1320.3,
+   "error": null,
+   "looks": [
+    {
+     "ms": 1.7,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.466667e-07
+    },
+    {
+     "ms": 108.8,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.466667e-07
+    },
+    {
+     "ms": 509.1,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.466667e-07
+    },
+    {
+     "ms": 1009.7,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.466667e-07
+    },
+    {
+     "ms": 2000.6,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.466667e-07
+    },
+    {
+     "ms": 5000.5,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.466667e-07
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "FastCompCap": [
+       0.0,
+       1.7568628e-12
+      ],
+      "FastCompTau": [
+       1.0008756e-06,
+       8.466667e-07
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:50.333729-04:00",
+    "probe": "Q6",
+    "stem": "AutoFastComp",
+    "mode": 0,
+    "before": {
+     "FastCompCap": 0.0,
+     "FastCompTau": 1.0008756e-06
+    },
+    "target": null,
+    "after": {
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.466667e-07
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:50.653617-04:00",
+    "probe": "Q6",
+    "stem": "FastCompCap",
+    "mode": 0,
+    "before": 1.7568628e-12,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 11.8
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:50.993805-04:00",
+    "probe": "Q6",
+    "stem": "FastCompTau",
+    "mode": 0,
+    "before": 8.466667e-07,
+    "target": 1.0008756e-06,
+    "after": 1.0008756e-06,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 28.6
+  },
+  {
+   "t": "2026-10-23T09:53:50.995217-04:00",
+   "note": "the DLL's timeout set to 10000 ms",
+   "mode": 0,
+   "tab": 0
+  },
+  {
+   "press": "AutoOutputZero",
+   "call_ms": 230.6,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.8,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    {
+     "ms": 109.5,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    {
+     "ms": 508.6,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    {
+     "ms": 1000.4,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    {
+     "ms": 2000.3,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    {
+     "ms": 5000.6,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "OutputZeroAmplitude": [
+       0.0,
+       0.013040623
+      ],
+      "OutputZeroEnable": [
+       false,
+       true
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:59.578829-04:00",
+    "probe": "Q6",
+    "stem": "AutoOutputZero",
+    "mode": 0,
+    "before": {
+     "OutputZeroEnable": false,
+     "OutputZeroAmplitude": 0.0
+    },
+    "target": null,
+    "after": {
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:53:59.901947-04:00",
+    "probe": "Q6",
+    "stem": "OutputZeroEnable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 14.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:00.212385-04:00",
+    "probe": "Q6",
+    "stem": "OutputZeroAmplitude",
+    "mode": 0,
+    "before": 0.013040623,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 1.0
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1688.3,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.0,
+     "PipetteOffset": -0.086581
+    },
+    {
+     "ms": 106.2,
+     "PipetteOffset": -0.086581
+    },
+    {
+     "ms": 507.5,
+     "PipetteOffset": -0.086581
+    },
+    {
+     "ms": 1007.4,
+     "PipetteOffset": -0.086581
+    },
+    {
+     "ms": 2000.5,
+     "PipetteOffset": -0.086581
+    },
+    {
+     "ms": 5000.2,
+     "PipetteOffset": -0.086581
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       0.0,
+       4.831014e-07
+      ],
+      "PipetteOffset": [
+       0.0,
+       -0.086581
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       0.0,
+       -0.10682626
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051,
+       -0.051013757
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:10.264474-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": 0.0
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": -0.086581
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:10.574348-04:00",
+    "probe": "Q6",
+    "stem": "Holding",
+    "mode": 0,
+    "before": 4.831014e-07,
+    "target": 0.0,
+    "after": 4.831014e-07,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 1.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:12.597256-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": -0.086581,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 68.2
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:13.749658-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 130.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:14.839333-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 87.6
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:15.169329-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.10682626,
+    "target": 0.0,
+    "after": -0.006826258,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 17.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:16.236990-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 59.4
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:17.370389-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 130.9
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1619.4,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.6,
+     "PipetteOffset": -0.053446
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       0.0,
+       9.2776675e-09
+      ],
+      "PipetteOffset": [
+       0.0,
+       -0.053446
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       -0.006826258,
+       -0.10044262
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051013757,
+       -0.051005118
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:22.384165-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": 0.0
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": -0.053446
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:22.744030-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": -0.053446,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 47.4
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:23.864660-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 110.9
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:24.925148-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 48.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:25.265466-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.10044262,
+    "target": 0.0,
+    "after": -0.0004426158,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 26.6
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:26.335988-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 60.9
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:27.483204-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 139.2
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1671.5,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.6,
+     "PipetteOffset": 0.044168
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       0.0,
+       3.2339298e-07
+      ],
+      "PipetteOffset": [
+       0.0,
+       0.044168
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       -0.0004426158,
+       -0.1132099
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051005118,
+       -0.05099115
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:32.588638-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": 0.0
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": 0.044168
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:32.958617-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": 0.044168,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 57.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:34.101221-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 140.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:35.149682-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 46.4
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:35.499745-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.1132099,
+    "target": 0.0,
+    "after": -0.0132099,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 37.2
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:36.562589-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 56.5
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:37.675659-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 104.2
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1650.5,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.7,
+     "PipetteOffset": 0.056262
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       0.0,
+       4.2544733e-07
+      ],
+      "PipetteOffset": [
+       0.0,
+       0.056262
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       -0.0132099,
+       -0.11001808
+      ],
+      "SlowCurrentInjLevel": [
+       -0.05099115,
+       -0.05098683
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:42.712907-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": 0.0
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": 0.056262
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:43.082839-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": 0.056262,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 56.6
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:44.231162-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 140.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:45.278919-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 45.8
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:45.639754-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.11001808,
+    "target": 0.0,
+    "after": -0.010018079,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 56.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:46.734398-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 72.2
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:47.860839-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 124.3
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1702.4,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.7,
+     "PipetteOffset": -0.120775
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       0.0,
+       -3.4791253e-07
+      ],
+      "PipetteOffset": [
+       0.0,
+       -0.120775
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       -0.010018079,
+       -0.10682626
+      ],
+      "SlowCurrentInjLevel": [
+       -0.05098683,
+       -0.051013757
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:52.970947-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": 0.0
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": -0.120775
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:53.338963-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": -0.120775,
+    "target": 0.0,
+    "after": -0.020775,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 56.9
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:54.471774-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 130.8
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:55.530633-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 56.8
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:55.871830-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.10682626,
+    "target": 0.0,
+    "after": -0.006826258,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 36.8
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:56.929254-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 55.2
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:54:58.021131-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 90.0
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1671.9,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.5,
+     "PipetteOffset": 0.058648
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       -3.4791253e-07,
+       1.1133201e-07
+      ],
+      "PipetteOffset": [
+       -0.020775,
+       0.058648
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       -0.006826258,
+       -0.08767533
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051013757,
+       -0.050987832
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:03.165828-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": -0.020775
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": 0.058648
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:03.546429-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": 0.058648,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 67.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:04.709687-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 152.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:05.767597-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 55.6
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:06.117762-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.08767533,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 37.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:07.174738-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 54.9
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:08.285502-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 99.9
+  },
+  {
+   "t": "2026-10-23T09:55:09.348014-04:00",
+   "note": "Pipette Offset padlock, V-Clamp tab: clicked open",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q6_095509_padlock_0.png"
+  },
+  {
+   "t": "2026-10-23T09:55:10.199334-04:00",
+   "note": "Pipette Offset padlock, I-Clamp tab: open",
+   "mode": 0,
+   "tab": 1,
+   "screenshot": "q6_095510_padlock_1.png"
+  },
+  {
+   "press": "AutoFastComp",
+   "call_ms": 1342.9,
+   "error": null,
+   "looks": [
+    {
+     "ms": 1.9,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.5489904e-07
+    },
+    {
+     "ms": 109.3,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.5489904e-07
+    },
+    {
+     "ms": 509.3,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.5489904e-07
+    },
+    {
+     "ms": 1009.3,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.5489904e-07
+    },
+    {
+     "ms": 2000.5,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.5489904e-07
+    },
+    {
+     "ms": 5008.8,
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.5489904e-07
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "FastCompCap": [
+       0.0,
+       1.7568628e-12
+      ],
+      "FastCompTau": [
+       1.0008756e-06,
+       8.5489904e-07
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:20.725438-04:00",
+    "probe": "Q6",
+    "stem": "AutoFastComp",
+    "mode": 0,
+    "before": {
+     "FastCompCap": 0.0,
+     "FastCompTau": 1.0008756e-06
+    },
+    "target": null,
+    "after": {
+     "FastCompCap": 1.7568628e-12,
+     "FastCompTau": 8.5489904e-07
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:21.055251-04:00",
+    "probe": "Q6",
+    "stem": "FastCompCap",
+    "mode": 0,
+    "before": 1.7568628e-12,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 18.9
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:21.375588-04:00",
+    "probe": "Q6",
+    "stem": "FastCompTau",
+    "mode": 0,
+    "before": 8.5489904e-07,
+    "target": 1.0008756e-06,
+    "after": 1.0008756e-06,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 18.6
+  },
+  {
+   "press": "AutoBridgeBal",
+   "call_ms": 0.3,
+   "error": "AutoBridgeBal: AXMCCMSG: Invalid parameter specified. (6004)",
+   "looks": [
+    {
+     "ms": 1.2,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    {
+     "ms": 109.6,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    {
+     "ms": 500.5,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    {
+     "ms": 1005.3,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    {
+     "ms": 2005.9,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    {
+     "ms": 5008.4,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    }
+   ],
+   "changed": {},
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:29.814912-04:00",
+    "probe": "Q6",
+    "stem": "AutoBridgeBal",
+    "mode": 0,
+    "before": {
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    "target": null,
+    "after": {
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    "outcome": "error",
+    "error_code": 6004,
+    "reason": "AutoBridgeBal: AXMCCMSG: Invalid parameter specified. (6004)",
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "press": "AutoWholeCellComp",
+   "call_ms": 876.4,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.3,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 400915.2
+    },
+    {
+     "ms": 107.1,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 400915.2
+    },
+    {
+     "ms": 507.1,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 400915.2
+    },
+    {
+     "ms": 1000.2,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 400915.2
+    },
+    {
+     "ms": 2000.4,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 400915.2
+    },
+    {
+     "ms": 5006.3,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 400915.2
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "WholeCellCompEnable": [
+       false,
+       true
+      ],
+      "WholeCellCompResist": [
+       399946.8,
+       400915.2
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:39.070496-04:00",
+    "probe": "Q6",
+    "stem": "AutoWholeCellComp",
+    "mode": 0,
+    "before": {
+     "WholeCellCompEnable": false,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 399946.8
+    },
+    "target": null,
+    "after": {
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 400915.2
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:39.450048-04:00",
+    "probe": "Q6",
+    "stem": "WholeCellCompEnable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 71.6
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T09:55:39.772226-04:00",
+    "probe": "Q6",
+    "stem": "WholeCellCompResist",
+    "mode": 0,
+    "before": 400915.2,
+    "target": 399946.8,
+    "after": 399946.8,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+     "dirty": false
+    }
+   },
+   "set_ms": 20.1
+  },
+  {
+   "t": "2026-10-23T09:55:41.492221-04:00",
+   "note": "Pipette Offset padlock, V-Clamp tab: open",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q6_095541_padlock_0.png"
+  },
+  {
+   "t": "2026-10-23T09:55:42.340259-04:00",
+   "note": "Pipette Offset padlock, I-Clamp tab: open",
+   "mode": 0,
+   "tab": 1,
+   "screenshot": "q6_095542_padlock_1.png"
+  },
+  {
+   "t": "2026-10-23T09:55:44.868459-04:00",
+   "note": "end",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q6_095544_end.png"
+  }
+ ],
+ "left_changed": {},
+ "error": null,
+ "start": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T09:52:17.309969-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": 0.00031211815,
+    "MeterValue2": 7.9345704e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T09:52:19.992990-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": 0.00031211815,
+    "MeterValue2": -6.5612793e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ },
+ "end": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T09:55:43.183408-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": 0.00051211816,
+    "MeterValue2": 3.0517577e-14,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T09:55:44.019902-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": 0.00051211816,
+    "MeterValue2": -1.3122559e-12,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ }
+}

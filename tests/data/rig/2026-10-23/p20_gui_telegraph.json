@@ -1,0 +1,1590 @@
+{
+ "header": {
+  "probe": "Q25",
+  "question": "Q25: which changes made in Commander's window reach the telegraph, and does a telegraph connection held open get a packet unasked? Only what automation can click: the mode buttons (V-Clamp -> I = 0 -> I-Clamp and back) and each checkbox on both tabs, clicked and clicked back. After each click: the packets that came within 1 s, then a snapshot against the one before it. Gains, filters and values (sliders and text) wait for a person at the panel.",
+  "time": "2026-10-23T09:57:40.404366-04:00",
+  "setup": "amplifier on, nothing attached to the headstage (--no-cell-attached)",
+  "commander": "2.2.2.2",
+  "firmware": "2.0.00.25",
+  "dsp": "2.0.0.16",
+  "api_version": "1.0.0.9",
+  "ommm": {
+   "version": "0.1.0",
+   "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+   "dirty": false,
+   "git_error": null
+  }
+ },
+ "steps": [
+  {
+   "t": "2026-10-23T09:57:44.928024-04:00",
+   "note": "telegraph connection held open",
+   "mode": 0,
+   "tab": 0,
+   "packets_in_1_s": 1
+  },
+  {
+   "t": "2026-10-23T09:57:46.175414-04:00",
+   "note": "V-Clamp tab: 'Holding:' clicked",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "HoldingEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:47.422206-04:00",
+   "note": "V-Clamp tab: 'Holding:' clicked back",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "HoldingEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:48.664786-04:00",
+   "note": "V-Clamp tab: 'Seal Test:' clicked",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "TestSignalEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:49.908843-04:00",
+   "note": "V-Clamp tab: 'Seal Test:' clicked back",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "TestSignalEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:51.151686-04:00",
+   "note": "V-Clamp tab: 'Tau x20' clicked",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "SlowCompTau": [
+      1e-05,
+      0.0002
+     ],
+     "SlowCompTauX20Enable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:52.394974-04:00",
+   "note": "V-Clamp tab: 'Tau x20' clicked back",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "SlowCompTau": [
+      0.0002,
+      1e-05
+     ],
+     "SlowCompTauX20Enable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:52.397307-04:00",
+   "note": "V-Clamp tab: 'Whole Cell' is greyed out, not clicked",
+   "mode": 0,
+   "tab": 0
+  },
+  {
+   "t": "2026-10-23T09:57:53.643691-04:00",
+   "note": "V-Clamp tab: 'Rs Compensation' clicked",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "RsCompEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:54.886690-04:00",
+   "note": "V-Clamp tab: 'Rs Compensation' clicked back",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "RsCompEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:56.129785-04:00",
+   "note": "V-Clamp tab: 'Disable if oscillation detected' clicked",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "OscKillerEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:57.372053-04:00",
+   "note": "V-Clamp tab: 'Disable if oscillation detected' clicked back",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "OscKillerEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:58.615623-04:00",
+   "note": "V-Clamp tab: 'Output Zero' clicked",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "OutputZeroEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:57:59.861201-04:00",
+   "note": "V-Clamp tab: 'Output Zero' clicked back",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "OutputZeroEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:01.103347-04:00",
+   "note": "V-Clamp tab: 'Leak Subtraction' clicked",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "LeakSubEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:02.346459-04:00",
+   "note": "V-Clamp tab: 'Leak Subtraction' clicked back",
+   "mode": 0,
+   "tab": 0,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "LeakSubEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:03.590565-04:00",
+   "note": "mode button I=0",
+   "mode": 2,
+   "tab": 1,
+   "packets": [
+    {
+     "ms": 108.6,
+     "differs": {
+      "uOperatingMode": [
+       0,
+       2
+      ],
+      "uScaledOutSignal": [
+       0,
+       20
+      ],
+      "dScaleFactor": [
+       5.0,
+       10.0
+      ],
+      "uScaleFactorUnits": [
+       6,
+       0
+      ],
+      "dLPFCutoff": [
+       8000.0,
+       18000.0
+      ],
+      "dExtCmdSens": [
+       0.02,
+       0.0
+      ],
+      "uRawOutSignal": [
+       11,
+       31
+      ],
+      "dRawScaleFactor": [
+       10.0,
+       5.0
+      ],
+      "uRawScaleFactorUnits": [
+       0,
+       6
+      ],
+      "dSecondaryAlpha": [
+       5.0,
+       2.0
+      ],
+      "OperatingModeName": [
+       "VCLAMP",
+       "ICLAMPZERO"
+      ],
+      "ScaledOutSignalName": [
+       "Membrane Current",
+       "Membrane Potential"
+      ],
+      "RawOutSignalName": [
+       "Membrane Potential",
+       "Membrane Current"
+      ],
+      "ScaleFactorUnitsName": [
+       "VOLTS_PER_NANOAMP",
+       "VOLTS_PER_VOLT"
+      ],
+      "RawScaleFactorUnitsName": [
+       "VOLTS_PER_VOLT",
+       "VOLTS_PER_NANOAMP"
+      ]
+     }
+    }
+   ],
+   "changed": {
+    "readings": {
+     "BridgeBalEnable": [
+      null,
+      false
+     ],
+     "BridgeBalResist": [
+      null,
+      0.0
+     ],
+     "BuzzDuration": [
+      null,
+      5e-05
+     ],
+     "FastCompCap": [
+      0.0,
+      null
+     ],
+     "FastCompTau": [
+      1.0008756e-06,
+      null
+     ],
+     "LeakSubEnable": [
+      false,
+      null
+     ],
+     "LeakSubResist": [
+      1023750000.0,
+      null
+     ],
+     "Mode": [
+      0,
+      2
+     ],
+     "ModeName": [
+      "VCLAMP",
+      "ICLAMPZERO"
+     ],
+     "NeutralizationCap": [
+      null,
+      -3.330669e-28
+     ],
+     "NeutralizationEnable": [
+      null,
+      true
+     ],
+     "PrimarySignal": [
+      0,
+      7
+     ],
+     "PrimarySignalLPF": [
+      8000.0,
+      18000.0
+     ],
+     "PrimarySignalName": [
+      "VC_MEMBCURRENT",
+      "IC_MEMBPOTENTIAL"
+     ],
+     "PulseAmplitude": [
+      0.0,
+      5e-12
+     ],
+     "PulseDuration": [
+      0.0001,
+      0.0005
+     ],
+     "RsCompBandwidth": [
+      9999.36,
+      null
+     ],
+     "RsCompCorrection": [
+      0.0,
+      null
+     ],
+     "RsCompEnable": [
+      false,
+      null
+     ],
+     "RsCompPrediction": [
+      0.0,
+      null
+     ],
+     "ScopeSignalLPF": [
+      1000.0,
+      10000.0
+     ],
+     "SecondarySignal": [
+      1,
+      8
+     ],
+     "SecondarySignalGain": [
+      5.0,
+      2.0
+     ],
+     "SecondarySignalName": [
+      "VC_MEMBPOTENTIAL",
+      "IC_MEMBCURRENT"
+     ],
+     "SlowCompCap": [
+      0.0,
+      null
+     ],
+     "SlowCompTau": [
+      1e-05,
+      null
+     ],
+     "SlowCompTauX20Enable": [
+      false,
+      null
+     ],
+     "SlowCurrentInjEnable": [
+      null,
+      false
+     ],
+     "SlowCurrentInjLevel": [
+      null,
+      -0.051
+     ],
+     "SlowCurrentInjSettlingTime": [
+      null,
+      0.5
+     ],
+     "TestSignalAmplitude": [
+      0.005014102,
+      5.014102e-12
+     ],
+     "WholeCellCompCap": [
+      3.296323e-11,
+      null
+     ],
+     "WholeCellCompEnable": [
+      false,
+      null
+     ],
+     "WholeCellCompResist": [
+      399946.8,
+      null
+     ],
+     "ZapDuration": [
+      2.5e-05,
+      null
+     ]
+    },
+    "telegraph": {
+     "OperatingModeName": [
+      "VCLAMP",
+      "ICLAMPZERO"
+     ],
+     "RawOutSignalName": [
+      "Membrane Potential",
+      "Membrane Current"
+     ],
+     "RawScaleFactorUnitsName": [
+      "VOLTS_PER_VOLT",
+      "VOLTS_PER_NANOAMP"
+     ],
+     "ScaleFactorUnitsName": [
+      "VOLTS_PER_NANOAMP",
+      "VOLTS_PER_VOLT"
+     ],
+     "ScaledOutSignalName": [
+      "Membrane Current",
+      "Membrane Potential"
+     ],
+     "dExtCmdSens": [
+      0.02,
+      0.0
+     ],
+     "dLPFCutoff": [
+      8000.0,
+      18000.0
+     ],
+     "dRawScaleFactor": [
+      10.0,
+      5.0
+     ],
+     "dScaleFactor": [
+      5.0,
+      10.0
+     ],
+     "dSecondaryAlpha": [
+      5.0,
+      2.0
+     ],
+     "uOperatingMode": [
+      0,
+      2
+     ],
+     "uRawOutSignal": [
+      11,
+      31
+     ],
+     "uRawScaleFactorUnits": [
+      0,
+      6
+     ],
+     "uScaleFactorUnits": [
+      6,
+      0
+     ],
+     "uScaledOutSignal": [
+      0,
+      20
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:04.835117-04:00",
+   "note": "mode button IC",
+   "mode": 1,
+   "tab": 1,
+   "packets": [
+    {
+     "ms": 46.7,
+     "differs": {
+      "uOperatingMode": [
+       2,
+       1
+      ],
+      "dExtCmdSens": [
+       0.0,
+       4.0000000000000004e-11
+      ],
+      "OperatingModeName": [
+       "ICLAMPZERO",
+       "ICLAMP"
+      ]
+     }
+    }
+   ],
+   "changed": {
+    "readings": {
+     "Mode": [
+      2,
+      1
+     ],
+     "ModeName": [
+      "ICLAMPZERO",
+      "ICLAMP"
+     ]
+    },
+    "telegraph": {
+     "OperatingModeName": [
+      "ICLAMPZERO",
+      "ICLAMP"
+     ],
+     "dExtCmdSens": [
+      0.0,
+      4.0000000000000004e-11
+     ],
+     "uOperatingMode": [
+      2,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:06.087061-04:00",
+   "note": "I-Clamp tab: 'Holding:' clicked",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "HoldingEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:07.330993-04:00",
+   "note": "I-Clamp tab: 'Holding:' clicked back",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "HoldingEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:08.575850-04:00",
+   "note": "I-Clamp tab: 'Tuning:' clicked",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "TestSignalEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:09.860039-04:00",
+   "note": "I-Clamp tab: 'Tuning:' clicked back",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "TestSignalEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:11.104625-04:00",
+   "note": "I-Clamp tab: 'Inject slow current to maintain potential at:' clicked",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "SlowCurrentInjEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:12.347744-04:00",
+   "note": "I-Clamp tab: 'Inject slow current to maintain potential at:' clicked back",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "SlowCurrentInjEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:13.592041-04:00",
+   "note": "I-Clamp tab: 'Pipette Capacitance Neutralization:' clicked",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "NeutralizationEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:14.838795-04:00",
+   "note": "I-Clamp tab: 'Pipette Capacitance Neutralization:' clicked back",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "NeutralizationEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:16.081319-04:00",
+   "note": "I-Clamp tab: 'Disable if oscillation detected' clicked",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "OscKillerEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:17.324230-04:00",
+   "note": "I-Clamp tab: 'Disable if oscillation detected' clicked back",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "OscKillerEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:18.567119-04:00",
+   "note": "I-Clamp tab: 'Output Zero' clicked",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "OutputZeroEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:19.810100-04:00",
+   "note": "I-Clamp tab: 'Output Zero' clicked back",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "OutputZeroEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:21.057025-04:00",
+   "note": "I-Clamp tab: 'Bridge Balance' clicked",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "BridgeBalEnable": [
+      false,
+      true
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:22.299343-04:00",
+   "note": "I-Clamp tab: 'Bridge Balance' clicked back",
+   "mode": 1,
+   "tab": 1,
+   "packets": [],
+   "changed": {
+    "readings": {
+     "BridgeBalEnable": [
+      true,
+      false
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:23.543580-04:00",
+   "note": "mode button I=0",
+   "mode": 2,
+   "tab": 1,
+   "packets": [
+    {
+     "ms": 90.0,
+     "differs": {
+      "uOperatingMode": [
+       1,
+       2
+      ],
+      "dExtCmdSens": [
+       4.0000000000000004e-11,
+       0.0
+      ],
+      "OperatingModeName": [
+       "ICLAMP",
+       "ICLAMPZERO"
+      ]
+     }
+    }
+   ],
+   "changed": {
+    "readings": {
+     "Mode": [
+      1,
+      2
+     ],
+     "ModeName": [
+      "ICLAMP",
+      "ICLAMPZERO"
+     ]
+    },
+    "telegraph": {
+     "OperatingModeName": [
+      "ICLAMP",
+      "ICLAMPZERO"
+     ],
+     "dExtCmdSens": [
+      4.0000000000000004e-11,
+      0.0
+     ],
+     "uOperatingMode": [
+      1,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:24.787315-04:00",
+   "note": "mode button VC",
+   "mode": 0,
+   "tab": 0,
+   "packets": [
+    {
+     "ms": 118.5,
+     "differs": {
+      "uOperatingMode": [
+       2,
+       0
+      ],
+      "uScaledOutSignal": [
+       20,
+       0
+      ],
+      "dScaleFactor": [
+       10.0,
+       5.0
+      ],
+      "uScaleFactorUnits": [
+       0,
+       6
+      ],
+      "dLPFCutoff": [
+       18000.0,
+       8000.0
+      ],
+      "dExtCmdSens": [
+       0.0,
+       0.02
+      ],
+      "uRawOutSignal": [
+       31,
+       11
+      ],
+      "dRawScaleFactor": [
+       5.0,
+       10.0
+      ],
+      "uRawScaleFactorUnits": [
+       6,
+       0
+      ],
+      "dSecondaryAlpha": [
+       2.0,
+       5.0
+      ],
+      "OperatingModeName": [
+       "ICLAMPZERO",
+       "VCLAMP"
+      ],
+      "ScaledOutSignalName": [
+       "Membrane Potential",
+       "Membrane Current"
+      ],
+      "RawOutSignalName": [
+       "Membrane Current",
+       "Membrane Potential"
+      ],
+      "ScaleFactorUnitsName": [
+       "VOLTS_PER_VOLT",
+       "VOLTS_PER_NANOAMP"
+      ],
+      "RawScaleFactorUnitsName": [
+       "VOLTS_PER_NANOAMP",
+       "VOLTS_PER_VOLT"
+      ]
+     }
+    }
+   ],
+   "changed": {
+    "readings": {
+     "BridgeBalEnable": [
+      false,
+      null
+     ],
+     "BridgeBalResist": [
+      0.0,
+      null
+     ],
+     "BuzzDuration": [
+      5e-05,
+      null
+     ],
+     "FastCompCap": [
+      null,
+      0.0
+     ],
+     "FastCompTau": [
+      null,
+      1.0008756e-06
+     ],
+     "LeakSubEnable": [
+      null,
+      false
+     ],
+     "LeakSubResist": [
+      null,
+      1023750000.0
+     ],
+     "Mode": [
+      2,
+      0
+     ],
+     "ModeName": [
+      "ICLAMPZERO",
+      "VCLAMP"
+     ],
+     "NeutralizationCap": [
+      -3.330669e-28,
+      null
+     ],
+     "NeutralizationEnable": [
+      true,
+      null
+     ],
+     "PrimarySignal": [
+      7,
+      0
+     ],
+     "PrimarySignalLPF": [
+      18000.0,
+      8000.0
+     ],
+     "PrimarySignalName": [
+      "IC_MEMBPOTENTIAL",
+      "VC_MEMBCURRENT"
+     ],
+     "PulseAmplitude": [
+      5e-12,
+      0.0
+     ],
+     "PulseDuration": [
+      0.0005,
+      0.0001
+     ],
+     "RsCompBandwidth": [
+      null,
+      9999.36
+     ],
+     "RsCompCorrection": [
+      null,
+      0.0
+     ],
+     "RsCompEnable": [
+      null,
+      false
+     ],
+     "RsCompPrediction": [
+      null,
+      0.0
+     ],
+     "ScopeSignalLPF": [
+      10000.0,
+      1000.0
+     ],
+     "SecondarySignal": [
+      8,
+      1
+     ],
+     "SecondarySignalGain": [
+      2.0,
+      5.0
+     ],
+     "SecondarySignalName": [
+      "IC_MEMBCURRENT",
+      "VC_MEMBPOTENTIAL"
+     ],
+     "SlowCompCap": [
+      null,
+      0.0
+     ],
+     "SlowCompTau": [
+      null,
+      1e-05
+     ],
+     "SlowCompTauX20Enable": [
+      null,
+      false
+     ],
+     "SlowCurrentInjEnable": [
+      false,
+      null
+     ],
+     "SlowCurrentInjLevel": [
+      -0.051,
+      null
+     ],
+     "SlowCurrentInjSettlingTime": [
+      0.5,
+      null
+     ],
+     "TestSignalAmplitude": [
+      5.014102e-12,
+      0.005014102
+     ],
+     "WholeCellCompCap": [
+      null,
+      3.296323e-11
+     ],
+     "WholeCellCompEnable": [
+      null,
+      false
+     ],
+     "WholeCellCompResist": [
+      null,
+      399946.8
+     ],
+     "ZapDuration": [
+      null,
+      2.5e-05
+     ]
+    },
+    "telegraph": {
+     "OperatingModeName": [
+      "ICLAMPZERO",
+      "VCLAMP"
+     ],
+     "RawOutSignalName": [
+      "Membrane Current",
+      "Membrane Potential"
+     ],
+     "RawScaleFactorUnitsName": [
+      "VOLTS_PER_NANOAMP",
+      "VOLTS_PER_VOLT"
+     ],
+     "ScaleFactorUnitsName": [
+      "VOLTS_PER_VOLT",
+      "VOLTS_PER_NANOAMP"
+     ],
+     "ScaledOutSignalName": [
+      "Membrane Potential",
+      "Membrane Current"
+     ],
+     "dExtCmdSens": [
+      0.0,
+      0.02
+     ],
+     "dLPFCutoff": [
+      18000.0,
+      8000.0
+     ],
+     "dRawScaleFactor": [
+      5.0,
+      10.0
+     ],
+     "dScaleFactor": [
+      10.0,
+      5.0
+     ],
+     "dSecondaryAlpha": [
+      2.0,
+      5.0
+     ],
+     "uOperatingMode": [
+      2,
+      0
+     ],
+     "uRawOutSignal": [
+      31,
+      11
+     ],
+     "uRawScaleFactorUnits": [
+      6,
+      0
+     ],
+     "uScaleFactorUnits": [
+      0,
+      6
+     ],
+     "uScaledOutSignal": [
+      20,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "t": "2026-10-23T09:58:28.190261-04:00",
+   "note": "end",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q25_095828_end.png"
+  }
+ ],
+ "left_changed": {},
+ "error": null,
+ "start": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T09:57:40.404366-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00018088183,
+    "MeterValue2": -1.235962e-12,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T09:57:43.104076-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00018088183,
+    "MeterValue2": -2.593994e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ },
+ "end": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T09:58:26.508595-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.0002571758,
+    "MeterValue2": -7.7819825e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T09:58:27.348739-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00018088183,
+    "MeterValue2": 3.0517578e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "cd82d865f96bf6de936e3dfc358e8d1466092fe9",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ }
+}

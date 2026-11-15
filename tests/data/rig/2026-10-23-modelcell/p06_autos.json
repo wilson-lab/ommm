@@ -1,0 +1,1675 @@
+{
+ "header": {
+  "probe": "Q6",
+  "question": "Q6: do the Autos block until done, how long do they take, and what does one that cannot run return? Auto Output Zero, Auto Pipette Offset and Auto Fast Capacitance in V-Clamp, with the DLL's timeout at 3000 ms (its default) and then 10000 ms; then two that should not run: Auto Bridge Balance (I-Clamp only) in V-Clamp, and Auto Whole Cell at Rf 5 GOhm, where Whole Cell is off. Each call is timed and the readings it changes are read before it and 0-5 s after it returned, with a snapshot before and after; whatever it changed is put back before the next, and the Pipette Offset padlock is clicked open.",
+  "time": "2026-10-23T13:45:58.640532-04:00",
+  "setup": "amplifier on, a model cell on the headstage, its switch at CELL (--model-cell CELL)",
+  "commander": "2.2.2.2",
+  "firmware": "2.0.00.25",
+  "dsp": "2.0.0.16",
+  "api_version": "1.0.0.9",
+  "ommm": {
+   "version": "0.1.0",
+   "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+   "dirty": false,
+   "git_error": null
+  }
+ },
+ "steps": [
+  {
+   "t": "2026-10-23T13:46:02.155747-04:00",
+   "note": "the DLL's timeout set to 3000 ms",
+   "mode": 0,
+   "tab": 0
+  },
+  {
+   "press": "AutoOutputZero",
+   "call_ms": 200.6,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.7,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.0070363074
+    },
+    {
+     "ms": 109.4,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.0070363074
+    },
+    {
+     "ms": 509.4,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.0070363074
+    },
+    {
+     "ms": 1009.4,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.0070363074
+    },
+    {
+     "ms": 2000.3,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.0070363074
+    },
+    {
+     "ms": 5004.9,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.0070363074
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "OutputZeroAmplitude": [
+       0.0,
+       0.0070363074
+      ],
+      "OutputZeroEnable": [
+       false,
+       true
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:10.733039-04:00",
+    "probe": "Q6",
+    "stem": "AutoOutputZero",
+    "mode": 0,
+    "before": {
+     "OutputZeroEnable": false,
+     "OutputZeroAmplitude": 0.0
+    },
+    "target": null,
+    "after": {
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.0070363074
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:11.072754-04:00",
+    "probe": "Q6",
+    "stem": "OutputZeroEnable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 28.4
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:11.382801-04:00",
+    "probe": "Q6",
+    "stem": "OutputZeroAmplitude",
+    "mode": 0,
+    "before": 0.0070363074,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.8
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1598.9,
+   "error": null,
+   "looks": [
+    {
+     "ms": 1.9,
+     "PipetteOffset": -0.026176
+    },
+    {
+     "ms": 108.9,
+     "PipetteOffset": -0.026176
+    },
+    {
+     "ms": 508.9,
+     "PipetteOffset": -0.026176
+    },
+    {
+     "ms": 1000.5,
+     "PipetteOffset": -0.026176
+    },
+    {
+     "ms": 2000.5,
+     "PipetteOffset": -0.026176
+    },
+    {
+     "ms": 5004.8,
+     "PipetteOffset": -0.026176
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       0.0,
+       -2.7567927e-07
+      ],
+      "PipetteOffset": [
+       0.0,
+       -0.026176
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       0.0,
+       -0.0058288136
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051,
+       -0.050985064
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:21.348873-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": 0.0
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": -0.026176
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:21.661528-04:00",
+    "probe": "Q6",
+    "stem": "Holding",
+    "mode": 0,
+    "before": -2.7567927e-07,
+    "target": 0.0,
+    "after": -2.7567927e-07,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 1.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:23.655193-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": -0.026176,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 56.5
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:24.797743-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 131.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:25.851703-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 46.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:26.201763-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.0058288136,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 37.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:27.267180-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 56.5
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:28.379158-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 109.8
+  },
+  {
+   "t": "2026-10-23T13:46:29.431591-04:00",
+   "note": "Pipette Offset padlock, V-Clamp tab: clicked open",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q6_134629_padlock_0.png"
+  },
+  {
+   "t": "2026-10-23T13:46:30.315331-04:00",
+   "note": "Pipette Offset padlock, I-Clamp tab: open",
+   "mode": 0,
+   "tab": 1,
+   "screenshot": "q6_134630_padlock_1.png"
+  },
+  {
+   "press": "AutoFastComp",
+   "call_ms": 1762.7,
+   "error": null,
+   "looks": [
+    {
+     "ms": 1.7,
+     "FastCompCap": 2.9843138e-12,
+     "FastCompTau": 1.7291982e-06
+    },
+    {
+     "ms": 109.3,
+     "FastCompCap": 2.9843138e-12,
+     "FastCompTau": 1.7291982e-06
+    },
+    {
+     "ms": 509.2,
+     "FastCompCap": 2.9843138e-12,
+     "FastCompTau": 1.7291982e-06
+    },
+    {
+     "ms": 1009.3,
+     "FastCompCap": 2.9843138e-12,
+     "FastCompTau": 1.7291982e-06
+    },
+    {
+     "ms": 2009.7,
+     "FastCompCap": 2.9843138e-12,
+     "FastCompTau": 1.7291982e-06
+    },
+    {
+     "ms": 5010.0,
+     "FastCompCap": 2.9843138e-12,
+     "FastCompTau": 1.7291982e-06
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "FastCompCap": [
+       0.0,
+       2.9843138e-12
+      ],
+      "FastCompTau": [
+       1.0008756e-06,
+       1.7291982e-06
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:41.259965-04:00",
+    "probe": "Q6",
+    "stem": "AutoFastComp",
+    "mode": 0,
+    "before": {
+     "FastCompCap": 0.0,
+     "FastCompTau": 1.0008756e-06
+    },
+    "target": null,
+    "after": {
+     "FastCompCap": 2.9843138e-12,
+     "FastCompTau": 1.7291982e-06
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:41.589743-04:00",
+    "probe": "Q6",
+    "stem": "FastCompCap",
+    "mode": 0,
+    "before": 2.9843138e-12,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 18.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:41.910712-04:00",
+    "probe": "Q6",
+    "stem": "FastCompTau",
+    "mode": 0,
+    "before": 1.7291982e-06,
+    "target": 1.0008756e-06,
+    "after": 1.0008756e-06,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 18.9
+  },
+  {
+   "t": "2026-10-23T13:46:41.911941-04:00",
+   "note": "the DLL's timeout set to 10000 ms",
+   "mode": 0,
+   "tab": 0
+  },
+  {
+   "press": "AutoOutputZero",
+   "call_ms": 214.0,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.6,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    {
+     "ms": 109.2,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    {
+     "ms": 509.2,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    {
+     "ms": 1009.2,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    {
+     "ms": 2000.2,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    {
+     "ms": 5006.8,
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "OutputZeroAmplitude": [
+       0.0,
+       0.013040623
+      ],
+      "OutputZeroEnable": [
+       false,
+       true
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:50.510124-04:00",
+    "probe": "Q6",
+    "stem": "AutoOutputZero",
+    "mode": 0,
+    "before": {
+     "OutputZeroEnable": false,
+     "OutputZeroAmplitude": 0.0
+    },
+    "target": null,
+    "after": {
+     "OutputZeroEnable": true,
+     "OutputZeroAmplitude": 0.013040623
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:50.839908-04:00",
+    "probe": "Q6",
+    "stem": "OutputZeroEnable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 18.5
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:46:51.150474-04:00",
+    "probe": "Q6",
+    "stem": "OutputZeroAmplitude",
+    "mode": 0,
+    "before": 0.013040623,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.8
+  },
+  {
+   "press": "AutoPipetteOffset",
+   "call_ms": 1606.1,
+   "error": null,
+   "looks": [
+    {
+     "ms": 2.0,
+     "PipetteOffset": -0.026176
+    },
+    {
+     "ms": 100.4,
+     "PipetteOffset": -0.026176
+    },
+    {
+     "ms": 500.4,
+     "PipetteOffset": -0.026176
+    },
+    {
+     "ms": 1000.2,
+     "PipetteOffset": -0.026176
+    },
+    {
+     "ms": 2000.2,
+     "PipetteOffset": -0.026176
+    },
+    {
+     "ms": 5000.5,
+     "PipetteOffset": -0.026176
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "Holding": [
+       0.0,
+       -2.7567927e-07
+      ],
+      "PipetteOffset": [
+       0.0,
+       -0.026176
+      ]
+     }
+    },
+    "I-Clamp": {
+     "readings": {
+      "PipetteOffset": [
+       0.0,
+       -0.0058288136
+      ],
+      "SlowCurrentInjLevel": [
+       -0.051,
+       -0.050985064
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:01.135112-04:00",
+    "probe": "Q6",
+    "stem": "AutoPipetteOffset",
+    "mode": 0,
+    "before": {
+     "PipetteOffset": 0.0
+    },
+    "target": null,
+    "after": {
+     "PipetteOffset": -0.026176
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:01.445396-04:00",
+    "probe": "Q6",
+    "stem": "Holding",
+    "mode": 0,
+    "before": -2.7567927e-07,
+    "target": 0.0,
+    "after": -2.7567927e-07,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 1.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:03.446043-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 0,
+    "before": -0.026176,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 58.4
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:04.588223-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 139.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:05.635031-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 44.5
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:05.998657-04:00",
+    "probe": "Q6",
+    "stem": "PipetteOffset",
+    "mode": 1,
+    "before": -0.0058288136,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 50.8
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:07.057008-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 56.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:08.179365-04:00",
+    "probe": "Q6",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 120.1
+  },
+  {
+   "t": "2026-10-23T13:47:09.218314-04:00",
+   "note": "Pipette Offset padlock, V-Clamp tab: clicked open",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q6_134709_padlock_0.png"
+  },
+  {
+   "t": "2026-10-23T13:47:10.050999-04:00",
+   "note": "Pipette Offset padlock, I-Clamp tab: open",
+   "mode": 0,
+   "tab": 1,
+   "screenshot": "q6_134710_padlock_1.png"
+  },
+  {
+   "press": "AutoFastComp",
+   "call_ms": 1783.3,
+   "error": null,
+   "looks": [
+    {
+     "ms": 1.7,
+     "FastCompCap": 2.9666666e-12,
+     "FastCompTau": 1.7638889e-06
+    },
+    {
+     "ms": 109.4,
+     "FastCompCap": 2.9666666e-12,
+     "FastCompTau": 1.7638889e-06
+    },
+    {
+     "ms": 508.9,
+     "FastCompCap": 2.9666666e-12,
+     "FastCompTau": 1.7638889e-06
+    },
+    {
+     "ms": 1009.0,
+     "FastCompCap": 2.9666666e-12,
+     "FastCompTau": 1.7638889e-06
+    },
+    {
+     "ms": 2009.0,
+     "FastCompCap": 2.9666666e-12,
+     "FastCompTau": 1.7638889e-06
+    },
+    {
+     "ms": 5000.6,
+     "FastCompCap": 2.9666666e-12,
+     "FastCompTau": 1.7638889e-06
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "FastCompCap": [
+       0.0,
+       2.9666666e-12
+      ],
+      "FastCompTau": [
+       1.0008756e-06,
+       1.7638889e-06
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:21.027199-04:00",
+    "probe": "Q6",
+    "stem": "AutoFastComp",
+    "mode": 0,
+    "before": {
+     "FastCompCap": 0.0,
+     "FastCompTau": 1.0008756e-06
+    },
+    "target": null,
+    "after": {
+     "FastCompCap": 2.9666666e-12,
+     "FastCompTau": 1.7638889e-06
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:21.343059-04:00",
+    "probe": "Q6",
+    "stem": "FastCompCap",
+    "mode": 0,
+    "before": 2.9666666e-12,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 14.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:22.956923-04:00",
+    "probe": "Q6",
+    "stem": "FastCompTau",
+    "mode": 0,
+    "before": 1.7638889e-06,
+    "target": 1.0008756e-06,
+    "after": 1.0008756e-06,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 18.1
+  },
+  {
+   "press": "AutoBridgeBal",
+   "call_ms": 0.3,
+   "error": "AutoBridgeBal: AXMCCMSG: Invalid parameter specified. (6004)",
+   "looks": [
+    {
+     "ms": 1.2,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    {
+     "ms": 109.9,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    {
+     "ms": 500.3,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    {
+     "ms": 1000.2,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    {
+     "ms": 2004.6,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    {
+     "ms": 5000.6,
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    }
+   ],
+   "changed": {},
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:31.372091-04:00",
+    "probe": "Q6",
+    "stem": "AutoBridgeBal",
+    "mode": 0,
+    "before": {
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    "target": null,
+    "after": {
+     "BridgeBalEnable": "not applicable (6004)",
+     "BridgeBalResist": "not applicable (6004)"
+    },
+    "outcome": "error",
+    "error_code": 6004,
+    "reason": "AutoBridgeBal: AXMCCMSG: Invalid parameter specified. (6004)",
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "press": "AutoWholeCellComp",
+   "call_ms": 1495.4,
+   "error": null,
+   "looks": [
+    {
+     "ms": 3.2,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 5.7428125e-11,
+     "WholeCellCompResist": 1415196.4
+    },
+    {
+     "ms": 100.5,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 5.7428125e-11,
+     "WholeCellCompResist": 1415196.4
+    },
+    {
+     "ms": 500.6,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 5.7428125e-11,
+     "WholeCellCompResist": 1415196.4
+    },
+    {
+     "ms": 1000.7,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 5.7428125e-11,
+     "WholeCellCompResist": 1415196.4
+    },
+    {
+     "ms": 2000.2,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 5.7428125e-11,
+     "WholeCellCompResist": 1415196.4
+    },
+    {
+     "ms": 5000.4,
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 5.7428125e-11,
+     "WholeCellCompResist": 1415196.4
+    }
+   ],
+   "changed": {
+    "V-Clamp": {
+     "readings": {
+      "WholeCellCompCap": [
+       3.296323e-11,
+       5.7428125e-11
+      ],
+      "WholeCellCompEnable": [
+       false,
+       true
+      ],
+      "WholeCellCompResist": [
+       399946.8,
+       1415196.4
+      ]
+     }
+    }
+   },
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:41.235598-04:00",
+    "probe": "Q6",
+    "stem": "AutoWholeCellComp",
+    "mode": 0,
+    "before": {
+     "WholeCellCompEnable": false,
+     "WholeCellCompCap": 3.296323e-11,
+     "WholeCellCompResist": 399946.8
+    },
+    "target": null,
+    "after": {
+     "WholeCellCompEnable": true,
+     "WholeCellCompCap": 5.7428125e-11,
+     "WholeCellCompResist": 1415196.4
+    },
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   }
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:41.615144-04:00",
+    "probe": "Q6",
+    "stem": "WholeCellCompEnable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 72.4
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:41.941241-04:00",
+    "probe": "Q6",
+    "stem": "WholeCellCompCap",
+    "mode": 0,
+    "before": 5.7428125e-11,
+    "target": 3.296323e-11,
+    "after": 3.296323e-11,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 18.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:47:42.271318-04:00",
+    "probe": "Q6",
+    "stem": "WholeCellCompResist",
+    "mode": 0,
+    "before": 1415196.4,
+    "target": 399946.8,
+    "after": 399946.8,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 20.1
+  },
+  {
+   "t": "2026-10-23T13:47:43.981390-04:00",
+   "note": "Pipette Offset padlock, V-Clamp tab: open",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q6_134743_padlock_0.png"
+  },
+  {
+   "t": "2026-10-23T13:47:44.847390-04:00",
+   "note": "Pipette Offset padlock, I-Clamp tab: open",
+   "mode": 0,
+   "tab": 1,
+   "screenshot": "q6_134744_padlock_1.png"
+  },
+  {
+   "t": "2026-10-23T13:47:47.377073-04:00",
+   "note": "end",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q6_134747_end.png"
+  }
+ ],
+ "left_changed": {},
+ "error": null,
+ "start": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:45:58.640532-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00023617578,
+    "MeterValue2": -1.3885498e-12,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:46:01.339967-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -9.155273e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ },
+ "end": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:47:45.677755-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -7.7819825e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:47:46.511656-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -1.9226075e-12,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ }
+}

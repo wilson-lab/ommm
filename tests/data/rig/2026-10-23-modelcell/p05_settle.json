@@ -1,0 +1,3003 @@
+{
+ "header": {
+  "probe": "Q5",
+  "question": "Q5: how soon after a Set does the readback show it? Each setting is set and put back, and read 0, 10, 50, 100 and 300 ms after each Set returned: Primary Output gain and low-pass filter, Holding, the mode, and every compensation enable and value; in V-Clamp, and Pipette Capacitance Neutralization and Bridge Balance in I-Clamp.",
+  "time": "2026-10-23T13:44:05.044019-04:00",
+  "setup": "amplifier on, a model cell on the headstage, its switch at CELL (--model-cell CELL)",
+  "commander": "2.2.2.2",
+  "firmware": "2.0.00.25",
+  "dsp": "2.0.0.16",
+  "api_version": "1.0.0.9",
+  "ommm": {
+   "version": "0.1.0",
+   "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+   "dirty": false,
+   "git_error": null
+  }
+ },
+ "steps": [
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:09.064836-04:00",
+    "probe": "Q5",
+    "stem": "PrimarySignalGain",
+    "mode": 0,
+    "before": 2.0,
+    "target": 5,
+    "after": 5.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 211.7,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 5.0
+    },
+    {
+     "ms": 18.0,
+     "read": 5.0
+    },
+    {
+     "ms": 57.9,
+     "read": 5.0
+    },
+    {
+     "ms": 107.9,
+     "read": 5.0
+    },
+    {
+     "ms": 307.9,
+     "read": 5.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:09.066070-04:00",
+   "note": "PrimarySignalGain 5",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 211.7,
+   "last": 5.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:09.585354-04:00",
+    "probe": "Q5",
+    "stem": "PrimarySignalGain",
+    "mode": 0,
+    "before": 5.0,
+    "target": 2.0,
+    "after": 2.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 207.8,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 2.0
+    },
+    {
+     "ms": 18.2,
+     "read": 2.0
+    },
+    {
+     "ms": 58.2,
+     "read": 2.0
+    },
+    {
+     "ms": 108.2,
+     "read": 2.0
+    },
+    {
+     "ms": 308.5,
+     "read": 2.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:09.586653-04:00",
+   "note": "PrimarySignalGain 2.0",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 207.8,
+   "last": 2.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:09.906213-04:00",
+    "probe": "Q5",
+    "stem": "PrimarySignalLPF",
+    "mode": 0,
+    "before": 8000.0,
+    "target": 2000,
+    "after": 2000.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.7,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 2000.0
+    },
+    {
+     "ms": 19.4,
+     "read": 2000.0
+    },
+    {
+     "ms": 50.5,
+     "read": 2000.0
+    },
+    {
+     "ms": 100.5,
+     "read": 2000.0
+    },
+    {
+     "ms": 300.3,
+     "read": 2000.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:09.907753-04:00",
+   "note": "PrimarySignalLPF 2000",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 16.7,
+   "last": 2000.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:10.222989-04:00",
+    "probe": "Q5",
+    "stem": "PrimarySignalLPF",
+    "mode": 0,
+    "before": 2000.0,
+    "target": 8000.0,
+    "after": 8000.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 11.7,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 8000.0
+    },
+    {
+     "ms": 10.6,
+     "read": 8000.0
+    },
+    {
+     "ms": 50.6,
+     "read": 8000.0
+    },
+    {
+     "ms": 100.5,
+     "read": 8000.0
+    },
+    {
+     "ms": 300.6,
+     "read": 8000.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:10.224544-04:00",
+   "note": "PrimarySignalLPF 8000.0",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 11.7,
+   "last": 8000.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:10.529521-04:00",
+    "probe": "Q5",
+    "stem": "Holding",
+    "mode": 0,
+    "before": 0.0,
+    "target": -0.02,
+    "after": -0.020013254,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 1.5,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": -0.020013254
+    },
+    {
+     "ms": 10.4,
+     "read": -0.020013254
+    },
+    {
+     "ms": 50.5,
+     "read": -0.020013254
+    },
+    {
+     "ms": 100.5,
+     "read": -0.020013254
+    },
+    {
+     "ms": 300.5,
+     "read": -0.020013254
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:10.530911-04:00",
+   "note": "Holding -0.02",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "mismatch",
+   "set_ms": 1.5,
+   "last": -0.020013254,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:10.835291-04:00",
+    "probe": "Q5",
+    "stem": "Holding",
+    "mode": 0,
+    "before": -0.020013254,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 1.2,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 0.0
+    },
+    {
+     "ms": 14.6,
+     "read": 0.0
+    },
+    {
+     "ms": 54.6,
+     "read": 0.0
+    },
+    {
+     "ms": 100.2,
+     "read": 0.0
+    },
+    {
+     "ms": 300.4,
+     "read": 0.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:10.836675-04:00",
+   "note": "Holding 0.0",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 1.2,
+   "last": 0.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:11.165991-04:00",
+    "probe": "Q5",
+    "stem": "HoldingEnable",
+    "mode": 0,
+    "before": false,
+    "target": true,
+    "after": true,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 26.0,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": true
+    },
+    {
+     "ms": 10.4,
+     "read": true
+    },
+    {
+     "ms": 50.5,
+     "read": true
+    },
+    {
+     "ms": 100.5,
+     "read": true
+    },
+    {
+     "ms": 300.5,
+     "read": true
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:11.167557-04:00",
+   "note": "HoldingEnable True",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 26.0,
+   "last": true,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:11.495650-04:00",
+    "probe": "Q5",
+    "stem": "HoldingEnable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 15.6,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": false
+    },
+    {
+     "ms": 20.0,
+     "read": false
+    },
+    {
+     "ms": 60.0,
+     "read": false
+    },
+    {
+     "ms": 110.1,
+     "read": false
+    },
+    {
+     "ms": 309.9,
+     "read": false
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:11.497139-04:00",
+   "note": "HoldingEnable False",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 15.6,
+   "last": false,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:11.816426-04:00",
+    "probe": "Q5",
+    "stem": "FastCompCap",
+    "mode": 0,
+    "before": 0.0,
+    "target": 1e-12,
+    "after": 1e-12,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.3,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 1e-12
+    },
+    {
+     "ms": 19.5,
+     "read": 1e-12
+    },
+    {
+     "ms": 59.5,
+     "read": 1e-12
+    },
+    {
+     "ms": 109.5,
+     "read": 1e-12
+    },
+    {
+     "ms": 300.4,
+     "read": 1e-12
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:11.817607-04:00",
+   "note": "FastCompCap 1e-12",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 16.3,
+   "last": 1e-12,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:12.142218-04:00",
+    "probe": "Q5",
+    "stem": "FastCompCap",
+    "mode": 0,
+    "before": 1e-12,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.7,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 0.0
+    },
+    {
+     "ms": 19.9,
+     "read": 0.0
+    },
+    {
+     "ms": 59.9,
+     "read": 0.0
+    },
+    {
+     "ms": 100.2,
+     "read": 0.0
+    },
+    {
+     "ms": 305.6,
+     "read": 0.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:12.143370-04:00",
+   "note": "FastCompCap 0.0",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 16.7,
+   "last": 0.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:12.482212-04:00",
+    "probe": "Q5",
+    "stem": "FastCompTau",
+    "mode": 0,
+    "before": 1.0008756e-06,
+    "target": 1.5e-06,
+    "after": 1.4941177e-06,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 26.8,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 1.4941177e-06
+    },
+    {
+     "ms": 19.6,
+     "read": 1.4941177e-06
+    },
+    {
+     "ms": 59.6,
+     "read": 1.4941177e-06
+    },
+    {
+     "ms": 109.6,
+     "read": 1.4941177e-06
+    },
+    {
+     "ms": 309.6,
+     "read": 1.4941177e-06
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:12.483380-04:00",
+   "note": "FastCompTau 1.5e-06",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "mismatch",
+   "set_ms": 26.8,
+   "last": 1.4941177e-06,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:12.802520-04:00",
+    "probe": "Q5",
+    "stem": "FastCompTau",
+    "mode": 0,
+    "before": 1.4941177e-06,
+    "target": 1.0008756e-06,
+    "after": 1.0008756e-06,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 11.9,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 1.0008756e-06
+    },
+    {
+     "ms": 14.6,
+     "read": 1.0008756e-06
+    },
+    {
+     "ms": 54.6,
+     "read": 1.0008756e-06
+    },
+    {
+     "ms": 104.6,
+     "read": 1.0008756e-06
+    },
+    {
+     "ms": 304.8,
+     "read": 1.0008756e-06
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:12.804034-04:00",
+   "note": "FastCompTau 1.0008756e-06",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 11.9,
+   "last": 1.0008756e-06,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:13.123611-04:00",
+    "probe": "Q5",
+    "stem": "SlowCompCap",
+    "mode": 0,
+    "before": 0.0,
+    "target": 1e-12,
+    "after": 1e-12,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.3,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 1e-12
+    },
+    {
+     "ms": 10.2,
+     "read": 1e-12
+    },
+    {
+     "ms": 50.3,
+     "read": 1e-12
+    },
+    {
+     "ms": 100.4,
+     "read": 1e-12
+    },
+    {
+     "ms": 300.4,
+     "read": 1e-12
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:13.125047-04:00",
+   "note": "SlowCompCap 1e-12",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 16.3,
+   "last": 1e-12,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:13.454336-04:00",
+    "probe": "Q5",
+    "stem": "SlowCompCap",
+    "mode": 0,
+    "before": 1e-12,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 26.2,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 0.0
+    },
+    {
+     "ms": 19.7,
+     "read": 0.0
+    },
+    {
+     "ms": 59.8,
+     "read": 0.0
+    },
+    {
+     "ms": 101.8,
+     "read": 0.0
+    },
+    {
+     "ms": 300.4,
+     "read": 0.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:13.455848-04:00",
+   "note": "SlowCompCap 0.0",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 26.2,
+   "last": 0.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:13.775273-04:00",
+    "probe": "Q5",
+    "stem": "SlowCompTau",
+    "mode": 0,
+    "before": 1e-05,
+    "target": 0.0001,
+    "after": 0.0001025641,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.1,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 0.0001025641
+    },
+    {
+     "ms": 10.3,
+     "read": 0.0001025641
+    },
+    {
+     "ms": 50.3,
+     "read": 0.0001025641
+    },
+    {
+     "ms": 100.3,
+     "read": 0.0001025641
+    },
+    {
+     "ms": 300.3,
+     "read": 0.0001025641
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:13.776652-04:00",
+   "note": "SlowCompTau 0.0001",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "mismatch",
+   "set_ms": 16.1,
+   "last": 0.0001025641,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:14.095677-04:00",
+    "probe": "Q5",
+    "stem": "SlowCompTau",
+    "mode": 0,
+    "before": 0.0001025641,
+    "target": 1e-05,
+    "after": 1e-05,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.0,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 1e-05
+    },
+    {
+     "ms": 19.9,
+     "read": 1e-05
+    },
+    {
+     "ms": 60.0,
+     "read": 1e-05
+    },
+    {
+     "ms": 110.1,
+     "read": 1e-05
+    },
+    {
+     "ms": 300.4,
+     "read": 1e-05
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:14.097062-04:00",
+   "note": "SlowCompTau 1e-05",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 16.0,
+   "last": 1e-05,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:14.456142-04:00",
+    "probe": "Q5",
+    "stem": "SlowCompTauX20Enable",
+    "mode": 0,
+    "before": false,
+    "target": true,
+    "after": true,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 46.5,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": true
+    },
+    {
+     "ms": 19.3,
+     "read": true
+    },
+    {
+     "ms": 59.5,
+     "read": true
+    },
+    {
+     "ms": 109.5,
+     "read": true
+    },
+    {
+     "ms": 309.7,
+     "read": true
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:14.457602-04:00",
+   "note": "SlowCompTauX20Enable True",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 46.5,
+   "last": true,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:14.835999-04:00",
+    "probe": "Q5",
+    "stem": "SlowCompTauX20Enable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 66.7,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": false
+    },
+    {
+     "ms": 19.3,
+     "read": false
+    },
+    {
+     "ms": 59.3,
+     "read": false
+    },
+    {
+     "ms": 109.3,
+     "read": false
+    },
+    {
+     "ms": 309.3,
+     "read": false
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:14.837149-04:00",
+   "note": "SlowCompTauX20Enable False",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 66.7,
+   "last": false,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:15.176067-04:00",
+    "probe": "Q5",
+    "stem": "WholeCellCompCap",
+    "mode": 0,
+    "before": 3.296323e-11,
+    "target": 1e-11,
+    "after": 1.00010885e-11,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 26.8,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 1.00010885e-11
+    },
+    {
+     "ms": 19.7,
+     "read": 1.00010885e-11
+    },
+    {
+     "ms": 59.7,
+     "read": 1.00010885e-11
+    },
+    {
+     "ms": 109.7,
+     "read": 1.00010885e-11
+    },
+    {
+     "ms": 309.7,
+     "read": 1.00010885e-11
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:15.177283-04:00",
+   "note": "WholeCellCompCap 1e-11",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "mismatch",
+   "set_ms": 26.8,
+   "last": 1.00010885e-11,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:15.506073-04:00",
+    "probe": "Q5",
+    "stem": "WholeCellCompCap",
+    "mode": 0,
+    "before": 1.00010885e-11,
+    "target": 3.296323e-11,
+    "after": 3.296323e-11,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.8,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 3.296323e-11
+    },
+    {
+     "ms": 19.7,
+     "read": 3.296323e-11
+    },
+    {
+     "ms": 59.7,
+     "read": 3.296323e-11
+    },
+    {
+     "ms": 109.7,
+     "read": 3.296323e-11
+    },
+    {
+     "ms": 309.7,
+     "read": 3.296323e-11
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:15.507251-04:00",
+   "note": "WholeCellCompCap 3.296323e-11",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 16.8,
+   "last": 3.296323e-11,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:15.828064-04:00",
+    "probe": "Q5",
+    "stem": "WholeCellCompResist",
+    "mode": 0,
+    "before": 399946.8,
+    "target": 10000000.0,
+    "after": 10006556.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 17.9,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 10006556.0
+    },
+    {
+     "ms": 18.6,
+     "read": 10006556.0
+    },
+    {
+     "ms": 58.5,
+     "read": 10006556.0
+    },
+    {
+     "ms": 100.5,
+     "read": 10006556.0
+    },
+    {
+     "ms": 300.2,
+     "read": 10006556.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:15.829443-04:00",
+   "note": "WholeCellCompResist 10000000.0",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "mismatch",
+   "set_ms": 17.9,
+   "last": 10006556.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:16.159101-04:00",
+    "probe": "Q5",
+    "stem": "WholeCellCompResist",
+    "mode": 0,
+    "before": 10006556.0,
+    "target": 399946.8,
+    "after": 399946.8,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 26.5,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 399946.8
+    },
+    {
+     "ms": 10.2,
+     "read": 399946.8
+    },
+    {
+     "ms": 50.3,
+     "read": 399946.8
+    },
+    {
+     "ms": 100.4,
+     "read": 399946.8
+    },
+    {
+     "ms": 300.3,
+     "read": 399946.8
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:16.160570-04:00",
+   "note": "WholeCellCompResist 399946.8",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 26.5,
+   "last": 399946.8,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:16.523604-04:00",
+    "probe": "Q5",
+    "stem": "WholeCellCompEnable",
+    "mode": 0,
+    "before": false,
+    "target": true,
+    "after": true,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 59.9,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": true
+    },
+    {
+     "ms": 10.2,
+     "read": true
+    },
+    {
+     "ms": 50.3,
+     "read": true
+    },
+    {
+     "ms": 100.6,
+     "read": true
+    },
+    {
+     "ms": 300.3,
+     "read": true
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:16.525072-04:00",
+   "note": "WholeCellCompEnable True",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 59.9,
+   "last": true,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:16.903713-04:00",
+    "probe": "Q5",
+    "stem": "WholeCellCompEnable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 70.4,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": false
+    },
+    {
+     "ms": 15.5,
+     "read": false
+    },
+    {
+     "ms": 55.5,
+     "read": false
+    },
+    {
+     "ms": 105.5,
+     "read": false
+    },
+    {
+     "ms": 305.5,
+     "read": false
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:16.905121-04:00",
+   "note": "WholeCellCompEnable False",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 70.4,
+   "last": false,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:17.224247-04:00",
+    "probe": "Q5",
+    "stem": "RsCompBandwidth",
+    "mode": 0,
+    "before": 9999.36,
+    "target": 5000,
+    "after": 4968.64,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.1,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 4968.64
+    },
+    {
+     "ms": 10.4,
+     "read": 4968.64
+    },
+    {
+     "ms": 50.5,
+     "read": 4968.64
+    },
+    {
+     "ms": 100.4,
+     "read": 4968.64
+    },
+    {
+     "ms": 300.3,
+     "read": 4968.64
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:17.225730-04:00",
+   "note": "RsCompBandwidth 5000",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "mismatch",
+   "set_ms": 16.1,
+   "last": 4968.64,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:17.544921-04:00",
+    "probe": "Q5",
+    "stem": "RsCompBandwidth",
+    "mode": 0,
+    "before": 4968.64,
+    "target": 9999.36,
+    "after": 9999.36,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.1,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 9999.36
+    },
+    {
+     "ms": 10.2,
+     "read": 9999.36
+    },
+    {
+     "ms": 50.3,
+     "read": 9999.36
+    },
+    {
+     "ms": 100.3,
+     "read": 9999.36
+    },
+    {
+     "ms": 300.3,
+     "read": 9999.36
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:17.546531-04:00",
+   "note": "RsCompBandwidth 9999.36",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 16.1,
+   "last": 9999.36,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:17.850404-04:00",
+    "probe": "Q5",
+    "stem": "RsCompCorrection",
+    "mode": 0,
+    "before": 0.0,
+    "target": 10,
+    "after": 0.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.9,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 0.0
+    },
+    {
+     "ms": 10.2,
+     "read": 0.0
+    },
+    {
+     "ms": 50.2,
+     "read": 0.0
+    },
+    {
+     "ms": 100.5,
+     "read": 0.0
+    },
+    {
+     "ms": 300.3,
+     "read": 0.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:17.851557-04:00",
+   "note": "RsCompCorrection 10",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "mismatch",
+   "set_ms": 0.9,
+   "last": 0.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:18.154634-04:00",
+    "probe": "Q5",
+    "stem": "RsCompCorrection",
+    "mode": 0,
+    "before": 0.0,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.5,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 0.0
+    },
+    {
+     "ms": 16.1,
+     "read": 0.0
+    },
+    {
+     "ms": 50.3,
+     "read": 0.0
+    },
+    {
+     "ms": 100.3,
+     "read": 0.0
+    },
+    {
+     "ms": 300.3,
+     "read": 0.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:18.155839-04:00",
+   "note": "RsCompCorrection 0.0",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 0.5,
+   "last": 0.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:18.464656-04:00",
+    "probe": "Q5",
+    "stem": "RsCompPrediction",
+    "mode": 0,
+    "before": 0.0,
+    "target": 10,
+    "after": 10.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.8,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 10.0
+    },
+    {
+     "ms": 15.6,
+     "read": 10.0
+    },
+    {
+     "ms": 55.6,
+     "read": 10.0
+    },
+    {
+     "ms": 105.6,
+     "read": 10.0
+    },
+    {
+     "ms": 305.6,
+     "read": 10.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:18.465825-04:00",
+   "note": "RsCompPrediction 10",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 0.8,
+   "last": 10.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:18.775079-04:00",
+    "probe": "Q5",
+    "stem": "RsCompPrediction",
+    "mode": 0,
+    "before": 10.0,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 0.7,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 0.0
+    },
+    {
+     "ms": 15.9,
+     "read": 0.0
+    },
+    {
+     "ms": 55.8,
+     "read": 0.0
+    },
+    {
+     "ms": 105.8,
+     "read": 0.0
+    },
+    {
+     "ms": 306.0,
+     "read": 0.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:18.776269-04:00",
+   "note": "RsCompPrediction 0.0",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 0.7,
+   "last": 0.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:19.155078-04:00",
+    "probe": "Q5",
+    "stem": "RsCompEnable",
+    "mode": 0,
+    "before": false,
+    "target": true,
+    "after": true,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 69.5,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": true
+    },
+    {
+     "ms": 16.8,
+     "read": true
+    },
+    {
+     "ms": 56.8,
+     "read": true
+    },
+    {
+     "ms": 106.7,
+     "read": true
+    },
+    {
+     "ms": 306.7,
+     "read": true
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:19.156617-04:00",
+   "note": "RsCompEnable True",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 69.5,
+   "last": true,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:19.554821-04:00",
+    "probe": "Q5",
+    "stem": "RsCompEnable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 89.3,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": false
+    },
+    {
+     "ms": 16.4,
+     "read": false
+    },
+    {
+     "ms": 56.3,
+     "read": false
+    },
+    {
+     "ms": 106.3,
+     "read": false
+    },
+    {
+     "ms": 306.4,
+     "read": false
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:19.556326-04:00",
+   "note": "RsCompEnable False",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 89.3,
+   "last": false,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:19.875652-04:00",
+    "probe": "Q5",
+    "stem": "OscKillerEnable",
+    "mode": 0,
+    "before": false,
+    "target": true,
+    "after": true,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.1,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": true
+    },
+    {
+     "ms": 19.8,
+     "read": true
+    },
+    {
+     "ms": 50.5,
+     "read": true
+    },
+    {
+     "ms": 100.2,
+     "read": true
+    },
+    {
+     "ms": 300.3,
+     "read": true
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:19.877264-04:00",
+   "note": "OscKillerEnable True",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 16.1,
+   "last": true,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:20.206214-04:00",
+    "probe": "Q5",
+    "stem": "OscKillerEnable",
+    "mode": 0,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 25.9,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": false
+    },
+    {
+     "ms": 19.8,
+     "read": false
+    },
+    {
+     "ms": 60.0,
+     "read": false
+    },
+    {
+     "ms": 110.0,
+     "read": false
+    },
+    {
+     "ms": 300.3,
+     "read": false
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:20.207751-04:00",
+   "note": "OscKillerEnable False",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 25.9,
+   "last": false,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:20.639774-04:00",
+    "probe": "Q5",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 128.9,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 2
+    },
+    {
+     "ms": 16.7,
+     "read": 2
+    },
+    {
+     "ms": 56.6,
+     "read": 2
+    },
+    {
+     "ms": 106.7,
+     "read": 2
+    },
+    {
+     "ms": 300.4,
+     "read": 2
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:20.641203-04:00",
+   "note": "Mode 2",
+   "mode": 2,
+   "tab": 1,
+   "outcome": "ok",
+   "set_ms": 128.9,
+   "last": 2,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:21.039814-04:00",
+    "probe": "Q5",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 87.8,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 0
+    },
+    {
+     "ms": 18.4,
+     "read": 0
+    },
+    {
+     "ms": 58.4,
+     "read": 0
+    },
+    {
+     "ms": 108.4,
+     "read": 0
+    },
+    {
+     "ms": 308.4,
+     "read": 0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:21.041001-04:00",
+   "note": "Mode 0",
+   "mode": 0,
+   "tab": 0,
+   "outcome": "ok",
+   "set_ms": 87.8,
+   "last": 0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:22.201750-04:00",
+    "probe": "Q5",
+    "stem": "Mode",
+    "mode": 0,
+    "before": 0,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 158.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:23.251918-04:00",
+    "probe": "Q5",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 43.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:23.593727-04:00",
+    "probe": "Q5",
+    "stem": "NeutralizationCap",
+    "mode": 1,
+    "before": -3.330669e-28,
+    "target": 1e-12,
+    "after": 1e-12,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 39.4,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 1e-12
+    },
+    {
+     "ms": 19.5,
+     "read": 1e-12
+    },
+    {
+     "ms": 59.5,
+     "read": 1e-12
+    },
+    {
+     "ms": 109.5,
+     "read": 1e-12
+    },
+    {
+     "ms": 300.3,
+     "read": 1e-12
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:23.595232-04:00",
+   "note": "NeutralizationCap 1e-12",
+   "mode": 1,
+   "tab": 1,
+   "outcome": "ok",
+   "set_ms": 39.4,
+   "last": 1e-12,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:23.914032-04:00",
+    "probe": "Q5",
+    "stem": "NeutralizationCap",
+    "mode": 1,
+    "before": 1e-12,
+    "target": -3.330669e-28,
+    "after": -3.330669e-28,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.0,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": -3.330669e-28
+    },
+    {
+     "ms": 10.5,
+     "read": -3.330669e-28
+    },
+    {
+     "ms": 50.1,
+     "read": -3.330669e-28
+    },
+    {
+     "ms": 100.1,
+     "read": -3.330669e-28
+    },
+    {
+     "ms": 300.2,
+     "read": -3.330669e-28
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:23.915212-04:00",
+   "note": "NeutralizationCap -3.330669e-28",
+   "mode": 1,
+   "tab": 1,
+   "outcome": "ok",
+   "set_ms": 16.0,
+   "last": -3.330669e-28,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:24.234950-04:00",
+    "probe": "Q5",
+    "stem": "NeutralizationEnable",
+    "mode": 1,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 17.2,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": false
+    },
+    {
+     "ms": 10.1,
+     "read": false
+    },
+    {
+     "ms": 50.1,
+     "read": false
+    },
+    {
+     "ms": 100.1,
+     "read": false
+    },
+    {
+     "ms": 300.2,
+     "read": false
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:24.236139-04:00",
+   "note": "NeutralizationEnable False",
+   "mode": 1,
+   "tab": 1,
+   "outcome": "ok",
+   "set_ms": 17.2,
+   "last": false,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:24.564869-04:00",
+    "probe": "Q5",
+    "stem": "NeutralizationEnable",
+    "mode": 1,
+    "before": false,
+    "target": true,
+    "after": true,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 17.1,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": true
+    },
+    {
+     "ms": 19.4,
+     "read": true
+    },
+    {
+     "ms": 59.5,
+     "read": true
+    },
+    {
+     "ms": 109.4,
+     "read": true
+    },
+    {
+     "ms": 309.4,
+     "read": true
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:24.566017-04:00",
+   "note": "NeutralizationEnable True",
+   "mode": 1,
+   "tab": 1,
+   "outcome": "ok",
+   "set_ms": 17.1,
+   "last": true,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:24.915431-04:00",
+    "probe": "Q5",
+    "stem": "BridgeBalResist",
+    "mode": 1,
+    "before": 0.0,
+    "target": 10000000.0,
+    "after": 9768010.0,
+    "outcome": "mismatch",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 37.0,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 9768010.0
+    },
+    {
+     "ms": 19.5,
+     "read": 9768010.0
+    },
+    {
+     "ms": 59.6,
+     "read": 9768010.0
+    },
+    {
+     "ms": 109.5,
+     "read": 9768010.0
+    },
+    {
+     "ms": 309.8,
+     "read": 9768010.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:24.916834-04:00",
+   "note": "BridgeBalResist 10000000.0",
+   "mode": 1,
+   "tab": 1,
+   "outcome": "mismatch",
+   "set_ms": 37.0,
+   "last": 9768010.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:25.256144-04:00",
+    "probe": "Q5",
+    "stem": "BridgeBalResist",
+    "mode": 1,
+    "before": 9768010.0,
+    "target": 0.0,
+    "after": 0.0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 36.1,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": 0.0
+    },
+    {
+     "ms": 10.3,
+     "read": 0.0
+    },
+    {
+     "ms": 50.3,
+     "read": 0.0
+    },
+    {
+     "ms": 100.5,
+     "read": 0.0
+    },
+    {
+     "ms": 300.4,
+     "read": 0.0
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:25.257570-04:00",
+   "note": "BridgeBalResist 0.0",
+   "mode": 1,
+   "tab": 1,
+   "outcome": "ok",
+   "set_ms": 36.1,
+   "last": 0.0,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:25.576855-04:00",
+    "probe": "Q5",
+    "stem": "BridgeBalEnable",
+    "mode": 1,
+    "before": false,
+    "target": true,
+    "after": true,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.2,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": true
+    },
+    {
+     "ms": 10.4,
+     "read": true
+    },
+    {
+     "ms": 50.4,
+     "read": true
+    },
+    {
+     "ms": 100.4,
+     "read": true
+    },
+    {
+     "ms": 300.5,
+     "read": true
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:25.578333-04:00",
+   "note": "BridgeBalEnable True",
+   "mode": 1,
+   "tab": 1,
+   "outcome": "ok",
+   "set_ms": 16.2,
+   "last": true,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:25.902332-04:00",
+    "probe": "Q5",
+    "stem": "BridgeBalEnable",
+    "mode": 1,
+    "before": true,
+    "target": false,
+    "after": false,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 16.2,
+   "looks": [
+    {
+     "ms": 0.0,
+     "read": false
+    },
+    {
+     "ms": 19.8,
+     "read": false
+    },
+    {
+     "ms": 50.3,
+     "read": false
+    },
+    {
+     "ms": 104.8,
+     "read": false
+    },
+    {
+     "ms": 305.1,
+     "read": false
+    }
+   ]
+  },
+  {
+   "t": "2026-10-23T13:44:25.903790-04:00",
+   "note": "BridgeBalEnable False",
+   "mode": 1,
+   "tab": 1,
+   "outcome": "ok",
+   "set_ms": 16.2,
+   "last": false,
+   "settled_ms": 0.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:27.911847-04:00",
+    "probe": "Q5",
+    "stem": "PrimarySignal",
+    "mode": 1,
+    "before": 7,
+    "target": 7,
+    "after": 7,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 28.3
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:28.221668-04:00",
+    "probe": "Q5",
+    "stem": "SecondarySignal",
+    "mode": 1,
+    "before": 8,
+    "target": 8,
+    "after": 8,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 3.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:29.302729-04:00",
+    "probe": "Q5",
+    "stem": "Mode",
+    "mode": 1,
+    "before": 1,
+    "target": 2,
+    "after": 2,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 58.0
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:30.404691-04:00",
+    "probe": "Q5",
+    "stem": "Mode",
+    "mode": 2,
+    "before": 2,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 100.1
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:30.754816-04:00",
+    "probe": "Q5",
+    "stem": "PrimarySignal",
+    "mode": 0,
+    "before": 0,
+    "target": 0,
+    "after": 0,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 38.7
+  },
+  {
+   "write": {
+    "schema": 1,
+    "t": "2026-10-23T13:44:31.062181-04:00",
+    "probe": "Q5",
+    "stem": "SecondarySignal",
+    "mode": 0,
+    "before": 1,
+    "target": 1,
+    "after": 1,
+    "outcome": "ok",
+    "error_code": null,
+    "reason": null,
+    "ommm": {
+     "version": "0.1.0",
+     "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+     "dirty": false
+    }
+   },
+   "set_ms": 5.3
+  },
+  {
+   "t": "2026-10-23T13:44:32.739183-04:00",
+   "note": "Pipette Offset padlock, V-Clamp tab: open",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q5_134432_padlock_0.png"
+  },
+  {
+   "t": "2026-10-23T13:44:33.579143-04:00",
+   "note": "Pipette Offset padlock, I-Clamp tab: open",
+   "mode": 0,
+   "tab": 1,
+   "screenshot": "q5_134433_padlock_1.png"
+  },
+  {
+   "t": "2026-10-23T13:44:36.130751-04:00",
+   "note": "end",
+   "mode": 0,
+   "tab": 0,
+   "screenshot": "q5_134436_end.png"
+  }
+ ],
+ "left_changed": {},
+ "error": null,
+ "start": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:44:05.044019-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -1.2512207e-12,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:44:07.730424-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -8.0871583e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ },
+ "end": {
+  "V-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:44:34.444620-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 0.005014102,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "FastCompCap": 0.0,
+    "SlowCompCap": 0.0,
+    "FastCompTau": 1.0008756e-06,
+    "SlowCompTau": 1e-05,
+    "SlowCompTauX20Enable": false,
+    "WholeCellCompEnable": false,
+    "WholeCellCompCap": 3.296323e-11,
+    "WholeCellCompResist": 399946.8,
+    "RsCompEnable": false,
+    "RsCompBandwidth": 9999.36,
+    "RsCompCorrection": 0.0,
+    "RsCompPrediction": 0.0,
+    "OscKillerEnable": false,
+    "PrimarySignal": 0,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 8000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 1000.0,
+    "SecondarySignal": 1,
+    "SecondarySignalGain": 5.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "LeakSubEnable": false,
+    "LeakSubResist": 1023750000.0,
+    "PulseAmplitude": 0.0,
+    "PulseDuration": 0.0001,
+    "ZapDuration": 2.5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -1.3275146e-12,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "VC_MEMBCURRENT",
+    "SecondarySignalName": "VC_MEMBPOTENTIAL"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [],
+   "not_applicable": {
+    "SlowCurrentInjEnable": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjLevel": "INVALIDPARAMETER (6004)",
+    "SlowCurrentInjSettlingTime": "INVALIDPARAMETER (6004)",
+    "NeutralizationEnable": "INVALIDPARAMETER (6004)",
+    "NeutralizationCap": "INVALIDPARAMETER (6004)",
+    "BridgeBalEnable": "INVALIDPARAMETER (6004)",
+    "BridgeBalResist": "INVALIDPARAMETER (6004)",
+    "BuzzDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  },
+  "I-Clamp": {
+   "schema": 1,
+   "time": "2026-10-23T13:44:35.284778-04:00",
+   "api_version": "1.0.0.9",
+   "headstage": {
+    "model": 1,
+    "serial": "00123456",
+    "com_port": 4294967295,
+    "device": 4294967295,
+    "channel": 1
+   },
+   "demo": false,
+   "readings": {
+    "Mode": 0,
+    "ModeSwitchEnable": false,
+    "FeedbackResistorVC1": 2,
+    "FeedbackResistorIC1": 2,
+    "HoldingEnable": false,
+    "Holding": 0.0,
+    "TestSignalEnable": false,
+    "TestSignalAmplitude": 5.014102e-12,
+    "TestSignalFrequency": 100.0,
+    "PipetteOffset": 0.0,
+    "SlowCurrentInjEnable": false,
+    "SlowCurrentInjLevel": -0.051,
+    "SlowCurrentInjSettlingTime": 0.5,
+    "NeutralizationEnable": true,
+    "NeutralizationCap": -3.330669e-28,
+    "OscKillerEnable": false,
+    "PrimarySignal": 7,
+    "PrimarySignalGain": 2.0,
+    "PrimarySignalLPF": 18000.0,
+    "PrimarySignalHPF": 0.0,
+    "ScopeSignalLPF": 10000.0,
+    "SecondarySignal": 8,
+    "SecondarySignalGain": 2.0,
+    "SecondarySignalLPF": 10000.0,
+    "OutputZeroEnable": false,
+    "OutputZeroAmplitude": 0.0,
+    "BridgeBalEnable": false,
+    "BridgeBalResist": 0.0,
+    "PulseAmplitude": 5e-12,
+    "PulseDuration": 0.0005,
+    "BuzzDuration": 5e-05,
+    "MeterResistEnable": false,
+    "MeterIrmsEnable": false,
+    "MeterValue1": -0.00015988183,
+    "MeterValue2": -2.593994e-13,
+    "MeterValue3": 0.0,
+    "MeterValue4": 0.0,
+    "ModeName": "VCLAMP",
+    "PrimarySignalName": "IC_MEMBPOTENTIAL",
+    "SecondarySignalName": "IC_MEMBCURRENT"
+   },
+   "telegraph": {
+    "uVersion": 14,
+    "uStructSize": 256,
+    "uComPortID": 4294967295,
+    "uAxoBusID": 4294967295,
+    "uChannelID": 1,
+    "uOperatingMode": 0,
+    "uScaledOutSignal": 0,
+    "dAlpha": 2.0,
+    "dScaleFactor": 5.0,
+    "uScaleFactorUnits": 6,
+    "dLPFCutoff": 8000.0,
+    "dMembraneCap": 0.0,
+    "dExtCmdSens": 0.02,
+    "uRawOutSignal": 11,
+    "dRawScaleFactor": 10.0,
+    "uRawScaleFactorUnits": 0,
+    "uHardwareType": 1,
+    "dSecondaryAlpha": 5.0,
+    "dSecondaryLPFCutoff": 10000.0,
+    "szAppVersion": "2.2.2.2",
+    "szFirmwareVersion": "2.0.00.25",
+    "szDSPVersion": "2.0.0.16",
+    "szSerialNumber": "00123456",
+    "dSeriesResistance": 0.0,
+    "OperatingModeName": "VCLAMP",
+    "ScaledOutSignalName": "Membrane Current",
+    "RawOutSignalName": "Membrane Potential",
+    "ScaleFactorUnitsName": "VOLTS_PER_NANOAMP",
+    "RawScaleFactorUnitsName": "VOLTS_PER_VOLT"
+   },
+   "disagreements": [
+    "tab: Commander is showing the I-Clamp 1 tab while the amplifier is in V-Clamp, so the signals, gains, filters and compensation read are that tab's: click the V-Clamp 1 tab in Commander and read again",
+    "secondary gain: API 2, telegraph 5",
+    "primary low-pass: API 18000, telegraph 8000",
+    "primary signal: API IC_MEMBPOTENTIAL is telegraph index 20, but the telegraph sent index 0 (Membrane Current), so its primary scale and units are not this output's",
+    "secondary signal: API IC_MEMBCURRENT is telegraph index 31, but the telegraph sent index 11 (Membrane Potential), so its secondary scale and units are not this output's"
+   ],
+   "not_applicable": {
+    "FastCompCap": "INVALIDPARAMETER (6004)",
+    "SlowCompCap": "INVALIDPARAMETER (6004)",
+    "FastCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTau": "INVALIDPARAMETER (6004)",
+    "SlowCompTauX20Enable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompEnable": "INVALIDPARAMETER (6004)",
+    "WholeCellCompCap": "INVALIDPARAMETER (6004)",
+    "WholeCellCompResist": "INVALIDPARAMETER (6004)",
+    "RsCompEnable": "INVALIDPARAMETER (6004)",
+    "RsCompBandwidth": "INVALIDPARAMETER (6004)",
+    "RsCompCorrection": "INVALIDPARAMETER (6004)",
+    "RsCompPrediction": "INVALIDPARAMETER (6004)",
+    "LeakSubEnable": "INVALIDPARAMETER (6004)",
+    "LeakSubResist": "INVALIDPARAMETER (6004)",
+    "ZapDuration": "INVALIDPARAMETER (6004)"
+   },
+   "errors": {},
+   "ommm": {
+    "version": "0.1.0",
+    "commit": "d46ad882b2800ec0699a3aad4fda6b11ffd663f8",
+    "dirty": false,
+    "git_error": null
+   }
+  }
+ }
+}
