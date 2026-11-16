@@ -6,7 +6,7 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [0.3.0] - 2026-11-15
 
-The package sends Commander what 0.2.1 sends. This version ran on the fake only (the Python and MATLAB tests, and the Python examples from an install from git), not on the amplifier.
+The package sends Commander what 0.2.1 sends. Released after running on the fake only (the Python and MATLAB tests, and the Python examples from an install from git); on 2026-11-16 `scripts/rig/check_amplifier.py` ran it (`4ecbfcf`) on the amplifier at 5 GΩ with nothing attached, and every check went as expected but the two I-Clamp Slow Current Injection levels, which read 14 µV off after the check's Auto Pipette Offset ([quirks.md](docs/quirks.md#values-come-back-a-little-different)).
 
 It starts the public history, as one commit: 0.1.0 to 0.2.1 were tagged in an earlier history, which is archived, so a commit named below, or stamped in a record in `tests/data/rig/`, is from that archive, and those versions have no tag here.
 
