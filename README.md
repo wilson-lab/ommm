@@ -10,7 +10,7 @@ ommm is not a Commander replacement and not an acquisition program. Commander st
 
 ## Requirements
 
-- **One 700B,** headstage 1. The MultiClamp 700A is not supported.
+- **One 700B,** headstage 1. The MultiClamp 700A is not supported: its Commander is 32-bit, and ommm was checked only on a 700B.
 - Windows, 64-bit Python 3.12 or later, [uv](https://docs.astral.sh/uv/).
 - MultiClamp Commander 2.2.1 or later (2.2.1 fixed setting the primary low-pass filter on 64-bit Windows), tested with 2.2.2.2 only. Run ommm in Commander's own desktop session at the same privilege level: not over SSH, not "Run as administrator".
 - For the MATLAB class: MATLAB R2024b or later ([versions](docs/install-and-testing.md#python-and-matlab-versions)).
