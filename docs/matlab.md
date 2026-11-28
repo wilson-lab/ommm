@@ -43,9 +43,9 @@ Every write acts on the amplifier at once ([How a write works](writes.md); what 
 
 | Call | Returns |
 |---|---|
-| `a = ommm.Amplifier()` | headstage 1 of the one 700B Commander runs, or `Headstage=2`; refuses if there are none or several, or when the headstage is not connected. `LogDir=folder` puts the write log there instead of `~/ommm-logs`; the folder is fixed when the object is made, so a later `cd` or a Python restart keeps one log |
+| `a = ommm.Amplifier()` | headstage 1 of the one 700B Commander runs, or `Headstage=2`; refuses if there are none or several, or when the headstage is not connected. `LogDir=folder` puts the write log there instead of in [ommm's log folder](install-and-testing.md#the-write-logs-folder-ommm_log_dir) (`~/ommm-logs` unless set); the folder is fixed when the object is made, so a later `cd` or a Python restart keeps one log |
 | `a = ommm.Amplifier(Fake=file)`, `Fake=file, OtherTab=file2` | the same class on ommm's fake Commander, from a saved snapshot, on any OS ([Without Commander](#without-commander)) |
-| `a.get(label, unit)` | one control by Commander's label in your unit, from the active mode's tab, which it brings to the front first: `a.get("Holding", "mV")`, `a.get("Feedback Resistor", "MΩ")`. Without a unit: the mode by name (`"V-Clamp"`), an output signal by Commander's name (`"Membrane Current"`), both strings; a checkbox `true` or `false`, by the name `enable` takes (`a.get("Seal Test")`) or its API name (`a.get("HoldingEnable")`). The meters: `a.get("MeterValue1", "mV")`, the potential, or with the Resistance meter on the resistance, in a resistance unit; `a.get("MeterValue2", "pA")`, the current ([Reads](writes.md#reads)) |
+| `a.get(label, unit)` | one control by Commander's label in your unit, from the active mode's tab, which it brings to the front first: `a.get("Holding", "mV")`, `a.get("Feedback Resistor", "MΩ")`. Without a unit: the mode by name (`"V-Clamp"`), an output signal by Commander's name (`"Membrane Current"`), both strings; a checkbox `true` or `false`, by the name `enable` takes (`a.get("Seal Test")`) or its API name (`a.get("HoldingEnable")`). The meters: `a.get("MeterValue1", "mV")`, the potential, or with the Resistance meter on the resistance, in a resistance unit; `a.get("MeterValue2", "pA")`, the current, refused in V-Clamp while Irms Meter is on ([Reads](writes.md#reads)) |
 | `a.set(label, value, unit, Step=..., Expect=...)` | the write, a struct ([below](#the-write)): sets a value, or an output signal by name (no unit). `Step` and `Expect` are in the call's unit; an output signal's `Expect` is its name |
 | `a.plan(label, value, unit, Step=..., Expect=...)` | the write `set` would make, from fresh reads: outcome `planned`, its `reason` the change in your unit, or `refused` with the reason; sends and logs nothing ([Confirm before a write](#confirm-before-a-write)) |
 | `a.enable(name, on)` | the write: a checkbox on (`true`) or off |
@@ -61,7 +61,7 @@ Every write acts on the amplifier at once ([How a write works](writes.md); what 
 | `a.reconnect()` | new handles after Commander was closed and started again, when calls fail with 6002; waits for Commander's window, up to 30 s; then, if Holding was on, `a.enable("Holding", true)` as your first write ([After Commander restarts](#after-commander-restarts)). Not needed after this object's own `load_config`, nor after a Python restart |
 | `a.headstage`, `a.serial` | the headstage, 1 or 2, and the amplifier's serial, a string; the headstage's full record is the snapshot's `headstage` |
 | `a.log_path` | the write log's file, one JSON line per write and refusal, readable without Python |
-| `a.fake`, `a.gui` | the snapshot file served instead of Commander (`""` on Commander), and the person at the fake's window ([Without Commander](#without-commander)) |
+| `a.fake`, `a.gui` | the snapshot file served instead of Commander (`""` on Commander), and the person at the fake's window ([Without Commander](#without-commander)), as Python's `amp.fake` (`None` on Commander) and `amp.gui` |
 
 - Without a snapshot argument, `state` and `summary` take a new one. A snapshot argument is the struct from `a.snapshot()`, or one saved as JSON and read back: `a.summary(jsondecode(fileread("snapshot.json")))`.
 - `trusted` (in `primary` and `secondary`) covers only this output's own scale; check `blocking` first: anything in it (e.g. the other mode's tab in front) overrides trusted.
@@ -107,9 +107,9 @@ Errors from ommm carry an identifier, so code can tell them apart without readin
 |---|---|---|
 | `ommm:refused` | A write ommm refused, sending nothing; it is logged | `err.write` |
 | `ommm:writeError` | A write sent that did not take: `mismatch`, `unknown` or `error` ([Outcomes](writes.md#outcomes)) | `err.write` |
-| `ommm:badArgument` | An argument ommm cannot use, outside a write: an unknown label, a missing or wrong unit or a button given to `get`, a `Fake=` file that is not a snapshot, a `LogDir=` ommm cannot write to, a `trial_record` snapshot that is not a struct | |
-| `ommm:notApplicable` | `get` of a control the active mode does not have: `a.get("Bridge Balance", "MΩ")` in V-Clamp | |
-| `ommm:commander` | Commander failed or is not there: not running in this desktop session, closed or started again since this object connected (6002: `a.reconnect()`), no answer in time (6005), no 700B, or not Windows ([Error codes](writes.md#error-codes)) | |
+| `ommm:badArgument` | An argument ommm cannot use, outside a write: an unknown label, a missing or wrong unit or a button given to `get`, a `Fake=` file that is not a snapshot or has a newer `schema` than this ommm's, a log folder ommm cannot use, one this account cannot write to included, refused when the object is made (`LogDir=`, or [`OMMM_LOG_DIR` or the default](install-and-testing.md#the-write-logs-folder-ommm_log_dir); the message names which), a `trial_record` snapshot that is not a struct | |
+| `ommm:notApplicable` | `get` of a control the active mode does not have: `a.get("Bridge Balance", "MΩ")` in V-Clamp; or of `MeterValue2` in V-Clamp while Irms Meter is on | |
+| `ommm:commander` | Commander failed or is not there: not running in this desktop session, closed or started again since this object connected (6002: `a.reconnect()`), no answer in time (6005), no 700B, one of Commander's files missing from its install folder ([`OMMM_SDK_DIR`](install-and-testing.md#commanders-install-folder-ommm_sdk_dir)), or not Windows ([Error codes](writes.md#error-codes)) | |
 
 The message is Python's; a refusal's says what to do. `err.message` works for every `ommm:` error. `ommm:refused` and `ommm:writeError` are an `ommm.WriteError`, an `MException` with one property more, `err.write`: the write as `set` would have returned it, `outcome` and `reason` included.
 
@@ -139,7 +139,7 @@ An argument of the wrong type (`a.enable("Seal Test", "on")`) is MATLAB's own va
 
 ## Without Commander
 
-- `a = ommm.Amplifier(Fake=file)` serves a saved snapshot instead of Commander, so the class runs anywhere, a Mac included. ommm ships one for each mode, taken with nothing attached: `vclamp.json`, `iclamp.json` and `i0.json` in `src/ommm/examples/fake/`. On the PC, `ommm > snapshot.json` saves your own; in MATLAB, `writelines(jsonencode(a.snapshot()), file)` does.
+- `a = ommm.Amplifier(Fake=file)` serves a saved snapshot instead of Commander, so the class runs anywhere, a Mac included. ommm ships one for each mode, taken with nothing attached: `vclamp.json`, `iclamp.json` and `i0.json` in `src/ommm/examples/fake/`. On the PC, `ommm --out snapshot.json` saves your own; in MATLAB, `writelines(jsonencode(a.snapshot()), file)` does.
 - Every call runs on it. A write changes the fake as it would Commander, and logs to a new temporary folder (`a.log_path`) unless given `LogDir=`, never to the amplifier's log. On a fresh fake, `a.load_config(fullfile("<path to ommm>", "src", "ommm", "examples", "fake", "synthetic.mcc"))` plans a load and `Confirmed=true` runs it, about 5 s; it is a test file the amplifier refuses.
 - `OtherTab=file2`, a snapshot taken with the other tab in front, gives the fake both tabs.
 - `Headstage=2` serves the snapshot as headstage 2's, whichever headstage it was taken on. Both headstages on one fake are Python's only: `FakeCommander(file, other_headstage=file2)` and `fake.handle(2)` ([`ommm.testing.fake`](../src/ommm/testing/fake.py)).
@@ -181,7 +181,7 @@ Save `a.snapshot()` with a trial, not `a`: a saved `ommm.Amplifier` holds no con
 
 ## Provenance
 
-- Every snapshot says which ommm took it, under `ommm`: `version`, `commit`, `dirty` and `git_error` ([Provenance](install-and-testing.md#provenance)); `demo` is true when Commander runs in Demo mode, not on the amplifier. Every write-log line carries `ommm` (`version`, `commit`, `dirty`) and `process` (`pid`, `program`) ([The log and trial records](writes.md#the-log-and-trial-records)).
+- Every snapshot says which ommm took it, under `ommm`: `version`, `commit`, `dirty` and `git_error` ([Provenance](install-and-testing.md#provenance)); `demo` is true for Commander's Demo mode, a guard only, since Demo answers no snapshot ([quirks.md](quirks.md#connecting-and-restarting)). Every write-log line carries `ommm` (`version`, `commit`, `dirty`) and `process` (`pid`, `program`) ([The log and trial records](writes.md#the-log-and-trial-records)).
 - ommm is imported once per Python, and that is the code snapshots and log lines name. To update: [Update](install-and-testing.md#update), then restart MATLAB. The class loads the `.venv` directly, which only a sync brings to the new version: without it, snapshots name the new commit with the old version.
 - A log line written from MATLAB has `process.program` `"MATLAB"`, and `pid` MATLAB's Python's, which changes when Python restarts.
 

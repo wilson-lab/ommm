@@ -347,7 +347,8 @@ classdef AmplifierTest < matlab.unittest.TestCase
             testCase.verifyEmpty(zeroed.after); % a button has no value: what it changed is in also
             testCase.verifyEqual(zeroed.also.OutputZeroEnable', [false, true]);
             pressed = a.press("Auto Pipette Offset");
-            testCase.verifyEqual(pressed.reason, 'it also moved the I-Clamp tab''s Pipette Offset, which ommm reads in I-Clamp');
+            testCase.verifyEqual(pressed.reason, ['it also moved the I-Clamp tab''s Pipette Offset, and its Slow ' ...
+                'Current Injection level by a few µV, which ommm reads in I-Clamp']);
             moved = a.set_mode("I-Clamp");
             testCase.verifyEqual(moved.steps', [2, 1]); % through I = 0
             testCase.verifyEqual(a.get("Mode"), "I-Clamp");

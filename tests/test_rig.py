@@ -12,6 +12,7 @@ import pytest
 
 import ommm
 from ommm.commander import Commander, CommanderError
+from ommm.settings import feedback_resistor
 from ommm.testing import FakeCommander
 from ommm.testing.fake import FakeDLL, FakeTelegraph, Gui
 
@@ -20,7 +21,8 @@ from conftest import sets
 sys.path.insert(0, str(Path(__file__).parents[1] / "scripts" / "rig"))
 import rig
 
-FIXTURE = Path(__file__).parent / "data" / "vclamp_stale_secondary_telegraph.json"
+FIXTURE = Path(__file__).parent / "data" / "vclamp_stale_secondary_telegraph.json"  # V-Clamp at 500 MΩ
+AT_5_GOHM = ommm.EXAMPLES / "fake" / "vclamp.json"  # both tabs at 5 GΩ, where a run starts
 RIG_RECORDS = sorted((Path(__file__).parent / "data" / "rig").glob("*/*.json"))
 SCRIPTS = sorted((Path(__file__).parents[1] / "scripts").rglob("*.py"))
 NOTHING = "amplifier on, nothing attached to the headstage (--no-cell-attached)"
@@ -174,8 +176,33 @@ def test_a_run_refuses_unless_commander_is_in_the_start_state(tmp_path, monkeypa
     assert list(tmp_path.iterdir()) == []
 
 
+@pytest.mark.parametrize("tab", rig.TABS)
+def test_a_run_refuses_unless_both_tabs_are_at_5_gohm(tmp_path, monkeypatch, tab):
+    snapshot = ommm.load_snapshot(AT_5_GOHM)
+    snapshot["readings"][feedback_resistor(tab, 1)] = 1  # 500 MΩ, where values the check expects refused are in range
+    fake = FakeCommander(snapshot)
+    next_to(fake, monkeypatch, "--log-dir", str(tmp_path))
+    found = ", ".join(f"{each} {'500 MΩ' if each == tab else '5 GΩ'}" for each in rig.TABS)
+    with pytest.raises(SystemExit, match=f"^P01: start with both tabs at 5 GΩ, .*: load a 5 GΩ setup first .*; found {found}$"):
+        rig.run("P01", "a question", lambda p: None)
+    assert [name for name, *_ in fake.dll.calls if name.startswith("Set")] == []
+    assert list(tmp_path.iterdir()) == []
+
+
+def test_a_run_refuses_with_irms_meter_on(tmp_path, monkeypatch):
+    # the check reads the current meter in V-Clamp, which ommm refuses while Irms shows in its place
+    snapshot = ommm.load_snapshot(AT_5_GOHM)
+    snapshot["readings"]["MeterIrmsEnable"] = True
+    fake = FakeCommander(snapshot)
+    next_to(fake, monkeypatch, "--log-dir", str(tmp_path))
+    with pytest.raises(SystemExit, match="^P01: start with Irms Meter off: "):
+        rig.run("P01", "a question", lambda p: None)
+    assert [name for name, *_ in fake.dll.calls if name.startswith("Set")] == []
+    assert list(tmp_path.iterdir()) == []
+
+
 def test_a_run_that_fails_still_puts_commander_back_and_keeps_the_record(tmp_path, monkeypatch):
-    fake = FakeCommander(FIXTURE)
+    fake = FakeCommander(AT_5_GOHM)
     next_to(fake, monkeypatch, "--log-dir", str(tmp_path))
 
     def body(p):

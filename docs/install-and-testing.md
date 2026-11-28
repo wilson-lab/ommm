@@ -2,7 +2,7 @@
 
 ommm reads and sets **one MultiClamp 700B**, headstage 1, through the MultiClamp Commander running on the same Windows PC. Headstage 2's calls are in the API but not supported ([Two headstages](writes.md#two-headstages)). The 700A is not supported.
 
-- **Set up:** [Install](#install) · [Update](#update) · [Python and MATLAB versions](#python-and-matlab-versions) · [Commander's install folder](#commanders-install-folder-ommm_sdk_dir)
+- **Set up:** [Install](#install) · [Update](#update) · [Python and MATLAB versions](#python-and-matlab-versions) · [Commander's install folder](#commanders-install-folder-ommm_sdk_dir) · [the write log's folder](#the-write-logs-folder-ommm_log_dir)
 - **Run:** [next to Commander](#running-next-to-commander) · [the `ommm` command and the scripts](#the-ommm-command-and-the-scripts) · [checking ommm against your Commander](#checking-ommm-against-your-commander)
 - **Read and write:** [how a write works](writes.md) · [the snapshot](#the-snapshot) · [provenance](#provenance) · [`state()` and `summary()`](#state-and-summary) · [output scales](#output-scales-at-gain-1) · [feedback resistor indexes](#feedback-resistor-range-indexes) · [error codes](writes.md#error-codes)
 - **Test:** [tests](#tests) · [the fake](#the-fake) · [what has been tested](#what-has-been-tested) · [planned](#planned)
@@ -19,7 +19,7 @@ uv tool update-shell            # once, if `ommm` is not found: puts uv's tool f
 
 - Clone ommm next to the code that uses it. Its own `.venv` is what other programs load: the MATLAB class loads `<ommm>/.venv` by path ([matlab.md](matlab.md)).
 - `--locked` installs exactly what `uv.lock` says and leaves the file alone. A plain `uv sync` with a newer uv can rewrite `uv.lock`, and an edited tracked file makes every snapshot's provenance read dirty.
-- **In another Python project,** `uv add git+https://github.com/wilson-lab/ommm --tag v0.3.0` installs the package, and its snapshots name the tag's commit ([Provenance](#provenance)). The examples and the fake's snapshots come with it (`ommm.EXAMPLES`; `uv run ommm --examples DIR` copies them to a new folder `DIR`); the scripts, the tests and the MATLAB class are in the clone only.
+- **In another Python project,** `uv add git+https://github.com/wilson-lab/ommm --tag v0.3.0`, or with pip `pip install "git+https://github.com/wilson-lab/ommm@v0.3.0"`, installs the package, and its snapshots name the tag's commit ([Provenance](#provenance)). The examples and the fake's snapshots come with it (`ommm.EXAMPLES`; `uv run ommm --examples DIR` copies them to a new folder `DIR`); the scripts, the tests and the MATLAB class are in the clone only.
 - On a Mac or Linux the same commands work: ommm imports, its tests run, and saved snapshots can be read (`ommm.load_snapshot`, `ommm.summary`, `ommm.state`, `ommm FILE`). Only talking to Commander needs Windows.
 
 ## Update
@@ -66,12 +66,26 @@ ommm needs Python 3.12 or later. The `.python-version` file pins 3.14, which uv 
 | `MC700B.exe` | Commander itself: `load_config` starts it again from here after closing it ([mcc.md](mcc.md#what-a-load-does)) |
 
 - **On the PC,** leave it unset, or name the folder Commander runs from if it is installed elsewhere.
+- **A missing file,** or a DLL that does not load, stops `ommm.Amplifier()` with a `CommanderError` (`ommm:commander` in MATLAB) naming the file and `OMMM_SDK_DIR`: the three files are checked when it connects.
 - **Not a copy of the SDK files alone.** Reads and writes work with the three files, but `load_config` refuses in its plan, before Commander is closed, when `MC700B.exe` is not in the folder ([Every refusal](mcc.md#every-refusal)), since it could not start Commander again.
 - **For the header tests** (on a Mac, say), name the install folder or a copy of the whole folder: they read the two headers, and one checks that `MC700B.exe` is there ([Tests](#tests)).
+
+## The write log's folder (`OMMM_LOG_DIR`)
+
+`OMMM_LOG_DIR` names the folder of the write log ([The log and trial records](writes.md#the-log-and-trial-records)) and of `load_config`'s copies of `.mcc` files; unset or empty, ommm uses `~/ommm-logs`, in your home folder.
+
+- **One folder for every program.** `writes_since` reads one log, so `trial_record` puts the writes of a program that logs to another folder down to `"gui"`. Programs under one Windows account share `~/ommm-logs` already. Programs under several accounts need one folder every account can write to, named in each account's `OMMM_LOG_DIR`: `setx /M OMMM_LOG_DIR C:\ommm-logs`, from a terminal run as administrator, sets it for every account. An account that cannot write there is refused when its `ommm.Amplifier` is made, before any write, naming `OMMM_LOG_DIR`: ommm makes a file there and removes it (until the first line makes the folder, the folder), so the folder's Windows permissions decide. Make the folder writable for that account, rather than give its program a `log_dir` of its own.
+- **An absolute folder,** such as `C:\ommm-logs`: a relative one is refused, since each program would take it from its own working folder. A folder with no space in its path also lets `load_config` run under an account whose home folder has one ([mcc.md](mcc.md#every-refusal)).
+- **Read when an `ommm.Amplifier` is made,** from the program's environment: after `setx`, restart MATLAB or open a new terminal. `log_dir=` (`LogDir=` in MATLAB) wins over it.
+- **Never on the fake,** whose log goes to a new temporary folder unless given `log_dir`, so a fake made from your amplifier's snapshot never writes to its log ([The fake](#the-fake)).
+- **The scripts** keep their own `--log-dir`, `~/ommm-logs` by default ([below](#the-ommm-command-and-the-scripts)).
 
 ## Running next to Commander
 
 - **Same desktop session, same privilege level.** Every read is a Windows message to Commander, and Commander answers only programs in its own session at its own integrity level. A process run as administrator while Commander is not should fail the same way, since Windows keeps Commander's answers from reaching a higher integrity level. Over SSH the API fails with 6002 (`MCCNOTOPEN`): run ommm in Commander's desktop session. When Commander cannot be reached, ommm's error names the likely cause (an SSH session, or running as administrator) or says to start Commander.
+- **From another PC, or over SSH,** call ommm from a process in Commander's desktop session, such as a Windows scheduled task that runs as the user signed in there, only while that user is logged on, and not with highest privileges. ommm has no network interface: the other program reaches that process its own way.
+- **One thread, one call at a time.** An `Amplifier` has no lock, so call it from one thread, one call at a time: a write's reads, Set and readback are separate calls to Commander, which another thread's calls would come between. A snapshot or a write makes many calls, each waiting up to [3 s](#the-snapshot) for Commander's answer; `reconnect()` waits up to 30 s, and a confirmed `load_config` about 15-30 s ([mcc.md](mcc.md#change-the-feedback-resistor)).
+- **Other programs on Commander.** Programs that call Commander's API (MIES, ACQ4, another ommm process) share its one headstage selection and the tab it shows ([quirks.md](quirks.md#two-headstages)), and their calls can land between ommm's: call ommm while they are idle. Clampex listens to the telegraph ([Before every write](writes.md#before-every-write), item 9).
 - **The active mode's tab comes to the front.** The API reads and sets the tab Commander shows, not the active mode, so every ommm read, snapshot and write first brings the active mode's tab to the front with `SelectMultiClamp` (0.1-8 ms). A tab clicked to look at the other mode goes back at ommm's next call ([quirks.md](quirks.md#tabs-and-modes)).
 - **Mode Switching.** `SetModeSwitchEnable` toggles Mode Switching whatever its argument, and the mode it leaves cannot be predicted, so after turning it off set the mode back and check the tab ([quirks.md](quirks.md#mode-switching-flips-whatever-you-pass-it)).
 - **A clone made from an elevated shell** (for example over SSH) is owned by Administrators, and git in the desktop session may refuse it as "dubious ownership". Provenance then records git's error instead of a commit. `git config --global --add safe.directory <path to ommm>` from the desktop session allows it.
@@ -79,8 +93,9 @@ ommm needs Python 3.12 or later. The `.python-version` file pins 3.14, which uv 
 
 ## The `ommm` command and the scripts
 
-- `ommm` prints a snapshot of headstage 1 as JSON (`--headstage 2`: headstage 2's); `ommm --summary` prints a compact box: mode, feedback resistor, holding, command sensitivity, both outputs (signal, scale × gain, low-pass), compensation, and `!!` lines for what `state()` found.
-- `ommm [--summary] FILE` prints a saved snapshot instead, as saved (its own `time` and `ommm`), with no Commander, on any OS; in Python `ommm.load_snapshot(FILE)` returns it. Both read a file saved as UTF-16 (`ommm > snapshot.json` in Windows PowerShell 5.1) and refuse a file that is not a snapshot.
+- `ommm` prints a snapshot of headstage 1 as JSON (`--headstage 2`: headstage 2's); `ommm --summary` prints a compact box: mode, feedback resistor, holding, command sensitivity, both outputs (signal, scale × gain, low-pass), compensation, and `!!` lines for what `state()` found. Both only read: they send no Set and log nothing, but select their headstage in Commander and bring its active mode's tab to the front, as every ommm read does ([Running next to Commander](#running-next-to-commander)).
+- `ommm --out NEW` writes the snapshot (with `--summary`, the box) to a new file `NEW` as UTF-8 instead of printing it; a file that exists is refused before Commander is read. Save snapshots this way, not with `ommm > snapshot.json`: Windows PowerShell's `>` writes UTF-16.
+- `ommm [--summary] FILE` prints a saved snapshot instead, as saved (its own `time` and `ommm`), with no Commander, on any OS; in Python `ommm.load_snapshot(FILE)` returns it. Both read a file saved as UTF-16 (`ommm > snapshot.json` in Windows PowerShell 5.1) and refuse a file that is not a snapshot or has a newer `schema` than this ommm's ([The snapshot](#the-snapshot)). `ommm OLD.json --out NEW.json` rewrites a saved snapshot as UTF-8.
 - `ommm --examples DIR` copies ommm's examples (`ommm.EXAMPLES`: the four scripts, `mcc/` and `fake/`) into a new folder `DIR`, with no Commander; it refuses a folder that exists.
 - The scripts run from the clone, on the desktop, with `uv run --locked python scripts/<name>.py`. Logs and images go to `~/ommm-logs/`, or to `--log-dir DIR`.
 
@@ -92,7 +107,7 @@ ommm needs Python 3.12 or later. The `.python-version` file pins 3.14, which uv 
 
 ### Checking ommm against your Commander
 
-`scripts/rig/check_amplifier.py` runs `ommm.Amplifier` against your Commander control by control, in each mode: every row read, set and set back, refused out of range, off its list and in a mode without it; every checkbox turned over; every button but Reset pressed where Commander has it; `set_mode`, Mode Switching and `make_safe`; the write log read back. It saves one JSON record and exits 1 if a check went otherwise. It changes the amplifier, and puts back what the API can: run it with nothing or a model cell on the headstage, never a cell, and say which, as its record's header keeps it: `--no-cell-attached`, or `--model-cell POSITION` for a model cell and its switch's position (`BATH`, `PATCH` or `CELL`). Run it on the PC, next to Commander, with V-Clamp active, its tab shown and Mode Switching off, and nobody at Commander's window (it clicks the tabs):
+`scripts/rig/check_amplifier.py` runs `ommm.Amplifier` against your Commander control by control, in each mode: every row read, set and set back, refused out of range, off its list and in a mode without it; every checkbox turned over; every button but Reset pressed where Commander has it; `set_mode`, Mode Switching and `make_safe`; the write log read back. It saves one JSON record and exits 1 if a check went otherwise. It changes the amplifier, and puts back what the API can: run it with nothing or a model cell on the headstage, never a cell, and say which, as its record's header keeps it: `--no-cell-attached`, or `--model-cell POSITION` for a model cell and its switch's position (`BATH`, `PATCH` or `CELL`). Run it on the PC, next to Commander, with V-Clamp active, its tab shown, Mode Switching off, both tabs at 5 GΩ and Irms Meter off, and nobody at Commander's window (it clicks the tabs). The values it expects ommm to refuse are chosen for 5 GΩ, so it refuses to start at another feedback resistor: load a 5 GΩ setup first ([mcc.md](mcc.md)).
 
 ```
 uv run --locked python scripts/rig/check_amplifier.py --no-cell-attached
@@ -117,23 +132,23 @@ Its readings are the active mode's, since it brings that tab to the front first 
 
 | Key | Holds |
 |---|---|
-| `schema` | 1, this layout |
-| `time` | when it was taken, local time with UTC offset |
-| `api_version` | the AxMultiClampMsg API version from the header (`1.0.0.9`) |
+| `schema` | 1, this layout ([when it goes up](../CHANGELOG.md)) |
+| `time` | when its reads ended, the telegraph's included, local time with UTC offset |
+| `api_version` | the AxMultiClampMsg API version from the header (`1.0.0.9`); Commander's own version is the telegraph's `szAppVersion` (`2.2.2.2`) |
 | `headstage` | `model`, the API's hardware type as a number, not text (1 = 700B); `serial` (text); `com_port`, `device`; `channel` (1 or 2, the headstage) |
-| `demo` | true when the serial starts with `Demo`: Commander's Demo mode, a simulation, so the snapshot never passes for a recording. It has no telegraph, which names a headstage by a numeric serial |
-| `readings` | every value the API's getters return, in SI units (V, A, Ω, F, s, Hz), plus `ModeName`, `PrimarySignalName`, `SecondarySignalName` from the header's constants |
-| `telegraph` | one telegraph packet, Commander's broadcast of each output's signal and scaling, plus decoded names; `null` if none came within 1 s or in Demo mode, with the reason in `errors` |
+| `demo` | true when the serial starts with `Demo`, Commander's Demo mode, so such a snapshot could never pass for a recording; a guard only, since Commander in Demo mode answers no snapshot ([quirks.md](quirks.md#connecting-and-restarting)) |
+| `readings` | every value the API's getters return, in SI units (V, A, Ω, F, s, Hz) except as [Units](writes.md#units) lists, plus `ModeName`, `PrimarySignalName`, `SecondarySignalName` from the header's constants |
+| `telegraph` | one telegraph packet, Commander's broadcast of each output's signal and scaling, plus decoded names; `null` if none came within 1 s, with the reason in `errors` |
 | `disagreements` | inconsistencies as sentences, normally none: Commander showing the other mode's tab, and every way the telegraph contradicts the API |
 | `not_applicable` | getters that do not apply now, with Commander's code (6004 for another mode's setting) |
 | `errors` | real failures, such as a telegraph that did not answer |
 | `ommm` | the code that took it: `version`, `commit`, `dirty`, `git_error` (see [Provenance](#provenance)) |
 
-- `ommm.load_snapshot()` returns a file as saved, so a file from before schema 1 lacks `schema`, `demo`, `disagreements` and `ommm`. The one change: the `[]` that MATLAB's `jsonencode` writes for a null, at any depth (a missing telegraph, a null reading, a commit outside a checkout), and for no `errors` or `not_applicable`, reads back as `None` and `{}`, in `ommm.load_snapshot()` and in the fake alike, so a snapshot saved from MATLAB without a telegraph still blocks `state()`.
+- `ommm.load_snapshot()` returns a file as saved, so a file from before schema 1 lacks `schema`, `demo`, `disagreements` and `ommm`; it refuses a file whose `schema` is newer than this ommm's ([Update](#update)). The one change: the `[]` that MATLAB's `jsonencode` writes for a null, at any depth (a missing telegraph, a null reading, a commit outside a checkout), and for no `errors` or `not_applicable`, reads back as `None` and `{}`, in `ommm.load_snapshot()` and in the fake alike, so a snapshot saved from MATLAB without a telegraph still blocks `state()`.
 - Commander stores settings as float32; each double from the API is rounded to the shortest decimal with the same float32 bits (5e-07, not 4.999999987376214e-07), so nothing stored is lost.
 - A getter that does not apply reports success and hands back the error code as the value: the integer, or for a double a float32 whose bits are the code (6004 reads as 8.41e-42). Those land in `not_applicable`; `get()` raises `ommm.NotApplicable` for them.
 - The telegraph's signal fields are stale from Commander's start until each mode's output signals are set; every write re-selects them first ([Before every write](writes.md#before-every-write)).
-- Each call waits up to 3 s for Commander's answer. Every Set and Auto returns well within it ([quirks.md](quirks.md#every-set-and-auto-returns-when-it-is-done)). A snapshot stops at the first timeout instead of waiting out every remaining read.
+- Each call waits up to 3 s for Commander's answer. Every Set, and every Auto on a model cell, returned well within it ([quirks.md](quirks.md#every-set-and-auto-returns-when-it-is-done)). A snapshot stops at the first timeout instead of waiting out every remaining read.
 - In MATLAB's `jsondecode` a JSON `null` becomes `[]`.
 
 **Two snapshots:** `ommm.trial_record(before, after, writes=(), previous=None)` returns `before`, `after`, `changed` and `between`: every reading and telegraph field that differs, the four meter values left out (they move on their own), as `{"readings" | "telegraph": {name: {"before", "after", "source"}}}`, `source` being `"ommm"` or `"gui"` ([The log and trial records](writes.md#the-log-and-trial-records)). `changed` and `between` are `None` unless both their snapshots are given, for example when one could not be taken.
@@ -158,7 +173,7 @@ Every snapshot records which ommm took it, under `ommm`; `ommm.provenance()` ret
 
 | Key | Holds |
 |---|---|
-| `mode` | `"V-Clamp"`, `"I-Clamp"` or `"I = 0"`, from the telegraph; without one (Demo mode, or a `[]` saved from MATLAB), from the API's `Mode`, and the snapshot blocks |
+| `mode` | `"V-Clamp"`, `"I-Clamp"` or `"I = 0"`, from the telegraph; without one (none came within 1 s, or a `[]` saved from MATLAB), from the API's `Mode`, and the snapshot blocks |
 | `feedback_resistor` | Ω (50e6, 500e6, 5e9, 50e9), from `FeedbackResistorVC1` or `FeedbackResistorIC1` by mode ([indexes](#feedback-resistor-range-indexes)) |
 | `primary`, `secondary` | `signal` (Commander's name, e.g. `Membrane Current`), `api_name` (the API's, e.g. `VC_MEMBCURRENT`), `gain` (telegraph), `scale` at gain 1 ([output scales](#output-scales-at-gain-1)), `units` (`"V/A"` or `"V/V"`), `lpf` (Hz; 1e5 is bypass), `trusted` (false when the scale is unknown or contradicted) |
 | `ext_cmd_sensitivity`, `ext_cmd_units` | the external command sensitivity, V/V in V-Clamp, A/V in I-Clamp; 0 and `None` in I = 0 |
@@ -243,7 +258,7 @@ Neither suite reaches the DLL calls or the telegraph read, which need Windows an
 
 ### The fake
 
-- `ommm.Amplifier(fake=ommm.EXAMPLES / "fake/vclamp.json")` (MATLAB `ommm.Amplifier(Fake=file)`, [Without Commander](matlab.md#without-commander)) serves a saved snapshot in place of Commander, so code that uses ommm runs on any OS, `with` and `load_config` included. ommm ships one snapshot per mode, taken with nothing attached, in `src/ommm/examples/fake/` (`ommm.EXAMPLES / "fake"`): `vclamp.json`, `iclamp.json` and `i0.json`; `other_tab=` (`OtherTab=`) adds one taken with the other tab shown, else that tab holds placeholders. Its `load_config` takes `synthetic.mcc` from the same folder, a test file the amplifier refuses ([mcc.md](mcc.md#the-file)).
+- `ommm.Amplifier(fake=ommm.EXAMPLES / "fake/vclamp.json")` (MATLAB `ommm.Amplifier(Fake=file)`, [Without Commander](matlab.md#without-commander)) serves a saved snapshot in place of Commander, so code that uses ommm runs on any OS, `with` and `load_config` included. ommm ships one snapshot per mode, taken with nothing attached, in `src/ommm/examples/fake/` (`ommm.EXAMPLES / "fake"`): `vclamp.json`, `iclamp.json` and `i0.json`; `other_tab=` (`OtherTab=`) adds one taken with the other tab shown, else that tab holds placeholders. Its `load_config` takes `synthetic.mcc` from the same folder, a test file the amplifier refuses ([mcc.md](mcc.md#the-file)). `amp.fake` is the snapshot it serves, its file made absolute, and `None` on Commander (`a.fake`, `""` on Commander).
 - `amp.gui` is the person at Commander's window, in its labels and units: `amp.gui.set("Primary Output Gain", 7, "x")` types 7, Commander keeps 5, and `amp.get("Primary Output Gain", "x")` reads 5.0; `show_tab`, `mode` and `enable` click a tab, a mode button and a checkbox. A click is not logged, so a trial record puts it down to `"gui"`. On Commander, `amp.gui` raises `AttributeError`.
 - It is a table of values, not a cell: it measures nothing (the Autos, the meters), keeps a continuous value as sent, as float32, where Commander keeps its own steps, and shows no dialogs. What it models, and the knobs a test turns: the docstring of [`src/ommm/testing/fake.py`](../src/ommm/testing/fake.py).
 
@@ -254,7 +269,7 @@ Neither suite reaches the DLL calls or the telegraph read, which need Windows an
 - **Restarts:** `load_config` with files Commander saved, taking the feedback resistor from 5 GΩ to 500 MΩ and to 50 GΩ and back, with Auto Whole Cell and Rs Compensation at 500 MΩ in between; the check against the file after each start, and its second start, over 22 loads of three saved files with a skip among them; closing and starting Commander without a file through `ommm.process`, from Python and MATLAB; V-Clamp Holding through a Commander restart by ommm and by hand, with `reconnect()` and the first writes after it, on a DAQ recording ([what happens](quirks.md#holding-reads-off-after-a-restart)).
 - **The amplifier off and Demo mode:** what ommm does with the amplifier switched off under a running Commander, and with Commander started in Demo mode (clean errors, [quirks.md](quirks.md#connecting-and-restarting)).
 - **MATLAB:** the class, and an acquisition program built on it, saving trial records. The class is a thin layer over the Python (argument handling, units and errors, the Python environment), so `scripts/rig/check_amplifier.py` is the control-by-control check for both; the MATLAB suite on the fake covers the layer, and the MATLAB examples run it on the amplifier. There is no MATLAB counterpart of `check_amplifier.py`, by design.
-- **Examples:** the four scripts in `src/ommm/examples/`, each run whole from Python or MATLAB on the model cell at CELL.
+- **Examples:** the four scripts in `src/ommm/examples/`, each run whole from Python or MATLAB on the model cell at CELL. On an amplifier the active ones stop before their confirmed loads while `setup` is still ommm's example file: point it at your own saved file.
 - **Off the rig:** the Python and MATLAB test suites on macOS against the fake Commander, and the MATLAB suite on Windows; `pytest` also checks Commander's API header when `OMMM_SDK_DIR` is set.
 - **Headstage 2:** alone and beside headstage 1, on the fake from Python and MATLAB. On a 700B, unplugged, and plugged in with nothing on it beside headstage 1 on the model cell: Holding, a gain and a mode change on each headstage; Commander's selection from two handles and from two programs; the tabs; the feedback resistors and meters; the telegraph; `load_config` with a file of both headstages and a file of headstage 1 alone. Not supported.
 - **Not supported:** the MultiClamp 700A.

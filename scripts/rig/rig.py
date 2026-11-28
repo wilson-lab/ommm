@@ -1,7 +1,8 @@
 """check_amplifier.py's harness: the start check, the record, and the put-back.
 
 run() refuses unless told what is on the headstage, nothing or a model cell with its switch's position, which the
-record's header keeps, and unless Commander is in the start state (V-Clamp active, its tab shown, Mode Switching off).
+record's header keeps, and unless Commander is in the start state (V-Clamp active, its tab shown, Mode Switching off,
+both tabs at 5 GΩ, which check_amplifier.py's values to refuse are chosen for, and Irms Meter off).
 The put-back (put_back) writes through Commander's raw, private _set() and _call() and logs each write as one JSON
 line in DIR/writes.jsonl; run() saves one JSON in DIR (--log-dir): a header, both tabs' snapshots at start and end,
 every step taken and seen, and whatever was left changed.
@@ -23,7 +24,8 @@ from pathlib import Path
 
 import ommm
 from ommm.commander import Commander, CommanderError, NotApplicable, changes
-from ommm.settings import MODES, TABS, tab_for
+from ommm.settings import FEEDBACK_RESISTORS, MODES, TABS, feedback_resistor, tab_for
+from ommm.summary import rf
 
 VCLAMP, ICLAMP, ICLAMPZERO = MODES  # the MCCMSG_MODE_* ids
 MSGTIMEOUT = 6005  # MCCMSG_ERROR_MSGTIMEOUT: Commander did not answer within the DLL's timeout
@@ -453,6 +455,14 @@ def run(probe: str, question: str, body) -> Path:
         found = {"Mode": c.get("Mode"), "tab": shown_tab(), "Ext": is_checked(EXT), "ModeSwitchEnable": c.get("ModeSwitchEnable")}
         if found != {"Mode": VCLAMP, "tab": TABS.index("V-Clamp"), "Ext": False, "ModeSwitchEnable": False}:
             sys.exit(f"{probe}: start with V-Clamp active, its tab shown and Mode Switching off; found {found}")
+        resistors = {tab: FEEDBACK_RESISTORS.get(c.get(feedback_resistor(tab, c.channel))) for tab in TABS}
+        if set(resistors.values()) != {5e9}:
+            found = ", ".join(f"{tab} {rf(ohms)}" for tab, ohms in resistors.items())
+            sys.exit(f"{probe}: start with both tabs at 5 GΩ, which the check's values to refuse are chosen for: load a "
+                     f"5 GΩ setup first (docs/mcc.md); found {found}")
+        if c.get("MeterIrmsEnable"):
+            sys.exit(f"{probe}: start with Irms Meter off: the check reads the current meter in V-Clamp, which ommm refuses "
+                     "while Irms shows in its place")
         p = Probe(probe, question, c, args.log_dir, attached)
         print(f"{probe}: {question}\n  {attached}", flush=True)
         p.start = on_each_tab(lambda: snapshot_of_tab_shown(c))

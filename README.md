@@ -26,7 +26,7 @@ uv sync --locked
 uv tool install --editable .    # optional: the `ommm` command
 ```
 
-Commander's install folder: `OMMM_SDK_DIR` (default `C:\Program Files\Molecular Devices\MultiClamp 700B Commander`; [what ommm takes from it](docs/install-and-testing.md#commanders-install-folder-ommm_sdk_dir)). Releases are listed in the [changelog](CHANGELOG.md).
+Commander's install folder: `OMMM_SDK_DIR` (default `C:\Program Files\Molecular Devices\MultiClamp 700B Commander`; [what ommm takes from it](docs/install-and-testing.md#commanders-install-folder-ommm_sdk_dir)). The write log's folder: `OMMM_LOG_DIR` (default `~/ommm-logs`; [when to set it](docs/install-and-testing.md#the-write-logs-folder-ommm_log_dir)). Releases are listed in the [changelog](CHANGELOG.md).
 
 To update: [Update](docs/install-and-testing.md#update), then restart MATLAB.
 
@@ -94,7 +94,7 @@ A refused write is an error, `ommm:refused`, with the reason ([Errors](docs/matl
 
 Longer, commented examples, a cell at a time, in `src/ommm/examples/`: `ommm_example_passive.py` and `.m` (reads only), `ommm_example_active.py` and `.m` (writes and a settings file). Each also runs on the fake. They ship with the package: `ommm.EXAMPLES` is their folder, and `ommm --examples DIR` copies it to a new folder `DIR` of your own.
 
-Command line: `ommm --summary` prints the box, `ommm > snapshot.json` saves the whole snapshot, and `ommm --summary snapshot.json` prints a saved one on any OS ([The `ommm` command](docs/install-and-testing.md#the-ommm-command-and-the-scripts)).
+Command line: `ommm --summary` prints the box, `ommm --out snapshot.json` saves the whole snapshot as UTF-8 (Windows PowerShell's `>` writes UTF-16), and `ommm --summary snapshot.json` prints a saved one on any OS ([The `ommm` command](docs/install-and-testing.md#the-ommm-command-and-the-scripts)).
 
 ## Scope
 

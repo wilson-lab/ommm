@@ -46,6 +46,38 @@ def test_off_windows_commander_says_how_to_read_a_saved_snapshot():
         Commander()
 
 
+@pytest.mark.parametrize("present, missing", [
+    ([], "AxMultiClampMsg.h"),
+    (["AxMultiClampMsg/AxMultiClampMsg.h"], "AxMultiClampMsg.dll"),
+    (["AxMultiClampMsg/AxMultiClampMsg.h", "AxMultiClampMsg/AxMultiClampMsg.dll"], "MultiClampBroadcastMsg.hpp"),
+])
+def test_a_missing_commander_file_names_it_and_ommm_sdk_dir(tmp_path, monkeypatch, present, missing):
+    # the telegraph header too, though it is read only at the first telegraph; checked before the DLL loads, so any OS
+    monkeypatch.setenv("OMMM_SDK_DIR", str(tmp_path))
+    for name in present:
+        path = tmp_path / "3rd Party Support" / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.touch()
+    with pytest.raises(CommanderError, match=f"^{re.escape(missing)} is not in .*: set OMMM_SDK_DIR to Commander's install folder$"):
+        commander.DLL()
+
+
+def test_a_commander_dll_that_does_not_load_names_ommm_sdk_dir(tmp_path, monkeypatch):
+    # a 32-bit DLL, say: Windows refuses it when it loads
+    def refused(path):
+        raise OSError(f"[WinError 193] %1 is not a valid Win32 application: {path!r}")
+
+    monkeypatch.setenv("OMMM_SDK_DIR", str(tmp_path))
+    for name in ("AxMultiClampMsg/AxMultiClampMsg.h", "AxMultiClampMsg/AxMultiClampMsg.dll", commander.telegraph.HEADER):
+        path = tmp_path / "3rd Party Support" / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('#define MCCMSG_APIVERSION_STR "1.0.0.9"\n')
+    monkeypatch.setattr(commander.ctypes, "WinDLL", refused, raising=False)  # no WinDLL off Windows
+    with pytest.raises(CommanderError, match=r"AxMultiClampMsg\.dll does not load \(\[WinError 193\] .*\): set OMMM_SDK_DIR to "
+                                             r"Commander's install folder$"):
+        commander.DLL()
+
+
 def test_commander_not_running_says_to_start_it():
     # the fake gives the same text on any OS and over SSH; only the real DLL looks at this machine
     fake = FakeCommander(VCLAMP)

@@ -101,3 +101,28 @@ def test_the_meters_take_a_unit_of_what_they_show(tmp_path):
     with pytest.raises(ValueError, match="^MeterValue1 shows resistance now: MOhm or GOhm, not mV$"):
         amp.get("MeterValue1", "mV")
     assert amp.get("MeterValue1", "MOhm") == amp.get("MeterValue1", "M\u2126")
+
+
+def test_the_current_meter_is_refused_in_v_clamp_while_irms_is_on(tmp_path):
+    amp = amplifier(tmp_path)
+    amp.enable("Irms Meter", True)
+    with pytest.raises(ommm.NotApplicable, match="^MeterValue2 shows the RMS current noise, not the current, while Irms Meter is on"):
+        amp.get("MeterValue2", "pA")
+    assert amp.get("MeterValue1", "mV") == pytest.approx(-0.22888184)  # the potential's meter is unchanged
+    amp.enable("Irms Meter", False)
+    assert amp.get("MeterValue2", "pA") == pytest.approx(-0.80871583)
+
+
+def test_the_current_meter_reads_in_i_clamp_and_i_0_with_irms_left_on(tmp_path):
+    amp = amplifier(tmp_path)
+    amp.enable("Irms Meter", True)
+    for mode in ("I = 0", "I-Clamp"):
+        amp.set_mode(mode)
+        assert amp.commander.get("MeterIrmsEnable") is True  # the fake keeps it, above the tabs
+        assert isinstance(amp.get("MeterValue2", "pA"), float)
+
+
+def test_an_irms_checkbox_that_does_not_apply_leaves_the_current_meter_readable(tmp_path):
+    amp = amplifier(tmp_path)
+    amp.commander.dll.values[(None, "MeterIrmsEnable")] = 6004  # INVALIDPARAMETER, handed back as its value
+    assert amp.get("MeterValue2", "pA") == pytest.approx(-0.80871583)

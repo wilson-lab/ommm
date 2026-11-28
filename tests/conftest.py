@@ -43,14 +43,17 @@ def after_each_set(amp: Amplifier, then):
 
 def from_matlab(value, key: str | None = None):
     """A snapshot, log line or list of them as MATLAB hands it back: jsondecode, a.snapshot()'s struct([]) for no errors
-    or not_applicable, then jsonencode, which writes every null and struct([]) as [] and a one-number list as the
-    number."""
+    or not_applicable, then jsonencode, which writes every null and struct([]) as [], a one-number list as the
+    number, and a whole number below a million with no point (5000.0 as 5000, 1e6 as 1.0E+6), so Python reads it
+    back as an int."""
     if value is None or (key in ("errors", "not_applicable") and value == {}):
         return []
     if isinstance(value, dict):
         return {name: from_matlab(item, name) for name, item in value.items()}
     if isinstance(value, list | tuple):
         if len(value) == 1 and isinstance(value[0], int | float) and key != "disagreements":
-            return value[0]
+            return from_matlab(value[0])
         return [from_matlab(item) for item in value]
+    if isinstance(value, float) and value.is_integer() and abs(value) < 1e6:
+        return int(value)
     return value

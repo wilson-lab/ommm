@@ -9,6 +9,7 @@ snapshots, so code that uses ommm runs without an amplifier, on any OS. Users ma
     fake.gui.enable("Holding", True)             # ... a checkbox, by its name on the window
     fake.dll.calls                               # every API call made since, as (name, *inputs)
     fake.dll.fail_at(2)                          # the second call from now times out (6005)
+    fake.dll.interrupt_at(2)                     # the second call from now is done, then Ctrl+C lands
     amp = ommm.Amplifier(commander=fake)         # an Amplifier on a fake made by hand
 
     both = FakeCommander("vclamp.json", other_headstage="iclamp.json")  # headstage 2 from a snapshot of either
@@ -57,8 +58,9 @@ What it models, and only this:
   Tau by 20.
 - Pipette Offset: one per tab, the API's I-Clamp value the panel's negated (gui.set takes the panel's); a Set is held
   within ±100 mV of the last Auto's level; Auto Pipette Offset in V-Clamp sets both tabs' offsets and levels to
-  `dll.found_offsets`, and in I-Clamp adds V-Clamp's offset to V-Clamp's Holding, turns Holding on and takes the
-  offset to 0 V, or as near as its level allows. The other Autos turn their checkbox on and measure nothing.
+  `dll.found_offsets` and adds 15 µV to I-Clamp's Slow Current Injection level, which the amplifier moves by a few
+  µV, and in I-Clamp adds V-Clamp's offset to V-Clamp's Holding, turns Holding on and takes the offset to 0 V, or as
+  near as its level allows. The other Autos turn their checkbox on and measure nothing.
 - Each Set of Mode Switching toggles it; with it on, SetMode changes nothing and the mode buttons are greyed out.
 - The telegraph reports the active mode, whichever tab is shown; the mode, gains, lowpass filters and Whole Cell reach
   it, checkboxes do not. Its signal fields stay the snapshot's, in every mode, until that mode's output signals are
@@ -86,14 +88,15 @@ The knobs a test turns are on the handle in use, `amp.commander.dll`:
 
     amp.commander.dll.calls                    # every API call on this handle, in order, as (name, *inputs)
     amp.commander.dll.fail_at(2)               # the second call from now times out (6005), once
+    amp.commander.dll.interrupt_at(2)          # the second call from now is done, then raises KeyboardInterrupt, once
     amp.commander.dll.dead = True              # Commander gone: no window, every call fails with 6002, no telegraph
     amp.commander.dll.offset_levels["V-Clamp"] = -0.0286  # the level the last Auto Pipette Offset found
     amp.commander.dll.found_offsets["V-Clamp"] = -0.0286  # what the next Auto Pipette Offset in V-Clamp finds
     amp.commander.dll.headstages               # what FindFirst/FindNextMultiClamp list
 
 offset_levels and found_offsets are 0 V, placeholders, unless a test sets them. A FakeCommander's own `dll` is the
-handle in use only until load_config(..., confirmed=True) or reconnect() takes a new one: after that, calls, fail_at
-and dead on the old one change nothing, and nothing says so. The values Commander holds, offset_levels and
+handle in use only until load_config(..., confirmed=True) or reconnect() takes a new one: after that, calls, fail_at,
+interrupt_at and dead on the old one change nothing, and nothing says so. The values Commander holds, offset_levels and
 found_offsets carry over to the new handle; amp.gui follows it by itself.
 
 gui.set and gui.enable take the labels and units of docs/coming-from-commander.md, or the API names. What Commander's
@@ -335,7 +338,8 @@ class FakeDLL:
     """Commander's state behind the one call(name, *args) that ommm.commander.Commander sends everything through, as
     commander.DLL does. `values` maps (tab, stem) to what Commander hands back on the selected headstage: (None, stem)
     above the tabs, and (tab, stem, primary signal) for what is kept per Primary Output signal; `states` holds each
-    headstage's. Knobs a test may turn: `fail_at`, `dead`, `headstages`, `found_offsets`, `offset_levels`."""
+    headstage's. Knobs a test may turn: `fail_at`, `interrupt_at`, `dead`, `headstages`, `found_offsets`,
+    `offset_levels`."""
 
     values = per_headstage("values")
     shown = per_headstage("shown")
@@ -350,6 +354,7 @@ class FakeDLL:
         self.selected = None  # the headstage SelectMultiClamp chose on this handle
         self.calls = []  # (name, *inputs) for every call, out-parameters left out
         self.failures = {}  # call number -> the error code it fails with
+        self.interrupts = set()  # call numbers that raise KeyboardInterrupt once done
         # Commander gone: every call fails with 6002, as a handle from before a restart does; no telegraph comes, and
         # on the newest handle its window is gone too
         self.dead = False
@@ -461,6 +466,11 @@ class FakeDLL:
         """The k-th call from now fails with `code` and changes nothing, once: 6005 is Commander not answering in time."""
         self.failures[len(self.calls) + k] = code
 
+    def interrupt_at(self, k: int):
+        """The k-th call from now does what it does, then raises KeyboardInterrupt, once: Ctrl+C landing as Python
+        gets the call back, after the Set or button reached Commander (fail_at's call changes nothing)."""
+        self.interrupts.add(len(self.calls) + k)
+
     def call(self, name: str, *args):
         """As commander.DLL.call: MCCMSG_<name>(handle, *args, &error), raising CommanderError on failure."""
         _, params = self.functions[name]  # a function the header lacks raises KeyError, as on Commander
@@ -493,6 +503,9 @@ class FakeDLL:
             self.press(name)
         elif name == "QuickSelectButton":
             raise NotImplementedError("the fake has no Quick Select: it loads a .mcc file")
+        if len(self.calls) in self.interrupts:
+            self.interrupts.remove(len(self.calls))
+            raise KeyboardInterrupt
 
     def reading(self, getter: str, *meter: int):
         """What a getter hands back: from the headstage it names (a feedback resistor, a meter), else the selected one;
@@ -614,6 +627,8 @@ class FakeDLL:
         if action == "AutoPipetteOffset" and self.shown == VC:  # both tabs' offsets and levels
             for tab, found in self.found_offsets.items():
                 self.values[(tab, "PipetteOffset")] = self.offset_levels[tab] = float32(found)
+            slow = (IC, "SlowCurrentInjLevel")  # the amplifier moves it a few µV
+            self.values[slow] = float32(self.values[slow] + 15e-6)
         elif action == "AutoPipetteOffset":  # with nothing attached it adds V-Clamp's offset to V-Clamp's Holding,
             # turns Holding on and takes the offset to 0 V, or as near as its level allows; no I-Clamp reading changes
             offset, level = self.values[(VC, "PipetteOffset")], self.offset_levels[VC]
@@ -779,7 +794,7 @@ class Gui:
 
 
 class FakeCommander(Commander):
-    """Commander without Commander, from saved snapshots (files `ommm > snapshot.json` wrote, or their dicts):
+    """Commander without Commander, from saved snapshots (files `ommm --out snapshot.json` wrote, or their dicts):
 
         fake = FakeCommander(ommm.EXAMPLES / "fake/vclamp.json", other_tab=ommm.EXAMPLES / "fake/iclamp.json")
         fake.gui.set("Primary Output Gain", 7, "x")  # fake.get("PrimarySignalGain") then reads 5.0, as on Commander

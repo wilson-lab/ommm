@@ -128,10 +128,11 @@ HINTS = {  # why Commander may keep another value than the one sent
     "BuzzDuration": "Commander keeps one of its steps from 50 µs to 500 ms (right-click the field in Commander to see them)",
 }
 # Auto Pipette Offset changes the other tab too, which the API reads only in that tab's mode: pressed in V-Clamp, the
-# I-Clamp offset; in I-Clamp, the V-Clamp offset on a model cell, V-Clamp's Holding with nothing attached; I = 0 as
-# I-Clamp, whose tab it shares, is a guess: not tried
+# I-Clamp offset, and its Slow Current Injection level by a few µV; in I-Clamp, the V-Clamp offset on a model cell,
+# V-Clamp's Holding with nothing attached; I = 0 as I-Clamp, whose tab it shares, is a guess: not tried
 OTHER_TAB = {
-    VC: "it also moved the I-Clamp tab's Pipette Offset, which ommm reads in I-Clamp",
+    VC: "it also moved the I-Clamp tab's Pipette Offset, and its Slow Current Injection level by a few µV, which ommm "
+        "reads in I-Clamp",
     IC: "it also changes the V-Clamp tab's Pipette Offset, or with nothing attached its Holding, which ommm reads in V-Clamp",
 }
 
@@ -147,9 +148,10 @@ class Write:
     Tau with Tau x20, Correction with Prediction, the mode with Mode Switching); for a button, set_mode and
     load_config, the rest of what a snapshot shows changed. outcome: planned; ok; adjusted (Commander stored it on its
     step, within the row's resolution); mismatch (it read back another value); refused (nothing sent); unknown (sent, and
-    Commander did not answer in time, or no telegraph came to check it); error (Commander refused the call). t: when
-    the first Set or button was sent; each log line has its own. For load_config, `before`, `target` and `after` hold
-    the mode and both feedback resistors, as the API reads them: now, in the file, and after the load."""
+    Commander did not answer in time, no telegraph came to check it, or an interrupt such as Ctrl+C stopped its checks);
+    error (Commander refused the call). t: when the first Set or button was sent; each log line has its own. For
+    load_config, `before`, `target` and `after` hold the mode and both feedback resistors, as the API reads them: now,
+    in the file, and after the load."""
 
     label: str
     stem: str | None = None
@@ -177,7 +179,12 @@ class WriteError(RuntimeError):
 
 
 class Refusal(Exception):
-    """Why a write cannot go; it becomes a refused Write and never leaves the Amplifier."""
+    """Why a write cannot go; it becomes a refused Write and never leaves the Amplifier. `code` is Commander's error
+    code when a failed call is why, for the log."""
+
+    def __init__(self, reason: str, code: int | None = None):
+        super().__init__(reason)
+        self.code = code
 
 
 def now() -> str:
@@ -265,13 +272,24 @@ def checkbox_refusal(name: str, mode: str) -> str:
 
 
 def unwritable(folder: Path) -> str | None:
-    """Why the log could not be written in `folder`, None if it could; makes nothing, as the first line makes the folder."""
+    """Why the log could not be written in `folder`, None if it could; leaves nothing behind, as the first line makes
+    the folder."""
     existing = next((path for path in (folder, *folder.parents) if path.exists()), None)
     if existing is None:  # an unmapped drive or an offline share
         return f"{folder.anchor or folder} does not exist"
     if not existing.is_dir():
         return f"{existing} is a file"
-    if not os.access(existing, os.W_OK):
+    # what the first line makes there, a file in the folder or the folder, made and removed: on Windows os.access says
+    # every folder is writable whatever its permissions, and C:\ lets an account make a folder but not a file
+    probe = existing / f".ommm-probe-{os.urandom(4).hex()}"
+    try:
+        if existing == folder:
+            probe.touch(exist_ok=False)
+            probe.unlink()
+        else:
+            probe.mkdir()
+            probe.rmdir()
+    except OSError:
         return f"{existing} is not writable"
     return None
 
@@ -385,13 +403,14 @@ def unapplied(target: dict, held: dict, after: dict, headstage: int) -> list[str
 class Amplifier:
     """One headstage of the one MultiClamp 700B Commander runs, 1 or 2 (found and selected at connect), read and set
     through Commander as its own controls are. Every write goes to an append-only log, `<log_dir>/<serial>.jsonl` for
-    headstage 1 and `<serial>_headstage2.jsonl` for headstage 2 (default ~/ommm-logs), a relative log_dir taken from the
-    working folder when the Amplifier is made. `fake` serves a saved snapshot instead of Commander (ommm's fake,
-    ommm.testing.FakeCommander), `other_tab` the snapshot of its other tab. `commander` is for what fake= cannot say: a
-    FakeCommander made with other_headstage=, another handle on one (fake.handle(2)) or a handle already open; its
-    headstage must be the Amplifier's. On a fake the log goes to a new temporary folder, made by its first line, unless
-    given a log_dir. A log_dir ommm could not make or write to is refused here, before any write reaches the amplifier
-    without its log line."""
+    headstage 1 and `<serial>_headstage2.jsonl` for headstage 2, a relative log_dir taken from the working folder when
+    the Amplifier is made. Without a log_dir, the log goes to OMMM_LOG_DIR, an absolute folder, or else ~/ommm-logs; on
+    a fake, to a new temporary folder, made by its first line. `fake` serves a saved snapshot instead of Commander
+    (ommm's fake, ommm.testing.FakeCommander), `other_tab` the snapshot of its other tab; amp.fake keeps that snapshot,
+    its file made absolute, as MATLAB's a.fake, and is None without fake=, as on Commander. `commander` is for what
+    fake= cannot say: a FakeCommander made with other_headstage=, another handle on one (fake.handle(2)) or a handle
+    already open; its headstage must be the Amplifier's. A log folder ommm could not make or write to is refused here,
+    before any write reaches the amplifier without its log line."""
 
     def __init__(self, headstage: int = 1, *, log_dir: str | Path | None = None, fake: str | Path | dict | None = None,
                  other_tab: str | Path | dict | None = None, commander: Commander | None = None):
@@ -407,20 +426,33 @@ class Amplifier:
             raise ValueError(f"the commander given is on headstage {commander.channel}, not {headstage!r}: pass "
                              f"headstage={commander.channel}")
         self.commander = commander
+        self.fake = Path(fake).resolve() if isinstance(fake, str | Path) else fake
         on_fake = isinstance(commander.dll, ommm.testing.fake.FakeDLL)
         # what closes and starts Commander: the fake's FakeProcess, or Commander's program through Windows
         self.process = commander.dll.process if on_fake else PROCESS
+        # _log_dir_from: what chose the folder, as a refusal of it names it, so its remedy is one that works there
         if log_dir:
-            log_dir = Path(log_dir).expanduser()
-        elif on_fake:  # never a real amplifier's log: its snapshot may be your rig's
+            log_dir, self._log_dir_from = Path(log_dir).expanduser(), "log_dir"
+        elif on_fake:  # never a real amplifier's log, nor OMMM_LOG_DIR: its snapshot may be your rig's
             log_dir = Path(tempfile.gettempdir()) / f"ommm-fake-{os.urandom(4).hex()}"
+            self._log_dir_from = "the fake's log folder"
         else:
-            log_dir = LOG_DIR
+            named = os.environ.get("OMMM_LOG_DIR")
+            log_dir = Path(named or LOG_DIR).expanduser()
+            self._log_dir_from = "OMMM_LOG_DIR" if named else "the default log folder"
+            if not log_dir.is_absolute():  # one log for every program, whatever its working folder
+                raise ValueError(f"OMMM_LOG_DIR must be an absolute folder, such as C:\\ommm-logs, not {log_dir}: each "
+                                 "program would take it from its own working folder")
         # one log, wherever a later chdir (MATLAB's cd) goes, and the same path when MATLAB passes it back on a reconnect
         self.log_dir = log_dir.resolve()
         if reason := unwritable(self.log_dir):
-            raise ValueError(f"log_dir {self.log_dir} cannot hold the write log ({reason}): give log_dir (LogDir= in "
-                             "MATLAB) a folder ommm can write to")
+            remedy = {  # another log_dir would split the log every program shares through OMMM_LOG_DIR
+                "OMMM_LOG_DIR": "make it writable for this account, or set OMMM_LOG_DIR to a folder every program's "
+                                "account can write to",
+                "the default log folder": "set OMMM_LOG_DIR to a folder ommm can write to, or give log_dir (LogDir= in "
+                                          "MATLAB) one",
+            }.get(self._log_dir_from, "give log_dir (LogDir= in MATLAB) a folder ommm can write to")
+            raise ValueError(f"{self._log_dir_from} {self.log_dir} cannot hold the write log ({reason}): {remedy}")
         if on_fake:  # a FakeProcess made after this one would go unused: it refuses
             self.process.held = True
 
@@ -454,14 +486,15 @@ class Amplifier:
         get("Holding", "pA") is refused. The mode comes as its name ("V-Clamp"), an output signal as Commander's name
         for it ("Membrane Current"), and a checkbox as True or False, by the name enable takes (get("Seal Test")) or its
         API name; a label is matched first, so "Holding" is the value. The meters: MeterValue1, the potential, or the
-        resistance while the Resistance meter is on; MeterValue2, the current; on headstage 2, MeterValue3 and 4. Reads
-        the active mode's tab, which it brings to the front first."""
+        resistance while the Resistance meter is on; MeterValue2, the current, which raises NotApplicable in V-Clamp
+        while Irms Meter is on, since the meter then shows the RMS current noise; on headstage 2, MeterValue3 and 4.
+        Reads the active mode's tab, which it brings to the front first."""
         c = self.commander
         c.show_active_tab()
         mode = MODES[c.get("Mode")]
         meters = METERS[self.headstage]
         if label.lower() in meters:
-            return self._meter(meters[label.lower()], unit)
+            return self._meter(meters[label.lower()], unit, mode)
         if other := next((n for n in HEADSTAGES if label.lower() in METERS[n]), None):
             potential, current = (f"MeterValue{index + 1}" for index in meters.values())
             raise ValueError(f"{label} is headstage {other}'s meter; headstage {self.headstage}'s are {potential}, the "
@@ -496,8 +529,9 @@ class Amplifier:
             return MODES[value]
         return signal_name(row, value) if row.kind == "enum" else value
 
-    def _meter(self, index: int, unit: str | None) -> float:
-        """A meter's reading, whose meaning changes about 0.5 s after the Resistance checkbox does."""
+    def _meter(self, index: int, unit: str | None, mode: str) -> float:
+        """A meter's reading, whose meaning changes about 0.5 s after the Resistance or Irms checkbox does: a read just
+        after either goes off can still give what the meter showed with it on."""
         if index % 2 == 0:  # the potential's
             try:
                 shows = "resistance" if self.commander.get("MeterResistEnable") else "voltage"
@@ -505,6 +539,14 @@ class Amplifier:
                 shows = "voltage"
         else:
             shows = "current"
+            try:
+                irms = mode == VC and self.commander.get("MeterIrmsEnable")  # Irms is V-Clamp's alone
+            except NotApplicable:
+                irms = False
+            if irms:
+                raise NotApplicable("get", None, f"MeterValue{index + 1} shows the RMS current noise, not the current, "
+                                    'while Irms Meter is on: turn it off, enable("Irms Meter", on) with on false, and '
+                                    "read about 0.5 s later")
         found = known_unit(unit)
         if found is None or found[0] != shows:
             raise ValueError(f"MeterValue{index + 1} shows {shows} now: {units_wanted(shows, METER_UNITS[shows], unit)}")
@@ -525,12 +567,16 @@ class Amplifier:
         """What set() with these arguments would do, from fresh reads: a Write whose outcome is planned, its reason the
         question in the caller's unit ("Holding 0 mV → -40 mV (V-Clamp)"), or refused, with why. Sends nothing and logs
         nothing; set() keeps the same reason, so its Write and log line show the change."""
+        return self._plan(label, value, unit, step, expect)[0]
+
+    def _plan(self, label: str, value, unit: str | None, step, expect) -> tuple[Write, int | None]:
+        """plan()'s Write, and the error code of the failed call that refused it, for set()'s log line."""
         fields = {"label": label, "user_value": value, "unit": unit}
         try:
             self._check_set(fields, step, expect)
         except Refusal as refusal:
-            return Write(**fields | {"outcome": "refused", "reason": str(refusal)}, t=now())
-        return Write(**fields, t=now())
+            return Write(**fields | {"outcome": "refused", "reason": str(refusal)}, t=now()), refusal.code
+        return Write(**fields, t=now()), None
 
     def set(self, label: str, value, unit: str | None = None, *, step=None, expect=None) -> Write:
         """Set a value by Commander's label, in a unit that suits the active mode: set("Holding", -60, "mV"); an output
@@ -542,16 +588,16 @@ class Amplifier:
         dialog showed. Every number takes a unit (a gain's is x), so a step or expect is never without one; an output
         signal takes no step, and its expect is a signal's name. Returns the Write, ok or adjusted; raises WriteError
         for any other outcome, logged too."""
-        write = self.plan(label, value, unit, step=step, expect=expect)
+        write, code = self._plan(label, value, unit, step, expect)
         if write.outcome == "refused":
-            raise self._failed(write)
+            raise self._failed(write, code)
         self._refresh_if_stale()
         row = find(write.label, write.mode)
         last, adjusted, also, t = write.before, False, {}, None
         for i, target in enumerate(write.steps):
             step = replace(write, before=last)
             if i and (changed := self._changed_since(write, last)):  # after the earlier steps were sent
-                sent = self._logged(replace(step, target=target, outcome="refused", reason=changed, t=now()))
+                sent = self._logged(replace(step, target=target, outcome="refused", reason=str(changed), t=now()), changed.code)
             else:
                 sent = self._send(step, target, row.resolution.get(write.mode, 0.0), row.stem in CHECKED)
                 also = merged(also, sent.also)
@@ -592,7 +638,7 @@ class Amplifier:
             if on:
                 self._check_turning_on(label, stem, mode, depends)
         except Refusal as refusal:
-            raise self._failed(Write(**fields | {"outcome": "refused", "reason": str(refusal)}, t=now())) from None
+            raise self._failed(Write(**fields | {"outcome": "refused", "reason": str(refusal)}, t=now()), refusal.code) from None
         write = Write(**fields, steps=(on,), t=now())
         if stem == "ModeSwitchEnable" and write.before == on:
             return replace(write, steps=(), after=on, outcome="ok", reason="already so: nothing sent, since each Set flips it")
@@ -607,7 +653,7 @@ class Amplifier:
         settings, set first: set("Zap Duration", 0.5, "ms"). The Write's `also` is what a snapshot shows changed,
         the button's result; Auto Pipette Offset also changes the other tab, seen when that mode is read.
         Raises WriteError unless Commander took it; after a timeout it waits the button's longest duration, then
-        reads, and never presses again."""
+        reads, and never presses again. An interrupt from the press on (Ctrl+C) is logged first, unknown, then raised."""
         fields = {"label": name}
         try:
             depends = self._preflight()
@@ -625,28 +671,34 @@ class Amplifier:
             if row.stem == "AutoWholeCellComp":
                 self._check_whole_cell(depends)
         except Refusal as refusal:
-            raise self._failed(Write(**fields | {"outcome": "refused", "reason": str(refusal)}, t=now())) from None
+            raise self._failed(Write(**fields | {"outcome": "refused", "reason": str(refusal)}, t=now()), refusal.code) from None
         self._refresh_if_stale()
         try:
             before, t = self.commander.snapshot(), now()
         except CommanderError as error:
-            raise self._failed(Write(**fields | {"outcome": "refused", "reason": f"no snapshot before it: {error}"}, t=now())) from None
-        outcome, reason, code = "ok", None, None
+            raise self._failed(Write(**fields | {"outcome": "refused", "reason": f"no snapshot before it: {error}"}, t=now()),
+                               error.code) from None
+        outcome, reason, code, also = "ok", None, None, {}
         try:
-            self.commander._call(row.stem)
-        except CommanderError as error:
-            code = error.code
-            if code == MSGTIMEOUT:
-                time.sleep(TIMED_OUT_WAIT_S.get(row.label, 3.0))
-                outcome, reason = "unknown", "Commander did not answer in time, so it may or may not have run; not pressed again"
-            else:
-                outcome, reason = "error", str(error)
-        try:
-            also = flat(snapshot_changes(before, self.commander.snapshot()))
-        except CommanderError as error:
-            also = {}
-            if outcome == "ok":
-                outcome, reason, code = "unknown", f"pressed, but the snapshot after it failed: {error}", error.code
+            try:
+                self.commander._call(row.stem)
+            except CommanderError as error:
+                code = error.code
+                if code == MSGTIMEOUT:
+                    outcome, reason = "unknown", "Commander did not answer in time, so it may or may not have run; not pressed again"
+                    time.sleep(TIMED_OUT_WAIT_S.get(row.label, 3.0))
+                else:
+                    outcome, reason = "error", str(error)
+            try:
+                also = flat(snapshot_changes(before, self.commander.snapshot()))
+            except CommanderError as error:
+                if outcome == "ok":
+                    outcome, reason, code = "unknown", f"pressed, but the snapshot after it failed: {error}", error.code
+        except BaseException as error:  # Ctrl+C once the button may have run: its line first, and never pressed again
+            stopped = f"interrupted ({type(error).__name__}) before the snapshot after it"
+            reason = f"{reason}; {stopped}" if reason else f"pressed, then {stopped}, so what it did is not known; not pressed again"
+            self._logged(Write(**fields, outcome="error" if outcome == "error" else "unknown", reason=reason, t=t), code)
+            raise
         if outcome == "ok" and row.stem == "AutoPipetteOffset":
             reason = OTHER_TAB[tab_for(mode)]
         write = self._logged(Write(**fields, also=also, outcome=outcome, reason=reason, t=t), code)
@@ -669,7 +721,7 @@ class Amplifier:
                 raise Refusal(str(error)) from None
             depends = self._preflight()
         except Refusal as refusal:
-            raise self._failed(Write(**fields | {"outcome": "refused", "reason": str(refusal)}, t=now())) from None
+            raise self._failed(Write(**fields | {"outcome": "refused", "reason": str(refusal)}, t=now()), refusal.code) from None
         current = MODES[depends["Mode"]]
         path = [I0, target] if {current, target} == {VC, IC} else [target] if target != current else []
         fields |= {"mode": current, "before": depends["Mode"], "target": MODE_IDS[target],
@@ -679,12 +731,13 @@ class Amplifier:
         try:
             before = self.commander.snapshot()
         except CommanderError as error:
-            raise self._failed(Write(**fields | {"outcome": "refused", "reason": f"no snapshot before it: {error}"}, t=now())) from None
+            raise self._failed(Write(**fields | {"outcome": "refused", "reason": f"no snapshot before it: {error}"}, t=now()),
+                               error.code) from None
         last, t = depends["Mode"], None
         for i, step in enumerate(path):
             write = Write(**fields | {"mode": MODES[last], "before": last}, t=now())
             if i and (changed := self._changed_since(write, last)):
-                raise self._failed(replace(write, target=MODE_IDS[step], outcome="refused", reason=changed))
+                raise self._failed(replace(write, target=MODE_IDS[step], outcome="refused", reason=str(changed)), changed.code)
             sent = self._send(write, MODE_IDS[step], telegraph=True)
             if sent.outcome != "ok":
                 raise WriteError(sent)
@@ -703,7 +756,7 @@ class Amplifier:
         try:
             depends = self._preflight(telegraph=False)
         except Refusal as refusal:
-            raise self._failed(Write(label="make_safe", outcome="refused", reason=str(refusal), t=now())) from None
+            raise self._failed(Write(label="make_safe", outcome="refused", reason=str(refusal), t=now()), refusal.code) from None
         mode, writes = MODES[depends["Mode"]], []
         for stem in SAFE:
             row = next((row for row in SETTINGS if stem in (row.enable, row.stem) and mode in row.modes), None)
@@ -715,7 +768,7 @@ class Amplifier:
             try:
                 before = self._read(stem)
             except Refusal as refusal:
-                raise self._failed(replace(write, outcome="refused", reason=f"{refusal}{done}")) from None
+                raise self._failed(replace(write, outcome="refused", reason=f"{refusal}{done}"), refusal.code) from None
             if not before:
                 continue
             sent = self._send(replace(write, before=before), False)
@@ -757,7 +810,7 @@ class Amplifier:
         except Refusal as refusal:
             write = Write(**fields | {"outcome": "refused", "reason": str(refusal)}, t=now())
             if confirmed is not False:  # a confirmed=1 meant to load: it fails as loudly as confirmed=True
-                raise self._failed(write) from None
+                raise self._failed(write, refusal.code) from None
             return write
         return self._load_config(plan, text, copy) if confirmed else plan
 
@@ -801,7 +854,7 @@ class Amplifier:
         try:
             self.commander.show_active_tab()
         except CommanderError as error:
-            raise Refusal(str(error)) from None
+            raise Refusal(str(error), error.code) from None
         depends = {"Mode": self._read("Mode"), "ModeSwitchEnable": self._read("ModeSwitchEnable")}
         if depends["ModeSwitchEnable"] and not ext_ok:
             raise Refusal(EXT_ON)
@@ -1002,7 +1055,7 @@ class Amplifier:
         try:
             other = self.commander.other_headstage("Mode", "HoldingEnable", "Holding")
         except CommanderError as error:
-            raise Refusal(f"could not read headstage {other_n}, which the restart reaches too: {error}") from None
+            raise Refusal(f"could not read headstage {other_n}, which the restart reaches too: {error}", error.code) from None
         holding = find("Holding")
         other_mode = other and MODES.get(other["Mode"])
         other_holds = other_mode in holding.modes and other["HoldingEnable"]
@@ -1014,8 +1067,12 @@ class Amplifier:
         name = f"{datetime.now():%Y%m%dT%H%M%S}_{path.stem.replace(' ', '_')}{''.join('_' + s for s in slugs)}{path.suffix}"
         copy = (self.log_dir / "mcc" / name).resolve()
         if " " in str(copy):
-            raise Refusal(f"ommm starts Commander with a copy of the file in {copy.parent}, and Commander cannot take a path "
-                          "with a space: give the Amplifier a log_dir (LogDir= in MATLAB) without one")
+            remedy = {  # as for a log folder ommm cannot write to, in __init__
+                "OMMM_LOG_DIR": "set OMMM_LOG_DIR to a folder without one, for every program that logs there",
+                "the default log folder": "set OMMM_LOG_DIR to a folder without one, or give log_dir (LogDir= in MATLAB) one",
+            }.get(self._log_dir_from, "give log_dir (LogDir= in MATLAB) a folder without one")
+            raise Refusal(f"ommm starts Commander with a copy of the file in {copy.parent}, in {self._log_dir_from} "
+                          f"{self.log_dir}, and Commander cannot take a path with a space: {remedy}")
         what = [f"{checks[stem][2]} {shown_loaded(stem, before[stem])} → {shown_loaded(stem, value)}"
                 for stem, value in target.items() if value != before[stem]]
         what += [f"{checks[stem][2]} stays {shown_loaded(stem, value)}" for stem, value in target.items() if value == before[stem]]
@@ -1072,7 +1129,7 @@ class Amplifier:
         try:
             before = self.commander.snapshot()
         except CommanderError as error:
-            raise self._failed(replace(plan, outcome="refused", reason=f"no snapshot before it: {error}", t=t)) from None
+            raise self._failed(replace(plan, outcome="refused", reason=f"no snapshot before it: {error}", t=t), error.code) from None
         copy.parent.mkdir(parents=True, exist_ok=True)
         mcc.write(copy, text)
         held, pids, skipped = mcc.values(text), [], ""
@@ -1150,7 +1207,7 @@ class Amplifier:
             raise Refusal(f"Commander's window greys Whole Cell out at a feedback resistor of {rf(FEEDBACK_RESISTORS[index])}: "
                           "it needs 50 or 500 MΩ, which load_config sets (docs/mcc.md)")
 
-    def _changed_since(self, write: Write, last) -> str | None:
+    def _changed_since(self, write: Write, last) -> Refusal | None:
         """Why the next step must not go: Commander no longer shows what the write was checked against, or `last`
         for the write's own control (a click in Commander's window, another program)."""
         try:
@@ -1161,9 +1218,9 @@ class Amplifier:
                     unit = write.unit if key == write.stem else None
                     name, was = described(key, expected, write.mode, self.headstage, unit)
                     _, shows = described(key, seen, write.mode, self.headstage, unit)
-                    return f"Commander changed since the write was checked: {name} was {was}, now {shows}"
+                    return Refusal(f"Commander changed since the write was checked: {name} was {was}, now {shows}")
         except CommanderError as error:
-            return f"could not read Commander: {error}"
+            return Refusal(f"could not read Commander: {error}", error.code)
         return None
 
     def _read(self, stem: str):
@@ -1171,7 +1228,7 @@ class Amplifier:
         try:
             return self.commander.get(stem)
         except CommanderError as error:
-            raise Refusal(f"could not read {stem}: {error}") from None
+            raise Refusal(f"could not read {stem}: {error}", error.code) from None
 
     def _row(self, label: str, mode: str) -> Setting:
         try:
@@ -1208,27 +1265,44 @@ class Amplifier:
     def _send(self, write: Write, value, resolution: float = 0.0, telegraph: bool = False) -> Write:
         """One Set<stem>(value), read back at once (no Set tried needed time to settle) and logged; with
         `telegraph`, also checked against a telegraph packet, and unknown when none comes. What else the Set changes
-        (settings.ALSO_CHANGES) is read before and after it, into `also`."""
-        t = now()
+        (settings.ALSO_CHANGES) is read before and after it, into `also`. An interrupt from the Set on (Ctrl+C) is
+        logged first, unknown, with what was read back by then, then raised; the Set is never sent again."""
         try:
             others = {stem: self._read(stem) for stem in ALSO_CHANGES.get(write.stem, ()) if write.mode in find(stem).modes}
         except Refusal as refusal:
-            return self._logged(replace(write, target=value, outcome="refused", reason=str(refusal), t=t))
+            return self._logged(replace(write, target=value, outcome="refused", reason=str(refusal), t=now()), refusal.code)
+        write, read = replace(write, target=value, t=now()), {}
+        try:
+            write, code, checks = self._set_and_read(write, others, resolution, telegraph, read)
+        except BaseException as error:  # Ctrl+C once the Set may have landed: its line first
+            stopped = f"interrupted ({type(error).__name__})"
+            if read:
+                reason = f"read back, then {stopped} before its checks were done; not sent again"
+            else:
+                reason = f"sent, then {stopped} before the readback, so it may or may not have changed; not sent again"
+            self._logged(replace(write, **read, outcome="unknown", reason=reason))
+            raise
+        return self._logged(write, code, checks)
+
+    def _set_and_read(self, write: Write, others: dict, resolution: float, telegraph: bool,
+                      read: dict) -> tuple[Write, int | None, list | None]:
+        """_send's Set of write.target, its readback and checks: the Write to log, its error code and telegraph checks.
+        `read` takes the readback, as `after` and `also`, as it comes, for a line an interrupt leaves."""
+        value = write.target
         try:
             self.commander._set(write.stem, value)
         except CommanderError as error:
             if error.code == MSGTIMEOUT:
                 reason = "Commander did not answer in time, so it may or may not have changed; not sent again"
-                return self._logged(replace(write, target=value, outcome="unknown", reason=reason, t=t), error.code)
-            return self._logged(replace(write, target=value, outcome="error", reason=str(error), t=t), error.code)
+                return replace(write, outcome="unknown", reason=reason), error.code, None
+            return replace(write, outcome="error", reason=str(error)), error.code, None
         try:
-            after = self.commander.get(write.stem)
-            also = {stem: [before, seen] for stem, before in others.items() if (seen := self.commander.get(stem)) != before}
+            read["after"] = after = self.commander.get(write.stem)
+            read["also"] = also = {stem: [before, seen] for stem, before in others.items() if (seen := self.commander.get(stem)) != before}
         except NotApplicable as error:
-            return self._logged(replace(write, target=value, outcome="mismatch", reason=f"the readback does not apply: {error}", t=t))
+            return replace(write, outcome="mismatch", reason=f"the readback does not apply: {error}"), None, None
         except CommanderError as error:
-            reason = f"sent, but the readback failed: {error}"
-            return self._logged(replace(write, target=value, outcome="unknown", reason=reason, t=t), error.code)
+            return replace(write, outcome="unknown", reason=f"sent, but the readback failed: {error}"), error.code, None
         outcome, reason, checks = compare(value, after, resolution), write.reason, None
         if outcome == "mismatch":
             reason = self._why(write, value, after)
@@ -1241,7 +1315,7 @@ class Amplifier:
                 outcome, reason = "mismatch", "the telegraph disagrees: " + "; ".join(checks)
         elif "Mode" in also:  # Mode Switching on or off: the mode follows the MODE input, which floats
             reason = f"the mode is now {MODES[also['Mode'][1]]} (the MODE input)"
-        return self._logged(replace(write, target=value, after=after, also=also, outcome=outcome, reason=reason, t=t), None, checks)
+        return replace(write, after=after, also=also, outcome=outcome, reason=reason), None, checks
 
     def _why(self, write: Write, value, after) -> str:
         """A mismatch's reason, in the caller's unit where there is one."""
@@ -1290,8 +1364,8 @@ class Amplifier:
             if sent.outcome != "ok":
                 raise WriteError(replace(sent, reason=f"{sent.reason} ({reason})"))
 
-    def _failed(self, write: Write) -> WriteError:
-        self._logged(write)
+    def _failed(self, write: Write, error_code: int | None = None) -> WriteError:
+        self._logged(write, error_code)
         return WriteError(write)
 
     def _logged(self, write: Write, error_code: int | None = None, telegraph_checks: list | None = None) -> Write:

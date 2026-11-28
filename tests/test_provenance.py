@@ -1,6 +1,7 @@
 import json
 import re
 import subprocess
+import sys
 from dataclasses import replace
 from pathlib import Path
 
@@ -24,6 +25,16 @@ def test_provenance_is_computed_once_at_import():
     else:
         assert re.fullmatch(r"[0-9a-f]{40}", found["commit"])
         assert isinstance(found["dirty"], bool)
+
+
+def test_importing_a_clone_never_installed_says_to_sync_it():
+    # -I -S: a Python with no site-packages, so no install of ommm, and the clone's src on its path
+    src = Path(ommm.__file__).parents[1]
+    run = subprocess.run([sys.executable, "-I", "-S", "-c", "import sys; sys.path.insert(0, sys.argv[1]); import ommm", str(src)],
+                         capture_output=True, text=True)
+    assert run.returncode == 1
+    assert run.stderr.splitlines()[-1] == ("ImportError: ommm is not installed in this Python: run `uv sync --locked` in the "
+                                           "clone, then `uv run python` there")
 
 
 def test_changing_what_provenance_returns_changes_no_later_snapshot():

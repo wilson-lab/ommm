@@ -2,7 +2,8 @@
 
 Read-only. Takes a snapshot of the tab Commander shows every 0.5 s, leaving a tab clicked in its window alone, and prints the readings and telegraph fields that changed
 (meters left out) plus any disagreement between the API and the telegraph. Each change is appended
-as one JSON line to watch_<time>.jsonl in --log-dir (default ~/ommm-logs).
+as one JSON line to watch_<time>.jsonl in --log-dir (default ~/ommm-logs). It stops with one line when Commander
+is closed or restarted; run it again once Commander is back.
 
     uv run python scripts/watch.py                 (until Ctrl+C)
     uv run python scripts/watch.py --seconds 600
@@ -33,21 +34,25 @@ def main():
     except CommanderError as error:
         sys.exit(f"watch: {error}")
     with commander, log_path.open("a") as log:
-        previous = commander.snapshot(show_active_tab=False)
-        log.write(json.dumps({"time": previous["time"], "start": previous}) + "\n")
-        while time.monotonic() < stop:
-            time.sleep(0.5)
-            snapshot = commander.snapshot(show_active_tab=False)
-            changed = changes(previous, snapshot)
-            disagreements = snapshot["disagreements"]
-            if changed or disagreements != previous["disagreements"] or snapshot["errors"]:
-                event = {"time": snapshot["time"], "changed": changed, "disagreements": disagreements, "errors": snapshot["errors"]}
-                log.write(json.dumps(event) + "\n")
-                log.flush()
-                print(snapshot["time"][11:19], json.dumps(changed), flush=True)
-                for line in disagreements + list(snapshot["errors"].values()):
-                    print("   !!", line, flush=True)
-            previous = snapshot
+        try:
+            previous = commander.snapshot(show_active_tab=False)
+            log.write(json.dumps({"time": previous["time"], "start": previous}) + "\n")
+            while time.monotonic() < stop:
+                time.sleep(0.5)
+                snapshot = commander.snapshot(show_active_tab=False)
+                changed = changes(previous, snapshot)
+                disagreements = snapshot["disagreements"]
+                if changed or disagreements != previous["disagreements"] or snapshot["errors"]:
+                    event = {"time": snapshot["time"], "changed": changed, "disagreements": disagreements, "errors": snapshot["errors"]}
+                    log.write(json.dumps(event) + "\n")
+                    log.flush()
+                    print(snapshot["time"][11:19], json.dumps(changed), flush=True)
+                    for line in disagreements + list(snapshot["errors"].values()):
+                        print("   !!", line, flush=True)
+                previous = snapshot
+        except CommanderError as error:  # a snapshot stops only when Commander was closed or restarted, or did not answer
+            sys.exit(f"watch: stopped, Commander was closed, restarted or did not answer ({error.function}, {error.code}): "
+                     "run watch again once it is back")
 
 
 if __name__ == "__main__":
