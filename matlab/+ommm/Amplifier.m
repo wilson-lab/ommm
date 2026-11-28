@@ -24,7 +24,7 @@ classdef Amplifier < handle
     properties (SetAccess = private)
         headstage   % Headstage=, 1 or 2 (its full record: the snapshot's headstage)
         serial      % the amplifier's serial, as Commander lists it
-        fake        % the snapshot file served instead of Commander, "" for Commander
+        fake        % the snapshot file served instead of Commander, "" for Commander (Python's amp.fake)
         log_path    % the write log: one JSON line per write and refusal, from every program (writes_since reads it)
     end
 
@@ -33,8 +33,11 @@ classdef Amplifier < handle
     end
 
     properties (Access = private)
-        logDir      % LogDir=, "" for ommm's default (~/ommm-logs; a new temporary folder on the fake); once
-                    % connected, the full path Python logs to, so a reconnect after a cd keeps one log
+        logDir      % LogDir=, "" for OMMM_LOG_DIR or else ommm's default log folder, both absolute, so a
+                    % reconnect finds the same one: passed back as LogDir=, it would make a refusal give
+                    % LogDir='s remedy, which splits a log shared through OMMM_LOG_DIR. With LogDir= or Fake=
+                    % (a new temporary folder), once connected, the full path Python logs to, so a reconnect
+                    % after a cd or a Python restart keeps one log
         otherTab    % with Fake=, the snapshot file of the other tab, "" for none
     end
 
@@ -326,7 +329,9 @@ classdef Amplifier < handle
                 throw(ommm.Amplifier.withIdentifier(err))
             end
             obj.serial = string(amp.serial);
-            obj.logDir = string(py.str(amp.log_dir));
+            if obj.logDir ~= "" || obj.fake ~= "" % see logDir
+                obj.logDir = string(py.str(amp.log_dir));
+            end
             obj.log_path = string(py.str(amp.log_path));
             obj.amp = amp;
             obj.pythonID = pyenv().ProcessID;
@@ -409,7 +414,7 @@ classdef Amplifier < handle
             % refused (ommm:refused) or not taken (ommm:writeError), with the write as err.write; a
             % control the active mode lacks (ommm:notApplicable); Commander failing (ommm:commander);
             % Python's ValueError, an argument ommm cannot use (ommm:badArgument): an unknown label or a
-            % wrong unit in get, a Fake= file that is not a snapshot, a LogDir= ommm cannot write to.
+            % wrong unit in get, a Fake= file that is not a snapshot, a log folder ommm cannot use.
             % Any other error stays as it is.
             if ~isa(err, 'matlab.exception.PyException')
                 return

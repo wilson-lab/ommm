@@ -6,8 +6,8 @@ Report problems and propose changes through [issues](https://github.com/wilson-l
 
 Say what you ran, what you expected and what happened: the Python traceback, or the MATLAB `ommm:` identifier and its message. Attach:
 
-- the snapshot, `ommm > snapshot.json` (`uv run --locked ommm > snapshot.json` in the clone);
-- the write-log lines involved, from `~/ommm-logs/<serial>.jsonl`, and for `load_config` the `.mcc` file;
+- the snapshot, `ommm --out snapshot.json` (`uv run --locked ommm --out snapshot.json` in the clone);
+- the write-log lines involved, from `amp.log_path` (`~/ommm-logs/<serial>.jsonl` unless the log is elsewhere), and for `load_config` the `.mcc` file;
 - what was on the headstage: nothing, a model cell and its switch position, or a cell;
 - your Windows, Python and MATLAB versions, which the snapshot does not record.
 

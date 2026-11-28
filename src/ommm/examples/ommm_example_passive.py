@@ -20,7 +20,7 @@ amp = ommm.Amplifier()
 # amp = ommm.Amplifier(fake=ommm.EXAMPLES / "fake/vclamp.json")
 
 print(amp.serial)  # which amplifier
-print(amp.log_path)  # where ommm logs every write, from every program (~/ommm-logs/<serial>.jsonl)
+print(amp.log_path)  # where ommm logs every write, from every program
 
 # %% Read one control, in the unit you name
 # get() takes Commander's label for a control, as on its window, and a unit of the kind Commander shows it in for the
@@ -29,7 +29,10 @@ mode = amp.get("Mode")  # "V-Clamp", "I-Clamp" or "I = 0"
 resistor = amp.get("Feedback Resistor", "MΩ")
 primary = amp.get("Primary Output")  # an output signal, by Commander's name: "Membrane Current"
 gain = amp.get("Primary Output Gain", "x")
-current = amp.get("MeterValue2", "pA")  # the current meter; MeterValue1 is the potential, in mV
+try:
+    current = amp.get("MeterValue2", "pA")  # the current meter; MeterValue1 is the potential, in mV
+except ommm.NotApplicable:  # in V-Clamp with Irms Meter on, the meter shows the RMS noise, not the current
+    current = float("nan")
 print(f"{mode}, Rf {resistor} MΩ, {primary} ×{gain}, {current} pA")
 if mode != "I = 0":
     unit = "mV" if mode == "V-Clamp" else "pA"

@@ -38,6 +38,7 @@ C_TYPES = {
 DECLARATION = re.compile(r"^AXMCCMSG\s+(\w+)\s+WINAPI\s+(?:EXPORT\s+)?MCCMSG_(\w+)\((.*)\);", re.MULTILINE)
 CONSTANT = re.compile(r"^const\s+(?:UINT|int)\s+MCCMSG_(\w+)\s*=\s*(\d+);", re.MULTILINE)
 VERSION = re.compile(r'#define\s+MCCMSG_APIVERSION_STR\s+"([^"]+)"')
+SNAPSHOT_SCHEMA = 1  # the snapshot's layout; when it goes up is in CHANGELOG.md
 
 
 def parse_header(text: str) -> tuple[dict[str, tuple[str, list[str]]], dict[str, int], str]:
@@ -69,7 +70,8 @@ class CommanderError(RuntimeError):
 
 
 class NotApplicable(CommanderError):
-    """A getter that doesn't apply to the current mode or headstage (see disguised_error)."""
+    """A getter that doesn't apply to the current mode or headstage (see disguised_error), or the current meter while
+    Irms Meter shows the RMS current noise in its place."""
 
 
 def shortest_float32(value: float) -> float:
@@ -160,8 +162,16 @@ class DLL:
     sends goes through it. ommm.testing.fake.FakeDLL stands in for it off Windows."""
 
     def __init__(self):
-        self.functions, self.constants, self.api_version = parse_header(sdk_file("AxMultiClampMsg/AxMultiClampMsg.h").read_text())
-        self.lib = ctypes.WinDLL(str(sdk_file("AxMultiClampMsg/AxMultiClampMsg.dll")))
+        header, library = sdk_file("AxMultiClampMsg/AxMultiClampMsg.h"), sdk_file("AxMultiClampMsg/AxMultiClampMsg.dll")
+        for path in (header, library, sdk_file(telegraph.HEADER)):  # the telegraph's is read later, at its first packet
+            if not path.is_file():
+                raise CommanderError("Commander", None, f"{path.name} is not in {path.parent}: set OMMM_SDK_DIR to Commander's install folder")
+        self.functions, self.constants, self.api_version = parse_header(header.read_text())
+        try:
+            self.lib = ctypes.WinDLL(str(library))
+        except OSError as error:  # a 32-bit or broken DLL, or a DLL it depends on missing (FileNotFoundError)
+            raise CommanderError("Commander", None, f"{library} does not load ({error}): set OMMM_SDK_DIR to Commander's "
+                                 "install folder") from None
         for name, (restype, params) in self.functions.items():
             func = getattr(self.lib, "MCCMSG_" + name)
             func.restype = C_TYPES[restype]
@@ -402,7 +412,7 @@ class Commander:
             except TimeoutError as error:
                 telegraph_packet, errors["telegraph"] = None, str(error)
         return {
-            "schema": 1,
+            "schema": SNAPSHOT_SCHEMA,
             "time": datetime.now().astimezone().isoformat(),
             "api_version": self.api_version,
             "headstage": asdict(self.headstage),

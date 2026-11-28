@@ -8,7 +8,7 @@ Some of Commander's settings have no API function: the feedback resistor and the
 2. `plan = amp.load_config(file, changes=[("Feedback Resistor", 500, "MΩ", "V-Clamp")])`, then `print(plan.reason)`. This sends nothing.
 3. The same call with `confirmed=True` does it, in about 15 s; about 30 s when Commander's first start skips the file and ommm starts it once more ([What a load does](#what-a-load-does)).
 
-Everything else comes back from the file as saved. The plan's reason, on [the fake](install-and-testing.md#the-fake) with `synthetic.mcc`, whose copy goes to the fake's temporary log folder (on the amplifier, `~/ommm-logs/mcc/`):
+Everything else comes back from the file as saved. The plan's reason, on [the fake](install-and-testing.md#the-fake) with `synthetic.mcc`, whose copy goes to the fake's temporary log folder (on the amplifier, `mcc/` beside the write log):
 
 ```text
 Feedback Resistor (V-Clamp) 5 GΩ → 500 MΩ; the mode stays V-Clamp; Feedback Resistor (I-Clamp) stays 5 GΩ. Commander closes and starts again with .../ommm-fake-5c1e9a07/mcc/20261023T195520_synthetic_vc-feedback-resistor-500-mohm.mcc, about 15 s without Commander; every handle on it dies. The file also sets everything else it holds: Holding, compensation and the output signals (set those after with set and enable) and the Options pages (only another file changes those).
@@ -16,7 +16,7 @@ Feedback Resistor (V-Clamp) 5 GΩ → 500 MΩ; the mode stays V-Clamp; Feedback 
 
 ## What a load does to the cell
 
-- **Commander is gone while it restarts**, and nobody can use its window meanwhile. This Amplifier, in Python or MATLAB, takes the new Commander; every other program calls `reconnect()`.
+- **Commander is gone while it restarts**, and nobody can use its window meanwhile. This Amplifier, in Python or MATLAB, takes the new Commander; every other ommm program calls `reconnect()`, and a program that does not use ommm opens a new handle its own way.
 - **The outputs:** with no command applied (V-Clamp, Holding and Seal Test off, Pipette Offset 0), a restart shows no level change on either output, and the secondary shows spikes of 10-25 mV lasting 0.1-0.3 ms. With V-Clamp Holding on, a restart with no file does not move the command or the current, before, while Commander is gone or after. No measurement covers what a load with a file does to the outputs while Holding is on, or any restart with compensation on: do not load with a cell you want to keep.
 - **Holding:** Commander comes back with Holding off at the file's level, and the amplifier follows it; the plan and the write say so ([Holding after a restart](writes.md#when-something-fails)).
 - **The file sets every value it holds**, the Options pages included, and a load also turns I-Clamp Bridge Balance on.
@@ -33,7 +33,7 @@ The details: [The file](#the-file) · [An Options-page setting](#an-options-page
 - **A whole file Commander saved**, with its Save Configuration button (F5), which saves every control setting. Set Commander up as you want to start a recording, save it once, and load it from then on.
 - **Not a partial file.** Commander refuses a file holding one key with a dialog, "This file is not a valid MultiClamp configuration file", and answers nothing until OK is pressed. `load_config` refuses a file without the `[MC700_GLOBAL]` section every saved file starts with, or without the Amplifier's headstage's mode (`MODE_SLCT`) or either tab's feedback resistor (`ELCTRD_HSTAGE_RST_RNG`), so such a file never reaches Commander.
 - **The file sets every value it holds**, not only what you change: the mode, the feedback resistors, Holding, Pipette Capacitance Neutralization, Whole Cell, Rs Compensation, the output signals, gains and filters, and the Options pages. A file you edit by hand or by script brings back all its other values too, so save the file again after changing Commander's setup. A saved file does not hold Pipette Offset, Mode Switching, the meter checkboxes or the Pipette Offset padlock, and a load leaves them as they were. It holds no Bridge Balance checkbox either, yet a load turns I-Clamp's Bridge Balance on.
-- **Anywhere, any name.** ommm starts Commander with a copy in `~/ommm-logs/mcc/` (the Amplifier's `log_dir`), named by the time, the file's name (spaces made `_`, since Commander cannot take a path with a space) and each change: `20261026T142052_vclamp_5gohm_vc-feedback-resistor-50-gohm.mcc` is that file with the V-Clamp feedback resistor set to 50 GΩ. The plan's reason and the load's final reason name the copy's full path; the copy is the record of what was loaded.
+- **Anywhere, any name.** ommm starts Commander with a copy in `mcc/` beside the write log (`~/ommm-logs/mcc/` unless [the log is elsewhere](install-and-testing.md#the-write-logs-folder-ommm_log_dir)), named by the time, the file's name (spaces made `_`, since Commander cannot take a path with a space) and each change: `20261026T142052_vclamp_5gohm_vc-feedback-resistor-50-gohm.mcc` is that file with the V-Clamp feedback resistor set to 50 GΩ. The plan's reason and the load's final reason name the copy's full path; the copy is the record of what was loaded.
 - **Examples:** `src/ommm/examples/mcc/` (`ommm.EXAMPLES / "mcc"`) holds three files Commander 2.2.2.2 saved from one setup, one per mode it starts in: `vclamp_5gohm.mcc`, `iclamp_5gohm.mcc` and `i0_5gohm.mcc` (`MODE_SLCT` 0, 1 and 2; nothing else differs). The setup: Feedback Resistor 5 GΩ in both modes; V-Clamp primary Membrane Current at gain 2 and 8 kHz Bessel, secondary Membrane Potential at gain 5; I-Clamp primary Membrane Potential; Holding off. Use one as a start only if its setup suits your recording; better, save your own (F5). ommm itself never saves one.
 - <a id="try-it-without-commander"></a>**Try it without Commander** (a Mac, say): on the fake, `synthetic.mcc` (in `src/ommm/examples/fake/`) plans and loads like a saved file.
 
@@ -58,7 +58,7 @@ The details: [The file](#the-file) · [An Options-page setting](#an-options-page
 
 ## Two headstages
 
-- A load closes Commander, so it restarts both headstages, and every handle on Commander dies: the other headstage's Amplifier needs `reconnect()`. A file holds settings for each headstage connected when it was saved.
+- A load closes Commander, so it restarts both headstages, and every handle on Commander dies: the other headstage's Amplifier needs `reconnect()`, and a program that does not use ommm a new handle of its own. A file holds settings for each headstage connected when it was saved.
 - The plan names the other headstage, its mode and Holding. While Holding is on there it refuses, `headstage 2 holds 20 pA in I-Clamp: the load restarts Commander for both headstages, and both come back with Holding off, releasing a held cell. Turn headstage 2's Holding off first, or pass release_other_headstage=True (ReleaseOtherHeadstage=true in MATLAB)`, unless `release_other_headstage=True` (MATLAB `ReleaseOtherHeadstage=true`). Check the other headstage after the load.
 - The file must hold the Amplifier's headstage's sections: headstage 2 refuses a file saved with headstage 1 alone. When the file lacks the other headstage's, the plan says to check that headstage after the load.
 - The fake's Commander sets each connected headstage's mode, feedback resistors and the other values a load checks from the file, and turns V-Clamp Holding off on both.
@@ -69,10 +69,10 @@ The details: [The file](#the-file) · [An Options-page setting](#an-options-page
 
 With `confirmed=True` it plans again from fresh reads, then:
 
-1. **A snapshot**, and the copy written to `~/ommm-logs/mcc/`.
+1. **A snapshot**, and the copy written to `mcc/` beside the write log.
 2. **Commander closes**, as its close button closes it (WM_CLOSE), so it saves its settings; killed, it comes back with older ones, so ommm never kills it. Waits up to 30 s.
 3. **Commander starts** from its install folder (`OMMM_SDK_DIR` if set) on the same amplifier, with the copy: `MC700B.exe /S<serial> /C<file>`. Waits up to 30 s for the API ([how long it takes](quirks.md#closing-and-starting-commander)).
-4. **The new handle.** Every handle on Commander from before is dead (6002): this Amplifier, in Python or MATLAB, takes the new one, so its next call works; every other program and MATLAB session calls `reconnect()`.
+4. **The new handle.** Every handle on Commander from before is dead (6002): this Amplifier, in Python or MATLAB, takes the new one, so its next call works; every other ommm program and MATLAB session calls `reconnect()`, and a program that does not use ommm opens a new handle its own way.
 5. **5 s later**, both output signals of the active mode are selected again as Commander shows them, each a logged write read back: after a start the telegraph's secondary output can still be stale 5 s after the API answers, and Clampex scales by it. No `SetMode` is sent.
 6. **A snapshot and the check against the file:** the mode and both feedback resistors, and on the active mode's tab the values that read back as a file holds them, where the file holds them: in V-Clamp Cp Fast Capacitance and Tau, Cp Slow Capacitance, Pulse Amplitude and Duration, Seal Test Amplitude, Rs Compensation Bandwidth and the Oscillation Killer checkbox; in I-Clamp and I = 0 Pulse Amplitude and Duration, Tuning Amplitude, Buzz Duration, the Oscillation Killer and Pipette Capacitance Neutralization checkboxes. Holding comes back 0 and Pipette Offset reads 0 right after any load, and the output signals, gains and filters are kept in the file as positions in lists ommm does not know, so those are not checked.
 7. **One more start when the first skipped the file.** Commander sometimes starts without applying the file and says nothing ([quirks.md](quirks.md#closing-and-starting-commander)). When anything in the check differs, ommm logs that start as a `mismatch` naming each difference, then closes Commander and starts it with the same copy once more, steps 2 to 6 again; the load then takes about 30 s. That second start can skip the file too: then load again.
@@ -107,7 +107,7 @@ Each is decided before Commander is closed, sends nothing and leaves Commander r
 | A value that is not a number | `Feedback Resistor takes a number, not '500'` |
 | A unit of another kind | `Feedback Resistor in V-Clamp is a resistance: MOhm or GOhm, not pA` ([Units](writes.md#units)) |
 | A file that would start Commander in I-Clamp from V-Clamp, or the other way: Commander would switch without I = 0 | `the file starts Commander in I-Clamp; ommm goes between V-Clamp and I-Clamp through I = 0: set_mode("I = 0") first, then load` |
-| The copy's folder has a space | `ommm starts Commander with a copy of the file in C:\my logs\mcc, and Commander cannot take a path with a space: give the Amplifier a log_dir (LogDir= in MATLAB) without one` |
+| The copy's folder has a space | `ommm starts Commander with a copy of the file in C:\my logs\mcc, in log_dir C:\my logs, and Commander cannot take a path with a space: give log_dir (LogDir= in MATLAB) a folder without one`; when [`OMMM_LOG_DIR`](install-and-testing.md#the-write-logs-folder-ommm_log_dir) chose the folder, it names it and says `set OMMM_LOG_DIR to a folder without one, for every program that logs there`, and for the default `~/ommm-logs` it offers both |
 
 ## When something fails
 

@@ -3,12 +3,12 @@ are in the API but not supported."""
 
 import json
 import subprocess
-from importlib.metadata import distribution
+from importlib.metadata import PackageNotFoundError, distribution
 from pathlib import Path
 
 from ommm import testing  # so ommm.testing.FakeCommander works after `import ommm`
 from ommm.amplifier import Amplifier, Write, WriteError
-from ommm.commander import CommanderError, NotApplicable
+from ommm.commander import SNAPSHOT_SCHEMA, CommanderError, NotApplicable
 from ommm.log import trial_record
 from ommm.state import state
 from ommm.summary import summary
@@ -78,7 +78,10 @@ def find_provenance(package_dir: Path, direct_url: str | None) -> dict:
 
 # once, at import: a long-lived host (MATLAB's Python) keeps this code loaded after a git pull, and
 # the snapshot must name the commit that is running, not the one on disk
-_INSTALLED = distribution("ommm")
+try:
+    _INSTALLED = distribution("ommm")
+except PackageNotFoundError:  # a clone's src on the path, never installed
+    raise ImportError("ommm is not installed in this Python: run `uv sync --locked` in the clone, then `uv run python` there") from None
 __version__ = _INSTALLED.version
 _PROVENANCE = {"version": __version__, **find_provenance(Path(__file__).parent, _INSTALLED.read_text("direct_url.json"))}
 
@@ -89,8 +92,9 @@ def provenance() -> dict:
 
 
 def load_snapshot(path: str | Path) -> dict:
-    """A saved snapshot (`ommm > snapshot.json`), as saved: its own time and provenance. Read as bytes, so
-    json finds the encoding: Windows PowerShell 5.1 writes UTF-16."""
+    """A saved snapshot (`ommm --out snapshot.json`), as saved: its own time and provenance. Read as bytes, so
+    json finds the encoding: `ommm > snapshot.json` in Windows PowerShell 5.1 writes UTF-16. A file from before
+    schema 1 has no schema and loads; one with a newer schema than this ommm's is refused."""
     try:
         snapshot = json.loads(Path(path).read_bytes())
     except json.JSONDecodeError as error:  # its message names no file
@@ -98,6 +102,9 @@ def load_snapshot(path: str | Path) -> dict:
     missing = [key for key in ("headstage", "readings", "telegraph") if key not in snapshot]
     if missing:
         raise ValueError(f"{path} is not an ommm snapshot: it has no {', '.join(missing)}")
+    if snapshot.get("schema", 0) > SNAPSHOT_SCHEMA:
+        raise ValueError(f"{path} is a schema {snapshot['schema']} snapshot, newer than ommm {__version__} reads "
+                         f"(schema {SNAPSHOT_SCHEMA}): update ommm")
     return without_matlab_empties(snapshot)
 
 

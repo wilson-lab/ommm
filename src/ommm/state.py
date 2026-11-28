@@ -5,8 +5,8 @@ state() takes each value from the interface that is reliable for it:
 - signal identity and the feedback resistor from the API, which never goes stale; a 'tab:'
   disagreement is blocking, so the identity always belongs to the active mode;
 - mode, gains, low-pass cutoffs, membrane capacitance and command sensitivity from the telegraph
-  packet, the one that carries the sensitivity; without a telegraph (Demo mode) the mode is the
-  API's, and the snapshot blocks;
+  packet, the one that carries the sensitivity; without a telegraph the mode is the API's, and
+  the snapshot blocks;
 - output scale factors from a fixed table (signal x feedback resistor, or the external command
   sensitivity), with the telegraph's scale as a cross-check only, because the telegraph's signal
   fields go stale after a mode switch.

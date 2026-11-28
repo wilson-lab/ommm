@@ -2,7 +2,43 @@
 
 The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/). Every snapshot records the ommm version and commit that took it ([Provenance](docs/install-and-testing.md#provenance)).
 
+A snapshot's `schema` and a write-log line's go up when a key is removed or renamed, or a value's type, unit or meaning changes, not when a key is added, nor when a NaN or infinity, which JSON has no number for, is written as text. A snapshot's `readings` are the getters in Commander's API header, so a header that adds or drops one adds or drops a reading with no new schema. `ommm.load_snapshot()` refuses a snapshot whose schema is newer than its own.
+
 ## [Unreleased]
+
+- A telegraph read pumps only its own window's messages while it waits, where it dispatched every message posted to the calling thread, such as a Python GUI host's timers and events.
+- A missing Commander file (the API header or DLL, or the telegraph header) or a DLL that does not load stops `ommm.Amplifier()` with a `CommanderError` (`ommm:commander` in MATLAB) naming the file and `OMMM_SDK_DIR`, where it raised Python's own error (`MATLAB:Python:PyException`), for the telegraph header only at the first telegraph.
+- `import ommm` from a clone that was never installed says to run `uv sync --locked` in it.
+- `scripts/watch.py` stops with one line when Commander is closed or restarted, where it ended in a traceback.
+- `trial_record` lets a mode change account for a tab's readings only when the two snapshots read different tabs, and for the telegraph only when they are in different modes, where any mode change between them made every such change ommm's: a click in Commander's window after a change to I-Clamp and back is `"gui"`. Auto Pipette Offset still accounts for the other tab's Pipette Offset (pressed in V-Clamp, for I-Clamp's Slow Current Injection level too, which the amplifier moves by a few µV; pressed in I-Clamp, for V-Clamp's Holding too), and `load_config` for the tab Commander did not come back in, each only between two snapshots of that tab.
+- Auto Pipette Offset pressed in V-Clamp says in its `reason` that it also moved I-Clamp's Slow Current Injection level, and on the fake it now moves that level by 15 µV, as the amplifier moves it by a few µV.
+- `trial_record` gives a telegraph field that mirrors a reading (the mode, a gain, a lowpass filter) its own source where the later snapshot could not read that reading, where it took the failed read's `"gui"`: a mode change ommm made is ommm's in the telegraph when `GetMode` failed in the snapshot after.
+- A Set or button interrupted after it was sent (Ctrl+C) is logged, `unknown`, with what was read back by then, before the interrupt goes on, where it left no log line.
+- `trial_record` puts an `unknown` write that was not read back down to ommm at the value it sent or within the control's resolution of it, an interrupted one or one that timed out (6005), where it put it down to `"gui"`.
+- The fake's `dll.interrupt_at(k)`: the k-th call from now is done, then raises `KeyboardInterrupt`.
+- A refusal caused by a call that failed logs Commander's error code in `error_code`, where it logged `null`.
+- A refused NaN or infinity is logged as text, so the line stays JSON: such a line's `user_value` is now `"nan"`, `"inf"` or `"-inf"`, where it was the bare `NaN` or `Infinity` that strict JSON readers refuse. The log's `schema` stays 2, as the header above says for such a value.
+- A Set's log line takes its `t` just before the Set, after the reads of what the Set also changes.
+- `get("MeterValue2")` (`MeterValue4` on headstage 2) raises `NotApplicable` (`ommm:notApplicable` in MATLAB) in V-Clamp while Irms Meter is on, when the meter shows the RMS current noise, where it returned that as the current; in I-Clamp and I = 0 it reads as before.
+- `OMMM_LOG_DIR` names the write log's folder when no `log_dir` (`LogDir=` in MATLAB) is given, where it was always `~/ommm-logs`; it must be an absolute folder, and a fake never reads it. A log folder ommm cannot write to, and in `load_config` one with a space, is refused naming what chose it (`log_dir`, `OMMM_LOG_DIR` or the default) with a remedy that works there: never another `log_dir` for a folder `OMMM_LOG_DIR` named, which would split the log every program shares, and never `OMMM_LOG_DIR` on a fake; the refusal of a folder ommm cannot write to called it `log_dir` whatever chose it.
+- A log folder the account cannot write to is refused when the `Amplifier` is made, on Windows too, where it passed there until the first write, which reached the amplifier and then failed with Python's `PermissionError` (`MATLAB:Python:PyException`), leaving no log line: Windows says every folder is writable to the check ommm made, so ommm now makes a file there and removes it.
+- `amp.fake` is the snapshot an `Amplifier` made with `fake=` serves, its file made absolute, and `None` on Commander, as MATLAB's `a.fake`.
+- The active examples, `ommm_example_active.py` and `.m`, stop before their confirmed `load_config` of ommm's example settings file on an amplifier and say to point them at your own saved file; on the fake they run whole as before.
+- `scripts/rig/check_amplifier.py` refuses to start unless both tabs are at 5 GΩ, the feedback resistor its refused values are chosen for, and no longer checks Whole Cell at 50 or 500 MΩ.
+- `scripts/rig/check_amplifier.py` refuses to start with Irms Meter on, since ommm refuses its first read in V-Clamp, the current meter.
+- `ommm --out NEW` writes the snapshot, or with `--summary` the box, to a new file as UTF-8, and refuses a file that exists before it reads Commander; `ommm OLD.json --out NEW.json` rewrites a saved snapshot as UTF-8. The docs save snapshots this way, where they used `ommm > snapshot.json`, which Windows PowerShell writes as UTF-16.
+- `ommm.load_snapshot()`, and with it `ommm FILE` and the fake, refuses a snapshot whose `schema` is newer than this ommm's, where it loaded it; a file with no `schema` still loads. The header above says when a `schema` goes up.
+- The snapshot table says which readings are not SI, that `time` is when the reads ended, and that Commander's own version is the telegraph's `szAppVersion`; it no longer describes a Demo-mode snapshot, which Commander does not answer.
+- The docs say how a program on another PC, or reached over SSH, calls ommm (a process in Commander's desktop session, such as a scheduled task), that an `Amplifier` is called from one thread, one call at a time, and that other programs on Commander's API share its headstage selection with ommm.
+- The docs say a program that does not use ommm opens a new handle its own way after Commander restarts, where they said every other program calls `reconnect()`.
+- The docs say Commander's Holding adds to the acquisition program's command and is in no telegraph, so only ommm's snapshot and write log record it.
+- The docs say a Pulse of 10 ms and a Zap of 0.5 ms are over when `press` returns and longer ones are not yet checked, where they said Pulse and Zap are over, and `quirks.md` contradicted itself.
+- The docs say the Autos finished within the 3 s timeout on a model cell, where they said they always do, and that a timed-out Auto's `also` shows what it left only if the snapshot about 3 s later succeeds.
+- What ommm does not do lists timed stimuli, and that `with` turns nothing off, with a `try`/`finally` that turns a current off again.
+- The docs give a write that refreshes a stale telegraph for Clampex with nothing to change: `amp.set("Primary Output", amp.get("Primary Output"))`.
+- The docs give the `pip install` line for an install from git, beside `uv add`.
+- The docs say `ommm` and `ommm --summary` only read, sending no Set and logging nothing, but select their headstage and bring its active mode's tab to the front.
+- The docs say renaming the write log starts a new one, done between sessions while no program holds a mark.
 
 ## [0.3.0] - 2026-11-15
 

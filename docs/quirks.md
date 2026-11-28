@@ -170,7 +170,7 @@ In V-Clamp, choosing another Primary Output signal brings in that signal's own g
 
 ### Pulse, Zap, Buzz and Clear act after the call returns
 
-On the DAQ (PATCH-1U model cell at PATCH): each button's action starts within 0.1 s of the call. Pulse (10 mV, 10 ms) and Zap (0.5 ms) are over before the call returns; Buzz (1 ms) and Clear + and Clear − drive the primary output to its rail for about 0.4 s after the call, which returned in 40-200 ms ([below](#every-set-and-auto-returns-when-it-is-done)). A mode change (V-Clamp → I-Clamp through I = 0, 0.36 s) shifts the outputs by their new signals' levels and nothing more.
+On the DAQ (PATCH-1U model cell at PATCH): each button's action starts within 0.1 s of the call. Pulse (10 mV, 10 ms) and Zap (0.5 ms) are over before the call returns; a longer Pulse (to 500 ms) or Zap (to 50 ms) is not yet checked. Buzz (1 ms) and Clear + and Clear − drive the primary output to its rail for about 0.4 s after the call, which returned in 40-200 ms ([below](#every-set-and-auto-returns-when-it-is-done)). A mode change (V-Clamp → I-Clamp through I = 0, 0.36 s) shifts the outputs by their new signals' levels and nothing more.
 
 **ommm:** a `press` returns when Commander's call does, not when the action ends: wait about 0.5 s after Buzz or Clear before recording.
 
@@ -179,7 +179,7 @@ On the DAQ (PATCH-1U model cell at PATCH): each button's action starts within 0.
 - A Set has its new value in place at the first read after the call returns: Primary Output gain and low-pass, Holding and its checkbox, Mode, Cp Fast and Cp Slow, Whole Cell, Rs Compensation, the oscillation killer, Pipette Capacitance Neutralization, Bridge Balance.
 - Most Sets take 10-100 ms. Slower: Mode 40-230 ms; the Primary Output gain about 0.2 s for the active mode's Membrane Current (V-Clamp) or Membrane Potential (I-Clamp), and 15-30 ms for Pipette Potential, or on the tab not active; changing the Primary Output signal 0.4-0.5 s. A value that is only stored takes about 1 ms: Holding with its checkbox off, Rs Compensation %, Zap duration, Output Zero.
 - The Autos block until done, and their result is final at the first read after they return: Auto Output Zero 0.20-0.24 s, Pipette Offset 1.1-1.8 s, Cp Fast 1.2-1.8 s, Cp Slow 0.71-0.73 s, Leak Subtraction 2.2 s, Bridge Balance 0.63-0.66 s, Whole Cell 0.88-1.5 s. None reaches the DLL's 3000 ms default timeout, and with 10000 ms they are the same: no 6005 (`MSGTIMEOUT`). Other programs (MIES, Clampwise) report that with a real cell they can outlast 3 s; that is not yet checked.
-- The calls for Zap, Pulse, Buzz and Clear return in 0.17-0.19 s, 0.08-0.21 s, 0.04-0.06 s and 0.04-0.07 s; whether before the action ends is not yet checked.
+- The calls for Zap, Pulse, Buzz and Clear return in 0.17-0.19 s, 0.08-0.21 s, 0.04-0.06 s and 0.04-0.07 s; which actions are over by then: [above](#pulse-zap-buzz-and-clear-act-after-the-call-returns).
 - **The Options dialog does not block the API.** With it open, a Get answers at once (0.4-17 ms; 0.1 ms with it closed), and a Set is taken (221 ms) and kept after the dialog closes: no 6005. Options has Close and Help but no OK or Cancel.
 
 **ommm:** reads each write back right after it returns, with no wait. A 6005 stops a snapshot and a write, which is logged `unknown` and never sent again.
@@ -200,7 +200,7 @@ Commander telegraphs the mode, the output signals, their gains, low-pass filters
 
 ### Meter values change meaning
 
-The four meter values, `get("MeterValue", 0)` to `3` (`MeterValue1` to `MeterValue4` in a snapshot):
+The four meter values, `GetMeterValue` with index 0 to 3, which ommm's `get` reads as `MeterValue1` to `MeterValue4`, the names a snapshot records them under:
 
 | Meter | Normally | With Resistance on | With Irms on (V-Clamp only) |
 |---|---|---|---|
@@ -213,7 +213,7 @@ The four meter values, `get("MeterValue", 0)` to `3` (`MeterValue1` to `MeterVal
 - Irms in I-Clamp fails with 6004.
 - The Resistance meter applies its own test pulses.
 
-**ommm:** a snapshot records `MeterResistEnable` and `MeterIrmsEnable` beside the meter values, and `trial_record` leaves the meters out of `changed`.
+**ommm:** a snapshot records `MeterResistEnable` and `MeterIrmsEnable` beside the meter values, and `trial_record` leaves the meters out of `changed`. `get("MeterValue2")` raises `NotApplicable` in V-Clamp while Irms is on, but not in I-Clamp or I = 0.
 
 ## Connecting and restarting
 
@@ -268,7 +268,7 @@ Seen with headstage 2 plugged in and nothing on it, beside headstage 1 on a mode
 - **A file saved with both** holds headstage 2's sections beside headstage 1's, the same names with `CHANNEL2` ([mcc.md](mcc.md#the-files-format)).
 - **A load restarts Commander for both headstages,** and both come back with Holding off. A file with headstage 1's sections alone leaves headstage 2's mode and feedback resistor as they were, turns its Holding off and takes its Primary Output gain to 1.
 
-**ommm:** each Amplifier selects its headstage before every call, so two in one program take turns. Two programs at once can still reach each other's headstage between a select and the calls after it: with both headstages in use, run one program on Commander. `load_config` refuses while the other headstage holds a level, unless `release_other_headstage=True`, and says to check a headstage the file has no settings for ([mcc.md](mcc.md#two-headstages)).
+**ommm:** each Amplifier selects its headstage before every call, so two called from one thread of a program take turns. Two programs at once can still reach each other's headstage between a select and the calls after it: with both headstages in use, run one program on Commander. `load_config` refuses while the other headstage holds a level, unless `release_other_headstage=True`, and says to check a headstage the file has no settings for ([mcc.md](mcc.md#two-headstages)).
 
 ## Not seen yet
 

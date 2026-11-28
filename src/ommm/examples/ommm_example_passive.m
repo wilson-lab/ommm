@@ -27,7 +27,15 @@ mode = a.get("Mode");                           % "V-Clamp", "I-Clamp" or "I = 0
 resistor = a.get("Feedback Resistor", "MΩ");
 primary = a.get("Primary Output");              % an output signal by Commander's name: "Membrane Current"
 gain = a.get("Primary Output Gain", "x");
-current = a.get("MeterValue2", "pA");           % the current meter; MeterValue1 is the potential, in mV
+% In V-Clamp with Irms Meter on, the meter shows the RMS noise, not the current: get refuses it.
+try
+    current = a.get("MeterValue2", "pA");       % the current meter; MeterValue1 is the potential, in mV
+catch err
+    if err.identifier ~= "ommm:notApplicable"
+        rethrow(err)
+    end
+    current = NaN;
+end
 fprintf("%s, Rf %g MΩ, %s ×%g, %g pA\n", mode, resistor, primary, gain, current)
 if mode ~= "I = 0"
     unit = "pA";

@@ -8,12 +8,14 @@ CHANGES THE AMPLIFIER, and puts it back: run it with a model cell or nothing on 
 In V-Clamp, I = 0 and I-Clamp, each row of ommm's settings table that the mode has is read with get, set to one or
 two values in range and back (each readback's outcome), then to a value out of its range or off its list, which ommm
 must refuse without sending anything; once in a mode without it, it must be refused too. Every checkbox is turned
-over and back (Whole Cell refused at 5 and 50 GΩ; Holding and Slow Current Injection never both on in I-Clamp).
+over and back (Whole Cell refused, as Commander's window greys it out at 5 GΩ; Holding and Slow Current Injection never
+both on in I-Clamp).
 set_mode goes V-Clamp, I = 0, I-Clamp, I = 0, V-Clamp, then to I-Clamp and back in one call each, timed. Each button
 is pressed where Commander has it, with what a snapshot shows it changed, how long its call took and, after an Auto,
 a screenshot; Reset to Program Defaults never. Then Ext on and off, make_safe, and the write log read back with
-writes_since and trial_record. It starts from V-Clamp with its tab shown and Mode Switching off, puts Commander back
-to the start (rig.py's put-back) and saves one JSON record in --log-dir; it exits 1 if a check did not go as expected.
+writes_since and trial_record. It starts from V-Clamp with its tab shown, Mode Switching off, both tabs at 5 GΩ,
+which its refused values are for, and Irms Meter off (rig.run refuses any other start), puts Commander back to the
+start (rig.py's put-back) and saves one JSON record in --log-dir; it exits 1 if a check did not go as expected.
 """
 
 import json
@@ -26,13 +28,13 @@ from dataclasses import asdict
 import ommm
 from ommm import WriteError
 from ommm.commander import STARTUP_WINDOW, CommanderError
-from ommm.settings import I0, IC, SETTINGS, VC, WHOLE_CELL_RESISTORS, checkbox, checkbox_names, tab_for
+from ommm.settings import I0, IC, SETTINGS, VC, checkbox, checkbox_names, tab_for
 
 import rig  # beside this script
 
 # per row, or per tab where they differ: (unit, values in range, a value ommm must refuse: outside the vendor's range,
 # or off Commander's list; None where ommm has neither). An output signal by Commander's name, the refused one from
-# the other tab. Ranges at 5 GΩ; the lowpass cutoffs are on both filter types' lists.
+# the other tab. Ranges at 5 GΩ, where rig.run starts; the lowpass cutoffs are on both filter types' lists.
 VALUES = {
     "Holding": {VC: ("mV", (-10, 10), 1500), IC: ("pA", (-10, 10), 300)},  # I-Clamp: ±1 V / 5 GΩ, ±200 pA
     "Seal Test Amplitude": ("mV", (10, 2), 1500),
@@ -155,7 +157,6 @@ class Check:
     def run(self):
         _, mark = self.amp.writes_since()
         start = self.amp.snapshot()
-        self.whole_cell = self.amp.get("Feedback Resistor", "Ohm") in WHOLE_CELL_RESISTORS
         if sys.platform == "win32":
             self.startup_window()
         self.rules()
@@ -222,12 +223,10 @@ class Check:
                 self.press(IC, name)
 
     def row(self, mode: str, label: str):
-        """get, the values in range, back to the value found, and the refused one."""
+        """get, the values in range, back to the value found, and the refused one; Whole Cell's refused throughout."""
         unit, in_range, refused = values(label, mode)
         found = self.get(mode, label, unit)
-        want = EXPECTED.get(label, "ok")
-        if label.startswith("Whole Cell") and not self.whole_cell:
-            want = "refused"
+        want = "refused" if label.startswith("Whole Cell") else EXPECTED.get(label, "ok")
         for value in in_range:
             self.set(mode, want, label, value, unit)
         self.set(mode, "refused" if want == "refused" else "ok", label, found, unit)
@@ -239,7 +238,7 @@ class Check:
         stem = checkbox(name, mode)[1]
         found = self.get(mode, stem)
         for on in (not found, found):
-            want = "refused" if on and stem == "WholeCellCompEnable" and not self.whole_cell else "ok"
+            want = "refused" if on and stem == "WholeCellCompEnable" else "ok"
             self.do(f"{mode}: enable {name} {on}", want, self.amp.enable, name, on)
 
     def never_both(self):
@@ -252,7 +251,7 @@ class Check:
     def press(self, mode: str, name: str):
         """A button, and any window it leaves open stops the check (only a person may close it); an Auto's screenshot."""
         windows = set(rig.screen.commander_windows())
-        want = "refused" if name == "Auto Whole Cell" and not self.whole_cell else "ok"
+        want = "refused" if name == "Auto Whole Cell" else "ok"
         write = self.do(f"{mode}: press {name}", want, self.amp.press, name)
         self.p.stop_if_window_left(windows, name)
         if name.startswith("Auto") and write.outcome != "refused":

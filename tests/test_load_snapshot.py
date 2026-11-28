@@ -10,6 +10,7 @@ from conftest import from_matlab
 
 import ommm
 from ommm.__main__ import main
+from ommm.commander import SNAPSHOT_SCHEMA
 from ommm.testing import FakeCommander
 
 FIXTURE = Path(__file__).parent / "data" / "vclamp_stale_secondary_telegraph.json"
@@ -56,6 +57,28 @@ def test_a_snapshot_through_matlab_comes_back_as_python_had_it(telegraph):
         snapshot |= {"telegraph": None, "errors": {"telegraph": "no telegraph"}, "disagreements": ["tab: one", "mode: two"]}
     assert from_matlab(snapshot) != snapshot
     assert ommm.without_matlab_empties(from_matlab(snapshot)) == snapshot
+
+@pytest.mark.parametrize("example", EXAMPLES[1:], ids=lambda path: path.name)
+def test_every_fake_snapshot_has_the_keys_of_vclamp(example):
+    def keys(snapshot):  # a reading the mode lacks is in not_applicable instead
+        return set(snapshot), set(snapshot["readings"]) | set(snapshot["not_applicable"]), set(snapshot["telegraph"])
+
+    assert keys(ommm.load_snapshot(example)) == keys(ommm.load_snapshot(EXAMPLES[0]))
+
+
+def test_a_newer_schema_is_refused_and_a_missing_one_accepted(tmp_path):
+    saved = json.loads(EXAMPLES[0].read_text())
+    path = tmp_path / "snapshot.json"
+    path.write_text(json.dumps(saved | {"schema": SNAPSHOT_SCHEMA + 1}))
+    message = f"{re.escape(str(path))} is a schema {SNAPSHOT_SCHEMA + 1} snapshot"
+    with pytest.raises(ValueError, match=message):
+        ommm.load_snapshot(path)
+    with pytest.raises(ValueError, match=message):
+        FakeCommander(path)
+    del saved["schema"]  # a file from before schema 1
+    path.write_text(json.dumps(saved))
+    assert ommm.load_snapshot(path) == saved
+
 
 def test_a_file_that_is_not_a_snapshot_is_refused_by_name(tmp_path):
     path = tmp_path / "settings.json"
@@ -122,6 +145,43 @@ def test_the_command_says_why_it_could_not_read(monkeypatch):
     monkeypatch.setattr(ommm, "Amplifier", no_commander)
     with pytest.raises(SystemExit, match="^ommm: Commander not found"):
         main()
+
+
+def test_the_command_writes_the_snapshot_to_a_new_file(monkeypatch, capsys, tmp_path):
+    out = tmp_path / "snapshot.json"
+    monkeypatch.setattr("sys.argv", ["ommm", "--out", str(out)])
+    on_the_fake(monkeypatch)
+    main()
+    assert capsys.readouterr().out == ""
+    assert json.loads(out.read_text(encoding="utf-8"))["readings"] == FakeCommander(FIXTURE).snapshot()["readings"]
+
+
+def test_the_command_writes_the_summary_to_a_new_file_as_utf8(monkeypatch, tmp_path):
+    out = tmp_path / "summary.txt"
+    monkeypatch.setattr("sys.argv", ["ommm", "--summary", str(FIXTURE), "--out", str(out)])
+    main()
+    assert out.read_text(encoding="utf-8") == ommm.summary(json.loads(FIXTURE.read_text())) + "\n"
+
+
+def test_the_command_rewrites_a_utf16_snapshot_as_utf8(monkeypatch, tmp_path):
+    # `ommm > snapshot.json` in Windows PowerShell 5.1 writes UTF-16 with a byte order mark
+    saved = json.loads(FIXTURE.read_text())
+    old, new = tmp_path / "old.json", tmp_path / "new.json"
+    old.write_text(json.dumps(saved), encoding="utf-16")
+    monkeypatch.setattr("sys.argv", ["ommm", str(old), "--out", str(new)])
+    main()
+    assert new.read_bytes().startswith(b"{")  # no byte order mark
+    assert json.loads(new.read_text(encoding="utf-8")) == saved
+
+
+def test_the_command_refuses_a_file_that_is_there_before_reading_commander(monkeypatch, capsys, tmp_path):
+    out = tmp_path / "snapshot.json"
+    out.write_text("mine")
+    monkeypatch.setattr("sys.argv", ["ommm", "--out", str(out)])
+    monkeypatch.setattr(ommm, "Amplifier", lambda headstage: pytest.fail("Commander was read"))
+    with pytest.raises(SystemExit, match=f"^ommm: {re.escape(str(out))} exists"):
+        main()
+    assert (out.read_text(), capsys.readouterr().out) == ("mine", "")
 
 
 def test_the_command_writes_the_summary_as_utf8_to_a_cp1252_file_or_pipe():

@@ -2,7 +2,8 @@
 
 The telegraph carries what the AxMultiClampMsg API can't report: external command sensitivity and the
 scale factor and units of both outputs. read() opens a connection, takes the first packet Commander
-sends back, and closes again, so Commander never sends to a window that nobody is pumping.
+sends back, and closes again, so Commander never sends to a window that nobody is pumping. While it waits it pumps
+only its own window's messages, never the rest of the calling thread's queue.
 
 Protocol and struct layout from Molecular Devices' Telegraph SDK (MultiClampBroadcastMsg.hpp and the
 "Telegraph Interface Specification" PDF, installed next to Commander). Names are the header's.
@@ -161,7 +162,10 @@ def read(serial: str, channel: int, timeout_s: float = 1.0) -> dict:
         while hwnd not in packets:
             if time.monotonic() > deadline:
                 raise TimeoutError(f"no telegraph from Commander for headstage {channel} within {timeout_s:g} s")
-            while user32.PeekMessageW(ctypes.byref(msg), None, 0, 0, PM_REMOVE):
+            # this window's messages only: what is posted to the calling thread (a GUI host's timers and events) waits
+            # for the host's own loop. Commander's WM_COPYDATA is sent, not posted, so it arrives during the peek
+            # whatever the filter, and so do messages other threads send to the host's windows
+            while user32.PeekMessageW(ctypes.byref(msg), hwnd, 0, 0, PM_REMOVE):
                 user32.TranslateMessage(ctypes.byref(msg))
                 user32.DispatchMessageW(ctypes.byref(msg))
             time.sleep(0.005)

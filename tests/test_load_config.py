@@ -230,6 +230,28 @@ def test_every_refusal_comes_before_commander_is_closed(fake, tmp_path, make, sa
     assert (running.started, running.pid, fake.get("Mode")) == ([], 1000, 0)  # still running and answering
 
 
+@pytest.mark.parametrize("function, nth, code, says", [
+    ("SelectMultiClamp", 1, 6002, r"^Commander was closed or restarted"),  # the plan's first read
+    ("SelectMultiClamp", 2, 6005, r"^could not read headstage 2, which the restart reaches too: "),
+    ("GetMeterIrmsEnable", 1, 6005, r"^no snapshot before it: "),  # read by snapshots, not by the plan
+], ids=["read", "other-headstage", "snapshot-before"])
+def test_a_load_refused_by_a_failed_call_logs_its_error_code(fake, tmp_path, function, nth, code, says):
+    amp = Amplifier(log_dir=tmp_path, commander=fake)
+    call, tried = fake.dll.call, []
+
+    def failing(name, *args):
+        if name == function:
+            tried.append(name)
+            if len(tried) == nth:
+                fake.dll.fail_at(1, code)
+        return call(name, *args)
+
+    fake.dll.call = failing
+    refused(amp, lambda: amp.load_config(MCC, confirmed=True), says)
+    assert (logged(amp)[-1]["outcome"], logged(amp)[-1]["error_code"]) == ("refused", code)
+    assert fake.dll.process.started == []
+
+
 def test_a_load_beside_another_commander_is_refused_in_the_plan(fake, tmp_path):
     fake.dll.process.pids = lambda: [1000, 2000]
     amp = Amplifier(log_dir=tmp_path, commander=fake)
@@ -317,7 +339,8 @@ def test_a_load_between_v_clamp_and_i_clamp_goes_through_i_0_first(fake, tmp_pat
 
 def test_a_log_dir_with_a_space_is_refused_since_commander_takes_the_copy_from_there(fake, tmp_path):
     amp = Amplifier(log_dir=tmp_path / "my logs", commander=fake)
-    refused(amp, lambda: amp.load_config(MCC, confirmed=True), r"Commander cannot take a path with a space: give the Amplifier a log_dir \(LogDir= in MATLAB\) without one$")
+    refused(amp, lambda: amp.load_config(MCC, confirmed=True),
+            r"my logs.mcc, in log_dir .*my logs, and Commander cannot take a path with a space: give log_dir \(LogDir= in MATLAB\) a folder without one$")
 
 
 def test_ext_on_is_refused_as_for_every_write(fake, tmp_path):

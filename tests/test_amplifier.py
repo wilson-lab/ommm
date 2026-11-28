@@ -14,7 +14,7 @@ from ommm import Amplifier, WriteError, amplifier, process, settings
 from ommm.commander import CommanderError, NotApplicable
 from ommm.testing import FakeCommander
 
-from conftest import after_each_set, logged, names, refused, sets
+from conftest import after_each_set, from_matlab, logged, names, refused, sets
 
 DATA = Path(__file__).parent / "data"
 FAKE = ommm.EXAMPLES / "fake"  # the snapshots and the test .mcc the package ships
@@ -50,6 +50,10 @@ def fails(code: int, text: str):
     return raising
 
 
+def sources(changed: dict) -> dict:
+    return {(section, key): change["source"] for section, fields in changed.items() for key, change in fields.items()}
+
+
 # readback
 
 
@@ -62,6 +66,24 @@ def test_a_write_reads_before_and_after_and_returns_what_it_did(tmp_path):
     assert write.also == {}  # Output Zero is 0 at both gains
     with pytest.raises(FrozenInstanceError):
         write.outcome = "error"
+
+
+def test_a_sets_t_is_taken_after_the_reads_of_what_it_also_changes(tmp_path, monkeypatch):
+    # just before the Set: a Primary Output signal brings its own gain and filters, read before and after it
+    ticks = iter(range(1_000_000))
+    monkeypatch.setattr(amplifier, "now", lambda: f"{next(ticks):07d}")
+    amp = amp_on(tmp_path)
+    calls, call = [], amp.commander.dll.call
+
+    def stamped(name, *args):
+        calls.append((amplifier.now(), name))
+        return call(name, *args)
+
+    amp.commander.dll.call = stamped
+    amp.set("Primary Output", "Membrane Potential")
+    sent = next(i for i, (_, name) in enumerate(calls) if name == "SetPrimarySignal")
+    assert calls[sent - 1][1].removeprefix("Get") in settings.PER_SIGNAL  # the last of those reads
+    assert calls[sent - 1][0] < logged(amp)[-1]["t"] < calls[sent][0]
 
 
 @pytest.mark.parametrize("off_by, outcome", [(0.0, "ok"), (-3.5e-4, "adjusted"), (-1e-3, "mismatch")])
@@ -603,6 +625,129 @@ def test_a_readback_that_fails_after_the_set_is_unknown(tmp_path):
     assert [(line["outcome"], line["error_code"]) for line in logged(amp)] == [("unknown", 6005)]
 
 
+@pytest.mark.parametrize("kept, source", [(12.3456, "ommm"), (11.995, "ommm"), (20, "gui")],
+                         ids=["as-sent", "on-its-step", "another-value"])
+def test_a_set_that_timed_out_is_ommms_at_what_commander_may_have_kept_of_it(tmp_path, kept, source):
+    # Commander took the Set and did not answer in time: what it keeps, within Holding's resolution, is the write's
+    def took_then_timed_out():
+        amp.gui.set("Holding", kept, "mV")
+        raise CommanderError("Commander", 6005, "MSGTIMEOUT")
+
+    amp = amp_on(tmp_path)
+    before = amp.snapshot()
+    before_call(amp, "SetHolding", took_then_timed_out)
+    with pytest.raises(WriteError, match="did not answer in time"):
+        amp.set("Holding", 12.3456, "mV")
+    assert sources(ommm.trial_record(before, amp.snapshot(), logged(amp))["changed"]) == {("readings", "Holding"): source}
+
+
+def test_a_set_that_timed_out_at_a_whole_number_is_ommms_from_matlab_too(tmp_path):
+    # MATLAB's jsonencode writes the target, 5000.0 Hz, as 5000, which Python reads back as an int
+    def took_then_timed_out():
+        amp.gui.set("Rs Compensation Bandwidth", 4.9686, "kHz")  # what Commander kept of 5 kHz on the amplifier
+        raise CommanderError("Commander", 6005, "MSGTIMEOUT")
+
+    amp = amp_on(tmp_path)
+    before = amp.snapshot()
+    before_call(amp, "SetRsCompBandwidth", took_then_timed_out)
+    with pytest.raises(WriteError, match="did not answer in time"):
+        amp.set("Rs Compensation Bandwidth", 5, "kHz")
+    after, lines = amp.snapshot(), logged(amp)
+    matlab = [ommm.without_matlab_empties(from_matlab(value)) for value in (before, after, lines)]
+    assert type(matlab[2][-1]["target"]) is int
+    for record in (ommm.trial_record(before, after, lines), ommm.trial_record(*matlab)):
+        assert sources(record["changed"]) == {("readings", "RsCompBandwidth"): "ommm"}
+
+
+def test_an_enable_interrupted_once_its_set_is_done_leaves_one_line_that_trial_record_credits(tmp_path):
+    # Ctrl+C lands as Python gets the Set back: the line is written, then the interrupt goes on
+    amp = amp_on(tmp_path)
+    before = amp.snapshot()
+    before_call(amp, "SetTestSignalEnable", lambda: amp.commander.dll.interrupt_at(1))
+    with pytest.raises(KeyboardInterrupt):
+        amp.enable("Seal Test", True)
+    [line] = logged(amp)
+    assert (line["target"], line["after"], line["outcome"], line["error_code"]) == (True, None, "unknown", None)
+    assert line["reason"] == ("sent, then interrupted (KeyboardInterrupt) before the readback, so it may or may not have "
+                              "changed; not sent again")
+    assert sets(amp.commander) == [("SetTestSignalEnable", True)]
+    assert sources(ommm.trial_record(before, amp.snapshot(), logged(amp))["changed"]) == {("readings", "TestSignalEnable"): "ommm"}
+
+
+def interrupt_the_next_telegraph(amp: Amplifier):
+    read = amp.commander.telegraph.read
+
+    def interrupted(*args):
+        amp.commander.telegraph.read = read
+        raise KeyboardInterrupt
+
+    amp.commander.telegraph.read = interrupted
+
+
+@pytest.mark.parametrize("arm, after", [
+    (lambda amp: amp.commander.dll.interrupt_at(2), None),
+    (lambda amp: amp.commander.dll.interrupt_at(3), 5.0),
+    (interrupt_the_next_telegraph, 5.0),
+], ids=["readback", "what-it-also-changes", "telegraph"])
+def test_a_set_interrupted_after_it_was_sent_logs_what_was_read_back_and_trial_record_credits_it(tmp_path, arm, after):
+    # the gain's readback, then Output Zero's (what the gain also changes), then the telegraph that checks it
+    amp = amp_on(tmp_path)
+    before = amp.snapshot()
+    before_call(amp, "SetPrimarySignalGain", lambda: arm(amp))
+    with pytest.raises(KeyboardInterrupt):
+        amp.set("Primary Output Gain", 5, "x")
+    [line] = logged(amp)
+    assert (line["target"], line["after"], line["outcome"]) == (5.0, after, "unknown")
+    assert sets(amp.commander) == [("SetPrimarySignalGain", 5.0)]
+    changed = ommm.trial_record(before, amp.snapshot(), logged(amp))["changed"]
+    assert sources(changed) == {("readings", "PrimarySignalGain"): "ommm", ("telegraph", "dAlpha"): "ommm"}
+
+
+def test_a_press_interrupted_once_the_button_ran_leaves_one_line_and_is_never_pressed_again(tmp_path):
+    amp = amp_on(tmp_path, ICLAMP, VCLAMP)
+    tried = before_call(amp, "AutoBridgeBal", lambda: amp.commander.dll.interrupt_at(1))
+    with pytest.raises(KeyboardInterrupt):
+        amp.press("Auto Bridge Balance")
+    [line] = logged(amp)
+    assert (line["stem"], line["after"], line["also"], line["outcome"], line["error_code"]) == ("AutoBridgeBal", None, {}, "unknown", None)
+    assert line["reason"] == ("pressed, then interrupted (KeyboardInterrupt) before the snapshot after it, so what it did "
+                              "is not known; not pressed again")
+    assert tried == ["AutoBridgeBal"]
+
+
+def test_a_press_interrupted_while_it_waits_after_a_timeout_leaves_one_line(tmp_path, monkeypatch):
+    def interrupted(seconds):
+        raise KeyboardInterrupt
+
+    amp = amp_on(tmp_path)
+    monkeypatch.setattr(amplifier.time, "sleep", interrupted)
+    tried = before_call(amp, "Zap", fails(6005, "MSGTIMEOUT"))
+    with pytest.raises(KeyboardInterrupt):
+        amp.press("Zap")
+    [line] = logged(amp)
+    assert (line["outcome"], line["error_code"], tried) == ("unknown", 6005, ["Zap"])
+    assert line["reason"] == ("Commander did not answer in time, so it may or may not have run; not pressed again; "
+                              "interrupted (KeyboardInterrupt) before the snapshot after it")
+
+
+@pytest.mark.parametrize("call, function, nth, code, says", [
+    (lambda amp: amp.set("Holding", -60, "mV"), "SelectMultiClamp", 1, 6002, r"^Commander was closed or restarted"),
+    (lambda amp: amp.enable("Seal Test", True), "GetMode", 1, 6005, r"^could not read Mode: MSGTIMEOUT \(6005\)$"),
+    (lambda amp: amp.press("Auto Output Zero"), "GetMeterValue", 1, 6005, r"^no snapshot before it: MSGTIMEOUT \(6005\)$"),
+    (lambda amp: amp.set_mode("I-Clamp"), "SelectMultiClamp", 1, 6002, r"^Commander was closed or restarted"),
+    (lambda amp: amp.make_safe(), "SelectMultiClamp", 1, 6002, r"^Commander was closed or restarted"),
+    # between two steps, the reads before the second
+    (lambda amp: amp.set("Holding", -60, "mV", step=30), "SelectMultiClamp", 2, 6002, r"^could not read Commander: Commander was closed"),
+], ids=["set", "enable", "press", "set_mode", "make_safe", "set-step"])
+def test_a_refusal_a_failed_call_caused_logs_its_error_code(tmp_path, call, function, nth, code, says):
+    amp = amp_on(tmp_path)
+    before_call(amp, function, fails(code, "MSGTIMEOUT" if code == 6005 else "MCCNOTOPEN"), nth)
+    with pytest.raises(WriteError, match=says) as raised:
+        call(amp)
+    assert raised.value.write.outcome == "refused"
+    assert (logged(amp)[-1]["outcome"], logged(amp)[-1]["error_code"]) == ("refused", code)
+
+
 def test_a_checkbox_that_does_not_read_back_raises(tmp_path):
     amp = amp_on(tmp_path)
     after_each_set(amp, lambda stem, value: amp.commander.dll.values.update({("V-Clamp", stem): False}))
@@ -690,7 +835,7 @@ def test_a_set_mode_that_does_not_take_stops_and_may_leave_i_0(tmp_path, fail, o
 ], ids=["set_mode", "press"])
 def test_a_snapshot_that_fails_before_set_mode_or_a_button_refuses(tmp_path, call):
     amp = amp_on(tmp_path)
-    before_call(amp, "GetMeterIrmsEnable", fails(6005, "MSGTIMEOUT"))  # read by snapshots only
+    before_call(amp, "GetMeterIrmsEnable", fails(6005, "MSGTIMEOUT"))  # read by snapshots, not by a write's checks
     refused(amp, lambda: call(amp), r"no snapshot before it: MSGTIMEOUT \(6005\)$")
 
 
@@ -723,6 +868,17 @@ def test_stale_signals_are_refreshed_first_and_logged(tmp_path):
     assert amp.snapshot()["disagreements"] == []
     amp.set("Primary Output Gain", 2, "x")
     assert len(sets(amp.commander)) == 4  # fresh now: no refresh
+
+
+def test_the_primary_output_set_to_itself_refreshes_a_stale_telegraph(tmp_path):
+    """docs/writes.md's way to refresh the telegraph for Clampex with nothing to change."""
+    amp = amp_on(tmp_path, STALE)
+    assert ommm.state(amp.snapshot())["warnings"]
+    amp.set("Primary Output", amp.get("Primary Output"))
+    assert ommm.state(amp.snapshot())["warnings"] == []
+    assert [line["stem"] for line in logged(amp)] == ["PrimarySignal", "SecondarySignal", "PrimarySignal"]
+    amp.set("Primary Output", amp.get("Primary Output"))
+    assert len(logged(amp)) == 4  # fresh now: one line, though nothing changed
 
 
 def test_a_refresh_that_times_out_is_unknown_and_both_its_lines_are_logged(tmp_path):
@@ -885,6 +1041,12 @@ def test_the_gui_follows_each_new_commander_after_a_load_and_a_reconnect(tmp_pat
     amp.reconnect()
     amp.gui.set("Holding", -50, "mV")
     assert amp.get("Holding", "mV") == -50
+
+
+def test_fake_is_the_snapshot_file_made_absolute_as_matlabs_and_none_without_fake(tmp_path, monkeypatch):
+    monkeypatch.chdir(FAKE)
+    assert Amplifier(log_dir=tmp_path, fake="vclamp.json").fake == VCLAMP.resolve()
+    assert amp_on(tmp_path).fake is None  # commander=, as on Commander
 
 
 def test_only_an_amplifier_on_the_fake_has_a_gui(tmp_path):

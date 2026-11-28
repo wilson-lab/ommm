@@ -331,7 +331,8 @@ def test_auto_pipette_offset_in_v_clamp_says_it_moved_the_i_clamp_offset_too(tmp
     amp.commander.dll.found_offsets = {"V-Clamp": 0.004, "I-Clamp": -0.002}
     write = amp.press("Auto Pipette Offset")
     assert (write.after, write.also) == (None, {"PipetteOffset": [0.0, 0.004]})
-    assert write.reason == "it also moved the I-Clamp tab's Pipette Offset, which ommm reads in I-Clamp"
+    assert write.reason == ("it also moved the I-Clamp tab's Pipette Offset, and its Slow Current Injection level by a "
+                            "few µV, which ommm reads in I-Clamp")
     amp.set_mode("I-Clamp")
     assert amp.get("Pipette Offset", "mV") == 2.0  # the window's sign (P14)
 

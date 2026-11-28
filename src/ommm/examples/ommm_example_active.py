@@ -8,6 +8,8 @@ ommm_example_passive.py.
 """
 
 # %% Open a handle on Commander
+from pathlib import Path
+
 import ommm
 
 amp = ommm.Amplifier()  # headstage 1 of the one 700B; Commander must be running on this PC
@@ -88,6 +90,10 @@ print(plan.reason)
 # With confirmed=True, Commander closes, starts again with the copy and is checked, about 15 s. The file sets every
 # value it holds, Holding included (off in ommm's examples), so a held cell is released: not with a cell you want to
 # keep. This handle takes the new Commander; any other program using ommm (MATLAB, another Python) calls reconnect().
+# On an amplifier (amp.fake is None there), the cell stops here while setup is still ommm's example file.
+assert amp.fake or not Path(setup).is_relative_to(ommm.EXAMPLES), (
+    "on an amplifier, load your own setup, not ommm's example: save it in Commander (Save Configuration, F5) and point "
+    "setup at that file")
 w = amp.load_config(setup, changes=[("Feedback Resistor", 500, "MΩ", "V-Clamp")], confirmed=True)
 print(w.outcome, w.reason)
 amp.load_config(setup, confirmed=True)  # and back to the file unchanged

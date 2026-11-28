@@ -101,7 +101,10 @@ disp(plan.reason)
 % With Confirmed=true, Commander closes, starts again with the copy and is checked, about 15 s. The
 % file sets every value it holds, Holding included (off in ommm's examples), so a held cell is
 % released: not with a cell you want to keep. This object takes the new Commander; any other
-% program or MATLAB session using ommm calls reconnect.
+% program or MATLAB session using ommm calls reconnect. On an amplifier (a.fake is "" there), the
+% section stops here while setup is still ommm's example file.
+assert(a.fake ~= "" || ~startsWith(setup, examples), "on an amplifier, load your own setup, not " + ...
+    "ommm's example: save it in Commander (Save Configuration, F5) and point setup at that file")
 w = a.load_config(setup, Changes={"Feedback Resistor", 500, "MΩ", "V-Clamp"}, Confirmed=true);
 disp(w.reason)
 a.load_config(setup, Confirmed=true);           % and back to the file unchanged
